@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Blog – Kata Sai Kranthu Reddy{% endblock %}
+
+{% block content %}
+<section class="section-pad" style="min-height:100vh;">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-tag">Thoughts &amp; Insights</span>
+      <h2 class="section-title">My <span class="neon-text">Blog</span></h2>
+      <p class="section-subtitle">Sharing what I learn about AI, Python, and building cool things.</p>
+    </div>
+    <div class="row g-4">
+
+      <!-- Post 1 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="blog-card h-100">
+          <div class="blog-card-img-wrap">
+            <div class="blog-card-img-placeholder">
+              <i class="fas fa-brain fa-4x neon-text"></i>
+            </div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta d-flex gap-3 mb-2">
+              <span class="blog-tag">AI / NLP</span>
+              <span class="text-muted small"><i class="far fa-calendar me-1"></i>March 2025</span>
+            </div>
+            <h4 class="blog-title">How I Built My AI Resume Screening System</h4>
+            <p class="blog-excerpt">
+              A deep dive into how I combined Flask, NLTK, and Python to build a smart resume
+              screening backend that automates candidate matching — including the challenges I faced and lessons learned.
+            </p>
+            <div class="blog-footer d-flex align-items-center justify-content-between mt-3">
+              <span class="text-muted small"><i class="far fa-clock me-1"></i>8 min read</span>
+              <a href="#" class="btn btn-sm btn-neon">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="blog-card h-100">
+          <div class="blog-card-img-wrap">
+            <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #7c3aed22, #7c3aed44);">
+              <i class="fab fa-python fa-4x" style="color:#7c3aed;"></i>
+            </div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta d-flex gap-3 mb-2">
+              <span class="blog-tag purple-tag">Flask / Python</span>
+              <span class="text-muted small"><i class="far fa-calendar me-1"></i>January 2025</span>
+            </div>
+            <h4 class="blog-title">Getting Started with Flask: A Beginner's Guide</h4>
+            <p class="blog-excerpt">
+              Everything you need to know to build your first Flask web application — from setting up
+              a virtual environment to creating routes, templates, and deploying on Render or PythonAnywhere.
+            </p>
+            <div class="blog-footer d-flex align-items-center justify-content-between mt-3">
+              <span class="text-muted small"><i class="far fa-clock me-1"></i>6 min read</span>
+              <a href="#" class="btn btn-sm btn-neon">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="blog-card h-100">
+          <div class="blog-card-img-wrap">
+            <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #10b98122, #10b98144);">
+              <i class="fas fa-rocket fa-4x" style="color:#10b981;"></i>
+            </div>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta d-flex gap-3 mb-2">
+              <span class="blog-tag green-tag">Journey</span>
+              <span class="text-muted small"><i class="far fa-calendar me-1"></i>November 2024</span>
+            </div>
+            <h4 class="blog-title">My Journey into AI Development</h4>
+            <p class="blog-excerpt">
+              How I went from a curious student to building real-world AI applications —
+              the resources that helped me, the projects I built, and the mindset shifts that made all the difference.
+            </p>
+            <div class="blog-footer d-flex align-items-center justify-content-between mt-3">
+              <span class="text-muted small"><i class="far fa-clock me-1"></i>5 min read</span>
+              <a href="#" class="btn btn-sm btn-neon">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-5" data-aos="fade-up">
+      <p class="text-muted">More posts coming soon. Follow me on
+        <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="neon-link">GitHub</a> for updates!
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
