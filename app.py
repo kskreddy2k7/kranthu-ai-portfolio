@@ -47,16 +47,15 @@ def fetch_github_stats():
 CHATBOT_RESPONSES = {
     'skills': (
         "Kranthu is skilled in <strong>Python</strong>, <strong>Flask</strong>, "
-        "<strong>Java</strong>, <strong>NLP</strong>, Machine Learning, "
-        "HTML/CSS, and Android development. His core strength is building "
-        "AI-powered backend systems."
+        "<strong>NLP</strong>, and Machine Learning libraries like <strong>Pandas</strong> and <strong>NumPy</strong>. "
+        "He also has experience with <strong>Java</strong> for Android development."
     ),
     'projects': (
         "Kranthu's key projects include:<br>"
-        "• <strong>AI Resume Screening System</strong> – Flask + NLP<br>"
-        "• <strong>Smart AutoCorrect Keyboard</strong> – Android (Java)<br>"
-        "• <strong>Quiz AI App</strong> – Python quiz engine<br>"
-        "• <strong>Speech-to-Text Python</strong> – Audio processing"
+        "• <strong>AI Resume Screening System</strong> – NLP parsing and ML ranking<br>"
+        "• <strong>Speech-to-Text Python</strong> – Real-time audio processing<br>"
+        "• <strong>Quiz AI App</strong> – Dynamic quiz engine with SQLite<br>"
+        "• <strong>Smart AutoCorrect Keyboard</strong> – Android IME (Java)"
     ),
     'contact': (
         "You can reach Kranthu via:<br>"
@@ -67,18 +66,18 @@ CHATBOT_RESPONSES = {
         "• Or use the <strong>Contact Form</strong> on this page!"
     ),
     'experience': (
-        "Kranthu has hands-on experience building AI-driven applications through self-directed projects. "
-        "He developed an <strong>AI Resume Screening System</strong> in 2025 using Flask and NLTK, and "
-        "has been continuously learning and building projects on GitHub."
+        "Kranthu is a 1st-year student building his experience through **Academic & Personal Projects**. "
+        "His most significant work is an <strong>AI Resume Screening System</strong> using Flask and NLTK, "
+        "alongside several AI and backend tools on GitHub."
     ),
     'education': (
-        "Kranthu is currently a 1st Year Bachelor of Technology (B.Tech) student in Computer Science. "
-        "He is actively building real-world projects in Python, AI, and backend development alongside "
-        "his coursework, and is open to internship opportunities to grow further."
+        "Kranthu is currently a 1st Year B.Tech student in Computer Science & Engineering (AI/ML) "
+        "at <strong>SRM University, Kattankulathur</strong>. He is focused on applying his "
+        "learning to real-world AI projects."
     ),
     'certifications': (
-        "Kranthu holds certifications in Python programming, AI/ML fundamentals, "
-        "and web development, demonstrating his commitment to continuous learning."
+        "Kranthu has completed certifications in <strong>Python Programming</strong>, "
+        "<strong>AI & Machine Learning</strong>, and <strong>Web Development</strong>."
     ),
     'hello': (
         "Hi there! 👋 I'm Kranthu's AI assistant. Ask me about his "
@@ -86,7 +85,7 @@ CHATBOT_RESPONSES = {
     ),
     'default': (
         "I can help you learn about Kranthu's <strong>skills</strong>, "
-        "<strong>projects</strong>, <strong>experience</strong>, or <strong>contact</strong> details. "
+        "<strong>projects</strong>, <strong>academic work</strong>, or <strong>contact</strong> details. "
         "What would you like to know?"
     ),
 }

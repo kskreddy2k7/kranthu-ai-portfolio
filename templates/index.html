@@ -11,20 +11,27 @@
       <p class="hero-greeting mb-1"><span class="neon-text">Hello, World! 👋</span></p>
       <h1 class="hero-name mb-2">Kata Sai Kranthu Reddy</h1>
       <div class="hero-subtitle mb-4">
-        <span id="typed-output"></span>
+        <span>Python Developer | AI & Backend Enthusiast</span>
       </div>
       <p class="hero-desc mx-auto mb-5">
-        Passionate about building intelligent systems that solve real problems.
-        Currently crafting AI-powered backends with Python &amp; Flask.
+        1st Year Computer Science Student at SRM University.
+        Passionate about building AI-driven solutions and exploring backend engineering.
+        Open to internship opportunities.
       </p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
         <a href="#projects" class="btn btn-neon btn-lg">
           <i class="fas fa-rocket me-2"></i>View Projects
         </a>
-        <a href="/static/resume.pdf" class="btn btn-outline-neon btn-lg" download>
+        <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}"
+          class="btn btn-outline-neon btn-lg" target="_blank">
+          <i class="fas fa-eye me-2"></i>View Resume
+        </a>
+        <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}"
+          class="btn btn-social btn-lg" download>
           <i class="fas fa-download me-2"></i>Download Resume
         </a>
-        <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" rel="noopener" class="btn btn-social btn-lg">
+        <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" rel="noopener"
+          class="btn btn-social btn-lg">
           <i class="fab fa-linkedin me-2"></i>LinkedIn
         </a>
         <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="btn btn-social btn-lg">
@@ -59,33 +66,28 @@
         </div>
       </div>
       <div class="col-lg-7" data-aos="fade-left">
-        <h3 class="mb-3">Python Developer &amp; AI Enthusiast</h3>
+        <h3 class="mb-3">Student & Python Developer</h3>
         <p class="about-text">
-          I'm <strong class="neon-text">Kata Sai Kranthu Reddy</strong>, a passionate Python developer
-          with a deep interest in <strong>Artificial Intelligence</strong> and <strong>backend engineering</strong>.
-          I enjoy building systems that are not just functional but <em>intelligent</em>.
+          I'm <strong class="neon-text">Kata Sai Kranthu Reddy</strong>, a first-year Computer Science student
+          at <strong>SRM University, Kattankulathur</strong>. I have a strong interest in
+          <strong>Artificial Intelligence</strong> and <strong>Backend Development</strong>.
         </p>
         <p class="about-text">
-          My focus lies in creating AI-powered applications using <strong>Flask</strong>,
-          <strong>NLP</strong>, and <strong>Machine Learning</strong> pipelines. From resume screening
-          bots to speech processing tools, I love turning complex problems into elegant solutions.
+          My experience comes from building self-directed projects like an <strong>AI Resume Screening System</strong>
+          using Flask and NLP. I focus on learning Python, Machine Learning, and how to build scalable backends.
         </p>
         <p class="about-text">
-          When I'm not coding, I'm exploring new AI research, contributing to open-source,
-          and sharpening my problem-solving skills through competitive programming.
+          I am actively looking for **internship opportunities** where I can apply my skills,
+          learn from professional teams, and contribute to real-world AI projects.
         </p>
         <div class="about-stats d-flex flex-wrap gap-4 mt-4">
           <div class="stat-box text-center">
-            <span class="stat-num neon-text">{{ github_stats.repo_count }}+</span>
-            <span class="stat-label">Repos</span>
+            <span class="stat-num neon-text">{{ github_stats.repo_count if github_stats.repo_count else '0' }}</span>
+            <span class="stat-label">GitHub Repos</span>
           </div>
           <div class="stat-box text-center">
-            <span class="stat-num neon-text">4+</span>
-            <span class="stat-label">Projects</span>
-          </div>
-          <div class="stat-box text-center">
-            <span class="stat-num neon-text">1+</span>
-            <span class="stat-label">Year Learning</span>
+            <span class="stat-num neon-text">4</span>
+            <span class="stat-label">Core Projects</span>
           </div>
         </div>
       </div>
@@ -101,68 +103,52 @@
       <h2 class="section-title">Technical <span class="neon-text">Skills</span></h2>
     </div>
     <div class="row g-4">
-      <!-- Programming Languages -->
+      <!-- Programming -->
       <div class="col-lg-6" data-aos="fade-right">
         <div class="skill-card">
-          <h5 class="skill-card-title mb-4"><i class="fas fa-code me-2 neon-text"></i>Programming Languages</h5>
-          <div class="mb-4">
-            <div class="d-flex justify-content-between mb-1">
-              <span>Python</span><span class="neon-text">85%</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar neon-bar" data-width="85" style="width:0%"></div>
-            </div>
-          </div>
-          <div class="mb-2">
-            <div class="d-flex justify-content-between mb-1">
-              <span>Java</span><span class="neon-text">70%</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar purple-bar" data-width="70" style="width:0%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Web & Framework -->
-      <div class="col-lg-6" data-aos="fade-left">
-        <div class="skill-card">
-          <h5 class="skill-card-title mb-4"><i class="fas fa-globe me-2 neon-text"></i>Web &amp; Frameworks</h5>
+          <h5 class="skill-card-title mb-4"><i class="fas fa-code me-2 neon-text"></i>Programming</h5>
           <div class="d-flex flex-wrap gap-2">
-            <span class="skill-badge">Flask</span>
-            <span class="skill-badge">HTML5</span>
-            <span class="skill-badge">CSS3</span>
-            <span class="skill-badge">Bootstrap</span>
-            <span class="skill-badge">REST API</span>
-            <span class="skill-badge">Jinja2</span>
-            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Java</span>
           </div>
         </div>
       </div>
-      <!-- AI/ML -->
-      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+      <!-- AI / ML -->
+      <div class="col-lg-6" data-aos="fade-left">
         <div class="skill-card">
           <h5 class="skill-card-title mb-4"><i class="fas fa-brain me-2 neon-text"></i>AI / ML</h5>
           <div class="d-flex flex-wrap gap-2">
+            <span class="skill-badge purple">Machine Learning</span>
             <span class="skill-badge purple">NLP</span>
-            <span class="skill-badge purple">Resume Screening</span>
-            <span class="skill-badge purple">Data Processing</span>
-            <span class="skill-badge purple">Speech-to-Text</span>
-            <span class="skill-badge purple">scikit-learn</span>
-            <span class="skill-badge purple">NLTK</span>
+            <span class="skill-badge purple">Pandas</span>
+            <span class="skill-badge purple">NumPy</span>
+            <span class="skill-badge purple">Matplotlib</span>
+            <span class="skill-badge purple">Seaborn</span>
+          </div>
+        </div>
+      </div>
+      <!-- Backend / Web -->
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+        <div class="skill-card">
+          <h5 class="skill-card-title mb-4"><i class="fas fa-server me-2 neon-text"></i>Backend / Web</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="skill-badge green">Flask</span>
+            <span class="skill-badge green">HTML5</span>
+            <span class="skill-badge green">CSS3</span>
+            <span class="skill-badge green">Bootstrap</span>
+            <span class="skill-badge green">REST APIs</span>
           </div>
         </div>
       </div>
       <!-- Tools -->
       <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
         <div class="skill-card">
-          <h5 class="skill-card-title mb-4"><i class="fas fa-tools me-2 neon-text"></i>Tools &amp; Platforms</h5>
+          <h5 class="skill-card-title mb-4"><i class="fas fa-tools me-2 neon-text"></i>Tools</h5>
           <div class="d-flex flex-wrap gap-2">
-            <span class="skill-badge green">Git &amp; GitHub</span>
-            <span class="skill-badge green">VS Code</span>
-            <span class="skill-badge green">Android Studio</span>
-            <span class="skill-badge green">Linux</span>
-            <span class="skill-badge green">Gunicorn</span>
-            <span class="skill-badge green">Render</span>
+            <span class="skill-badge">Git & GitHub</span>
+            <span class="skill-badge">Jupyter Notebook</span>
+            <span class="skill-badge">Android Studio</span>
+            <span class="skill-badge">Linux</span>
           </div>
         </div>
       </div>
@@ -190,27 +176,19 @@
           </div>
           <h4 class="project-title">AI Resume Screening System</h4>
           <p class="project-desc">
-            An intelligent backend system that parses resumes, extracts key skills using NLP,
-            and ranks candidates based on job description matching — built with Flask and Python NLP libraries.
+            An NLP-powered system that parses resumes to extract key skills and ranks candidates
+            based on job description matching. Built with Python and Flask.
           </p>
-          <ul class="project-desc mb-3">
-            <li><strong>Problem:</strong> Manually reviewing resumes is slow and inconsistent for recruiters handling many applicants.</li>
-            <li><strong>Implementation:</strong> Used NLTK for text tokenization and keyword extraction, served via a Flask REST API with JSON responses.</li>
-            <li><strong>Learned:</strong> NLP text processing pipelines, Flask backend architecture, and REST API design.</li>
-          </ul>
           <div class="project-tech mb-4">
             <span class="tech-badge">Python</span>
             <span class="tech-badge">Flask</span>
             <span class="tech-badge">NLP</span>
             <span class="tech-badge">NLTK</span>
-            <span class="tech-badge">REST API</span>
           </div>
           <div class="project-actions d-flex gap-2">
-            <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="btn btn-sm btn-neon">
+            <a href="https://github.com/kskreddy2k7/ai-resume-screening-system" target="_blank" rel="noopener"
+              class="btn btn-sm btn-neon">
               <i class="fab fa-github me-1"></i>GitHub
-            </a>
-            <a href="#" class="btn btn-sm btn-outline-neon">
-              <i class="fas fa-external-link-alt me-1"></i>Demo
             </a>
           </div>
         </div>
@@ -222,31 +200,22 @@
           <div class="project-card-header">
             <span class="project-number">02</span>
             <div class="project-icons">
-              <i class="fas fa-keyboard fa-2x" style="color:#7c3aed;"></i>
+              <i class="fas fa-microphone fa-2x" style="color:#f59e0b;"></i>
             </div>
           </div>
-          <h4 class="project-title">Smart AutoCorrect Keyboard</h4>
+          <h4 class="project-title">Speech-to-Text Python</h4>
           <p class="project-desc">
-            An Android keyboard application built in Java that provides real-time autocorrect
-            suggestions using NLP-inspired string distance algorithms and a custom word dictionary.
+            A real-time audio processing tool that converts speech to text using Google's Speech
+            Recognition API and noise-filtering techniques.
           </p>
-          <ul class="project-desc mb-3">
-            <li><strong>Problem:</strong> Mobile typing frequently produces errors that benefit from intelligent, context-aware correction.</li>
-            <li><strong>Implementation:</strong> Used Android's IME API to intercept keystrokes; computed Levenshtein distance to rank word suggestions from a local dictionary.</li>
-            <li><strong>Learned:</strong> Android app development, Java OOP principles, and string-distance algorithm design.</li>
-          </ul>
           <div class="project-tech mb-4">
-            <span class="tech-badge purple">Java</span>
-            <span class="tech-badge purple">Android</span>
-            <span class="tech-badge purple">NLP</span>
-            <span class="tech-badge purple">IME API</span>
+            <span class="tech-badge orange">Python</span>
+            <span class="tech-badge orange">SpeechRecognition</span>
+            <span class="tech-badge orange">PyAudio</span>
           </div>
           <div class="project-actions d-flex gap-2">
             <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="btn btn-sm btn-neon">
               <i class="fab fa-github me-1"></i>GitHub
-            </a>
-            <a href="#" class="btn btn-sm btn-outline-neon">
-              <i class="fas fa-external-link-alt me-1"></i>Demo
             </a>
           </div>
         </div>
@@ -263,26 +232,17 @@
           </div>
           <h4 class="project-title">Quiz AI App</h4>
           <p class="project-desc">
-            A Python-powered quiz system that generates dynamic questions, tracks scores,
-            provides instant feedback, and adapts difficulty based on user performance.
+            A Python-powered quiz engine that generates dynamic questions and tracks user
+            performance with an integrated SQLite database.
           </p>
-          <ul class="project-desc mb-3">
-            <li><strong>Problem:</strong> Static quizzes don't adapt to a learner's knowledge level, reducing engagement.</li>
-            <li><strong>Implementation:</strong> Flask web app storing questions in SQLite; session-based scoring adjusts question difficulty dynamically.</li>
-            <li><strong>Learned:</strong> Database integration with SQLite, Flask session management, and dynamic web rendering with Jinja2.</li>
-          </ul>
           <div class="project-tech mb-4">
             <span class="tech-badge green">Python</span>
             <span class="tech-badge green">Flask</span>
             <span class="tech-badge green">SQLite</span>
-            <span class="tech-badge green">Bootstrap</span>
           </div>
           <div class="project-actions d-flex gap-2">
             <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="btn btn-sm btn-neon">
               <i class="fab fa-github me-1"></i>GitHub
-            </a>
-            <a href="#" class="btn btn-sm btn-outline-neon">
-              <i class="fas fa-external-link-alt me-1"></i>Demo
             </a>
           </div>
         </div>
@@ -294,31 +254,22 @@
           <div class="project-card-header">
             <span class="project-number">04</span>
             <div class="project-icons">
-              <i class="fas fa-microphone fa-2x" style="color:#f59e0b;"></i>
+              <i class="fas fa-keyboard fa-2x" style="color:#7c3aed;"></i>
             </div>
           </div>
-          <h4 class="project-title">Speech-to-Text Python</h4>
+          <h4 class="project-title">Smart AutoCorrect Keyboard</h4>
           <p class="project-desc">
-            A Python application that captures audio input and converts speech to text in real time
-            using Google's Speech Recognition API, with noise filtering and transcript export.
+            An Android keyboard app built in Java that implements real-time autocorrect
+            suggestions using efficient string-distance algorithms.
           </p>
-          <ul class="project-desc mb-3">
-            <li><strong>Problem:</strong> Transcribing spoken content manually is error-prone and time-consuming.</li>
-            <li><strong>Implementation:</strong> Integrated Google Speech Recognition API with PyAudio for real-time audio capture; added basic noise filtering and plain-text transcript export.</li>
-            <li><strong>Learned:</strong> Third-party API integration, audio stream processing, and Python scripting best practices.</li>
-          </ul>
           <div class="project-tech mb-4">
-            <span class="tech-badge orange">Python</span>
-            <span class="tech-badge orange">SpeechRecognition</span>
-            <span class="tech-badge orange">PyAudio</span>
-            <span class="tech-badge orange">Google API</span>
+            <span class="tech-badge purple">Java</span>
+            <span class="tech-badge purple">Android</span>
+            <span class="tech-badge purple">Levenshtein Distance</span>
           </div>
           <div class="project-actions d-flex gap-2">
             <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="btn btn-sm btn-neon">
               <i class="fab fa-github me-1"></i>GitHub
-            </a>
-            <a href="#" class="btn btn-sm btn-outline-neon">
-              <i class="fas fa-external-link-alt me-1"></i>Demo
             </a>
           </div>
         </div>
@@ -328,27 +279,26 @@
   </div>
 </section>
 
-<!-- ===== EXPERIENCE ===== -->
+<!-- ===== ACADEMIC & PERSONAL PROJECTS ===== -->
 <section class="section-pad section-dark" id="experience">
   <div class="container">
     <div class="section-header text-center mb-5" data-aos="fade-up">
-      <span class="section-tag">My Journey</span>
-      <h2 class="section-title">Experience &amp; <span class="neon-text">Timeline</span></h2>
+      <span class="section-tag">Learning Journey</span>
+      <h2 class="section-title">Academic & <span class="neon-text">Personal Projects</span></h2>
     </div>
     <div class="timeline">
 
       <div class="timeline-item" data-aos="fade-right">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-year">2025</span>
           <h4 class="timeline-title">AI Resume Screening System</h4>
           <p class="timeline-desc">
-            Designed and developed a full-stack AI-driven resume screening application using Flask
-            and NLP. The system parses resume text, extracts relevant skills with NLTK, and ranks
-            candidates by computing keyword similarity against a given job description.
+            Developed a Flask-based application that uses NLP to parse resumes and rank candidates.
+            Integrated NLTK for text processing and skill extraction.
           </p>
           <div class="d-flex flex-wrap gap-2 mt-2">
-            <span class="tech-badge">Python</span><span class="tech-badge">Flask</span><span class="tech-badge">NLP</span>
+            <span class="tech-badge">Python</span><span class="tech-badge">Flask</span><span
+              class="tech-badge">NLP</span>
           </div>
         </div>
       </div>
@@ -356,14 +306,13 @@
       <div class="timeline-item" data-aos="fade-left">
         <div class="timeline-dot purple-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-year">2024</span>
-          <h4 class="timeline-title">Self-Driven AI &amp; Flask Projects</h4>
+          <h4 class="timeline-title">Smart AutoCorrect Keyboard</h4>
           <p class="timeline-desc">
-            Built multiple independent projects including the Smart AutoCorrect Keyboard (Android/Java),
-            Quiz AI App, and Speech-to-Text tool — deepening expertise in AI, backend APIs, and mobile development.
+            An Android keyboard application built in Java that provides real-time autocorrect
+            suggestions using string distance algorithms.
           </p>
           <div class="d-flex flex-wrap gap-2 mt-2">
-            <span class="tech-badge purple">Java</span><span class="tech-badge purple">Android</span><span class="tech-badge">Flask</span>
+            <span class="tech-badge purple">Java</span><span class="tech-badge purple">Android</span>
           </div>
         </div>
       </div>
@@ -371,14 +320,14 @@
       <div class="timeline-item" data-aos="fade-right">
         <div class="timeline-dot green-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-year">Ongoing</span>
-          <h4 class="timeline-title">Continuous GitHub Contributions</h4>
+          <h4 class="timeline-title">Speech-to-Text & Quiz AI</h4>
           <p class="timeline-desc">
-            Actively maintaining and expanding open-source repositories on GitHub,
-            contributing to AI tools, backend utilities, and learning new technologies through hands-on projects.
+            Created Python tools for real-time speech recognition and an AI-powered quiz generator
+            that adapts difficulty based on performance.
           </p>
           <div class="d-flex flex-wrap gap-2 mt-2">
-            <span class="tech-badge green">Open Source</span><span class="tech-badge green">Git</span><span class="tech-badge green">CI/CD</span>
+            <span class="tech-badge green">Python</span><span class="tech-badge green">SpeechRecognition</span><span
+              class="tech-badge green">SQLite</span>
           </div>
         </div>
       </div>
@@ -401,18 +350,18 @@
             <i class="fas fa-graduation-cap fa-2x neon-text"></i>
           </div>
           <div>
-            <h4 class="edu-degree">Bachelor of Technology in Computer Science</h4>
-            <p class="edu-university neon-text mb-1">University Name (Placeholder)</p>
-            <span class="edu-year">2024 – Present</span>
+            <h4 class="edu-degree">Bachelor of Technology in Computer Science & Engineering (AI/ML)</h4>
+            <p class="edu-university neon-text mb-1">SRM University, Kattankulathur</p>
+            <span class="edu-year">2025 – 2029</span>
             <p class="edu-detail mt-2">
-              1st Year Student · Actively building projects in Python, AI, and backend development
-              alongside coursework to apply classroom concepts to real-world problems.
+              Interested in Python, Automation, Machine Learning, and Backend Development.
+              Actively exploring real-world applications of AI through personal projects.
             </p>
             <div class="d-flex flex-wrap gap-2 mt-3">
-              <span class="skill-badge">Data Structures</span>
-              <span class="skill-badge">Algorithms</span>
-              <span class="skill-badge purple">Python Programming</span>
-              <span class="skill-badge green">Web Development</span>
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge purple">Machine Learning</span>
+              <span class="skill-badge purple">NLP</span>
+              <span class="skill-badge green">Backend Development</span>
             </div>
           </div>
         </div>
@@ -432,25 +381,25 @@
       <div class="col-md-4" data-aos="flip-left" data-aos-delay="0">
         <div class="cert-card text-center">
           <div class="cert-icon mb-3"><i class="fas fa-certificate fa-3x neon-text"></i></div>
-          <h5 class="cert-title">Python Programming</h5>
-          <p class="cert-issuer">Core Python &amp; OOP Fundamentals</p>
-          <span class="cert-year">2024</span>
+          <h5 class="cert-title">Advanced Python Development</h5>
+          <p class="cert-issuer">Microsoft (Coursera)</p>
+          <span class="cert-year">2025</span>
         </div>
       </div>
       <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
         <div class="cert-card text-center">
-          <div class="cert-icon mb-3"><i class="fas fa-robot fa-3x" style="color:#7c3aed;"></i></div>
-          <h5 class="cert-title">AI &amp; Machine Learning</h5>
-          <p class="cert-issuer">ML Fundamentals &amp; NLP Basics</p>
-          <span class="cert-year">2024</span>
+          <div class="cert-icon mb-3"><i class="fas fa-chart-bar fa-3x" style="color:#7c3aed;"></i></div>
+          <h5 class="cert-title">Data Analysis & Visualization</h5>
+          <p class="cert-issuer">Microsoft (Coursera)</p>
+          <span class="cert-year">2025</span>
         </div>
       </div>
       <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
         <div class="cert-card text-center">
-          <div class="cert-icon mb-3"><i class="fas fa-server fa-3x" style="color:#10b981;"></i></div>
-          <h5 class="cert-title">Web Development</h5>
-          <p class="cert-issuer">Flask, HTML/CSS &amp; REST APIs</p>
-          <span class="cert-year">2023</span>
+          <div class="cert-icon mb-3"><i class="fas fa-cogs fa-3x" style="color:#10b981;"></i></div>
+          <h5 class="cert-title">Automation & Scripting</h5>
+          <p class="cert-issuer">Microsoft (Coursera)</p>
+          <span class="cert-year">2025</span>
         </div>
       </div>
     </div>
@@ -489,25 +438,27 @@
       <div class="col-lg-7" data-aos="fade-left">
         <h5 class="mb-4">Top Languages</h5>
         {% if github_stats.top_languages %}
-          {% for lang, count in github_stats.top_languages %}
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span>{{ lang }}</span>
-              <span class="neon-text">{{ count }} repo{{ 's' if count != 1 else '' }}</span>
-            </div>
-            <div class="progress">
-              {% set max_count = github_stats.top_languages[0][1] %}
-              {% set pct = ((count / max_count) * 100) | int %}
-              <div class="progress-bar neon-bar" data-width="{{ pct }}" style="width:0%"></div>
-            </div>
+        {% for lang, count in github_stats.top_languages %}
+        <div class="mb-3">
+          <div class="d-flex justify-content-between mb-1">
+            <span>{{ lang }}</span>
+            <span class="neon-text">{{ count }} repo{{ 's' if count != 1 else '' }}</span>
           </div>
-          {% endfor %}
+          <div class="progress">
+            {% set max_count = github_stats.top_languages[0][1] %}
+            {% set pct = ((count / max_count) * 100) | int %}
+            <div class="progress-bar neon-bar" data-width="{{ pct }}" style="width:0%"></div>
+          </div>
+        </div>
+        {% endfor %}
         {% else %}
-          <p class="text-muted">Language data unavailable. <a href="https://github.com/{{ github_username }}" target="_blank" rel="noopener" class="neon-link">Visit GitHub profile</a> to see repositories.</p>
+        <p class="text-muted">Language data unavailable. <a href="https://github.com/{{ github_username }}"
+            target="_blank" rel="noopener" class="neon-link">Visit GitHub profile</a> to see repositories.</p>
         {% endif %}
         <div class="mt-4">
-          <img src="https://github-readme-stats.vercel.app/api?username={{ github_username }}&show_icons=true&theme=radical&hide_border=true&bg_color=0d0d0d"
-               alt="GitHub Stats" class="img-fluid rounded" loading="lazy" onerror="this.style.display='none'" />
+          <img
+            src="https://github-readme-stats.vercel.app/api?username={{ github_username }}&show_icons=true&theme=radical&hide_border=true&bg_color=0d0d0d"
+            alt="GitHub Stats" class="img-fluid rounded" loading="lazy" onerror="this.style.display='none'" />
         </div>
       </div>
     </div>
@@ -532,6 +483,41 @@
   </div>
 </section>
 {% endif %}
+
+<!-- ===== RESUME ===== -->
+<section class="section-pad" id="resume">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-tag">Career Document</span>
+      <h2 class="section-title">My <span class="neon-text">Resume</span></h2>
+      <p class="section-subtitle">View or download my professional resume for internship opportunities.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="zoom-in">
+        <div class="resume-card text-center p-5">
+          <div class="resume-icon mb-4">
+            <i class="fas fa-file-pdf fa-4x neon-text"></i>
+          </div>
+          <h3 class="mb-4">Kata Sai Kranthu Reddy</h3>
+          <p class="text-muted mb-5">
+            I am a dedicated Python Developer with a focus on AI and Backend systems.
+            My resume highlights my technical skills, projects, and academic background.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}" target="_blank"
+              class="btn btn-neon btn-lg">
+              <i class="fas fa-external-link-alt me-2"></i>View Resume
+            </a>
+            <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}" download
+              class="btn btn-outline-neon btn-lg">
+              <i class="fas fa-download me-2"></i>Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== AI CHATBOT ===== -->
 <section class="section-pad" id="chatbot">
@@ -564,7 +550,8 @@
             <button class="quick-btn" onclick="sendQuick('Tell me about your experience')">📈 Experience</button>
           </div>
           <form class="chatbot-input-row" id="chatForm">
-            <input type="text" id="chatInput" class="chatbot-input" placeholder="Type a message..." autocomplete="off" />
+            <input type="text" id="chatInput" class="chatbot-input" placeholder="Type a message..."
+              autocomplete="off" />
             <button type="submit" class="chatbot-send-btn" aria-label="Send">
               <i class="fas fa-paper-plane"></i>
             </button>
@@ -593,11 +580,13 @@
           </p>
           <div class="contact-item d-flex align-items-center gap-3 mb-3">
             <div class="contact-icon"><i class="fab fa-linkedin neon-text"></i></div>
-            <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" rel="noopener" class="neon-link">linkedin.com/in/kata-sai-kranthu-reddy-b02848377</a>
+            <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" rel="noopener"
+              class="neon-link">linkedin.com/in/kata-sai-kranthu-reddy-b02848377</a>
           </div>
           <div class="contact-item d-flex align-items-center gap-3 mb-3">
             <div class="contact-icon"><i class="fab fa-github neon-text"></i></div>
-            <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="neon-link">github.com/kskreddy2k7</a>
+            <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener"
+              class="neon-link">github.com/kskreddy2k7</a>
           </div>
           <div class="contact-item d-flex align-items-center gap-3">
             <div class="contact-icon"><i class="fas fa-map-marker-alt neon-text"></i></div>
@@ -611,17 +600,20 @@
           <form id="contactForm" novalidate>
             <div class="mb-3">
               <label for="contactName" class="form-label">Your Name</label>
-              <input type="text" class="form-control dark-input" id="contactName" name="name" placeholder="John Doe" required />
+              <input type="text" class="form-control dark-input" id="contactName" name="name" placeholder="John Doe"
+                required />
               <div class="invalid-feedback" id="nameError"></div>
             </div>
             <div class="mb-3">
               <label for="contactEmail" class="form-label">Email Address</label>
-              <input type="email" class="form-control dark-input" id="contactEmail" name="email" placeholder="john@example.com" required />
+              <input type="email" class="form-control dark-input" id="contactEmail" name="email"
+                placeholder="john@example.com" required />
               <div class="invalid-feedback" id="emailError"></div>
             </div>
             <div class="mb-4">
               <label for="contactMessage" class="form-label">Message</label>
-              <textarea class="form-control dark-input" id="contactMessage" name="message" rows="5" placeholder="Hi Kranthu, I'd love to..." required></textarea>
+              <textarea class="form-control dark-input" id="contactMessage" name="message" rows="5"
+                placeholder="Hi Kranthu, I'd love to..." required></textarea>
               <div class="invalid-feedback" id="messageError"></div>
             </div>
             <button type="submit" class="btn btn-neon w-100 btn-lg" id="submitBtn">
