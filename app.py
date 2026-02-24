@@ -41,7 +41,7 @@ def fetch_github_stats():
         top_languages = sorted(languages.items(), key=lambda x: x[1], reverse=True)[:5]
         return {'repo_count': repo_count, 'top_languages': top_languages}
     except Exception:
-        return {'repo_count': 12, 'top_languages': [('Python', 8), ('Java', 3), ('HTML', 1)]}
+        return {'repo_count': 0, 'top_languages': []}
 
 
 CHATBOT_RESPONSES = {
@@ -67,13 +67,14 @@ CHATBOT_RESPONSES = {
         "• Or use the <strong>Contact Form</strong> on this page!"
     ),
     'experience': (
-        "Kranthu has hands-on experience building AI-driven applications. "
-        "He developed an <strong>AI Resume Screening System</strong> in 2025 and has been "
-        "continuously self-learning and contributing to open-source projects on GitHub."
+        "Kranthu has hands-on experience building AI-driven applications through self-directed projects. "
+        "He developed an <strong>AI Resume Screening System</strong> in 2025 using Flask and NLTK, and "
+        "has been continuously learning and building projects on GitHub."
     ),
     'education': (
-        "Kranthu is a passionate self-driven developer with a strong foundation "
-        "in Computer Science, continuously upskilling in AI, ML, and backend development."
+        "Kranthu is currently a 1st Year Bachelor of Technology (B.Tech) student in Computer Science. "
+        "He is actively building real-world projects in Python, AI, and backend development alongside "
+        "his coursework, and is open to internship opportunities to grow further."
     ),
     'certifications': (
         "Kranthu holds certifications in Python programming, AI/ML fundamentals, "

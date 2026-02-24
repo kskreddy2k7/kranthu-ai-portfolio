@@ -18,8 +18,8 @@
   --text-muted: #888;
   --border: rgba(0, 212, 255, 0.15);
   --border-purple: rgba(124, 58, 237, 0.25);
-  --glow: 0 0 18px rgba(0, 212, 255, 0.35);
-  --glow-lg: 0 0 35px rgba(0, 212, 255, 0.25);
+  --glow: 0 0 14px rgba(0, 212, 255, 0.25);
+  --glow-lg: 0 0 28px rgba(0, 212, 255, 0.18);
   --transition: 0.3s ease;
 }
 
@@ -220,7 +220,7 @@ a:hover { color: #fff; }
 
 .neon-text {
   color: var(--neon);
-  text-shadow: 0 0 12px rgba(0,212,255,0.6);
+  text-shadow: 0 0 8px rgba(0,212,255,0.45);
 }
 
 .neon-link { color: var(--neon); }
@@ -273,7 +273,7 @@ a:hover { color: #fff; }
 
 @keyframes pulse-ring {
   0%, 100% { box-shadow: var(--glow-lg), inset 0 0 30px rgba(0,212,255,0.05); }
-  50% { box-shadow: 0 0 50px rgba(0,212,255,0.4), inset 0 0 30px rgba(0,212,255,0.08); }
+  50% { box-shadow: 0 0 40px rgba(0,212,255,0.28), inset 0 0 30px rgba(0,212,255,0.06); }
 }
 
 /* ============================================================
@@ -448,6 +448,31 @@ a:hover { color: #fff; }
 }
 .timeline-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0.5rem 0; }
 .timeline-desc  { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+.education-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 2rem 2.5rem;
+  transition: var(--transition);
+}
+.education-card:hover {
+  border-color: var(--neon);
+  box-shadow: var(--glow);
+}
+.edu-icon-wrap {
+  min-width: 48px;
+  padding-top: 4px;
+}
+.edu-degree { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+.edu-university { font-size: 0.95rem; font-weight: 600; }
+.edu-year { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--neon); background: rgba(0,212,255,0.08); padding: 2px 10px; border-radius: 10px;
+  display: inline-block; }
+.edu-detail { color: var(--text-muted); font-size: 0.9rem; }
 
 /* ============================================================
    CERTIFICATIONS

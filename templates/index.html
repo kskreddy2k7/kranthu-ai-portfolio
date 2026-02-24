@@ -55,7 +55,7 @@
               <i class="fas fa-user-astronaut fa-5x neon-text"></i>
             </div>
           </div>
-          <div class="about-badge"><i class="fas fa-code me-1"></i>Available for Hire</div>
+          <div class="about-badge"><i class="fas fa-code me-1"></i>Open to Internship Opportunities</div>
         </div>
       </div>
       <div class="col-lg-7" data-aos="fade-left">
@@ -84,8 +84,8 @@
             <span class="stat-label">Projects</span>
           </div>
           <div class="stat-box text-center">
-            <span class="stat-num neon-text">2+</span>
-            <span class="stat-label">Years Learning</span>
+            <span class="stat-num neon-text">1+</span>
+            <span class="stat-label">Year Learning</span>
           </div>
         </div>
       </div>
@@ -193,6 +193,11 @@
             An intelligent backend system that parses resumes, extracts key skills using NLP,
             and ranks candidates based on job description matching — built with Flask and Python NLP libraries.
           </p>
+          <ul class="project-desc mb-3">
+            <li><strong>Problem:</strong> Manually reviewing resumes is slow and inconsistent for recruiters handling many applicants.</li>
+            <li><strong>Implementation:</strong> Used NLTK for text tokenization and keyword extraction, served via a Flask REST API with JSON responses.</li>
+            <li><strong>Learned:</strong> NLP text processing pipelines, Flask backend architecture, and REST API design.</li>
+          </ul>
           <div class="project-tech mb-4">
             <span class="tech-badge">Python</span>
             <span class="tech-badge">Flask</span>
@@ -225,6 +230,11 @@
             An Android keyboard application built in Java that provides real-time autocorrect
             suggestions using NLP-inspired string distance algorithms and a custom word dictionary.
           </p>
+          <ul class="project-desc mb-3">
+            <li><strong>Problem:</strong> Mobile typing frequently produces errors that benefit from intelligent, context-aware correction.</li>
+            <li><strong>Implementation:</strong> Used Android's IME API to intercept keystrokes; computed Levenshtein distance to rank word suggestions from a local dictionary.</li>
+            <li><strong>Learned:</strong> Android app development, Java OOP principles, and string-distance algorithm design.</li>
+          </ul>
           <div class="project-tech mb-4">
             <span class="tech-badge purple">Java</span>
             <span class="tech-badge purple">Android</span>
@@ -256,6 +266,11 @@
             A Python-powered quiz system that generates dynamic questions, tracks scores,
             provides instant feedback, and adapts difficulty based on user performance.
           </p>
+          <ul class="project-desc mb-3">
+            <li><strong>Problem:</strong> Static quizzes don't adapt to a learner's knowledge level, reducing engagement.</li>
+            <li><strong>Implementation:</strong> Flask web app storing questions in SQLite; session-based scoring adjusts question difficulty dynamically.</li>
+            <li><strong>Learned:</strong> Database integration with SQLite, Flask session management, and dynamic web rendering with Jinja2.</li>
+          </ul>
           <div class="project-tech mb-4">
             <span class="tech-badge green">Python</span>
             <span class="tech-badge green">Flask</span>
@@ -287,6 +302,11 @@
             A Python application that captures audio input and converts speech to text in real time
             using Google's Speech Recognition API, with noise filtering and transcript export.
           </p>
+          <ul class="project-desc mb-3">
+            <li><strong>Problem:</strong> Transcribing spoken content manually is error-prone and time-consuming.</li>
+            <li><strong>Implementation:</strong> Integrated Google Speech Recognition API with PyAudio for real-time audio capture; added basic noise filtering and plain-text transcript export.</li>
+            <li><strong>Learned:</strong> Third-party API integration, audio stream processing, and Python scripting best practices.</li>
+          </ul>
           <div class="project-tech mb-4">
             <span class="tech-badge orange">Python</span>
             <span class="tech-badge orange">SpeechRecognition</span>
@@ -324,7 +344,8 @@
           <h4 class="timeline-title">AI Resume Screening System</h4>
           <p class="timeline-desc">
             Designed and developed a full-stack AI-driven resume screening application using Flask
-            and NLP. The system automates candidate evaluation, reducing manual HR effort by over 60%.
+            and NLP. The system parses resume text, extracts relevant skills with NLTK, and ranks
+            candidates by computing keyword similarity against a given job description.
           </p>
           <div class="d-flex flex-wrap gap-2 mt-2">
             <span class="tech-badge">Python</span><span class="tech-badge">Flask</span><span class="tech-badge">NLP</span>
@@ -366,6 +387,40 @@
   </div>
 </section>
 
+<!-- ===== EDUCATION ===== -->
+<section class="section-pad" id="education">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-tag">Academic Background</span>
+      <h2 class="section-title">Edu<span class="neon-text">cation</span></h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up">
+        <div class="education-card d-flex align-items-start gap-4">
+          <div class="edu-icon-wrap">
+            <i class="fas fa-graduation-cap fa-2x neon-text"></i>
+          </div>
+          <div>
+            <h4 class="edu-degree">Bachelor of Technology in Computer Science</h4>
+            <p class="edu-university neon-text mb-1">University Name (Placeholder)</p>
+            <span class="edu-year">2024 – Present</span>
+            <p class="edu-detail mt-2">
+              1st Year Student · Actively building projects in Python, AI, and backend development
+              alongside coursework to apply classroom concepts to real-world problems.
+            </p>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <span class="skill-badge">Data Structures</span>
+              <span class="skill-badge">Algorithms</span>
+              <span class="skill-badge purple">Python Programming</span>
+              <span class="skill-badge green">Web Development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CERTIFICATIONS ===== -->
 <section class="section-pad" id="certifications">
   <div class="container">
@@ -402,6 +457,7 @@
   </div>
 </section>
 
+{% if github_stats.repo_count > 0 %}
 <!-- ===== GITHUB STATS ===== -->
 <section class="section-pad section-dark" id="github">
   <div class="container">
@@ -457,6 +513,25 @@
     </div>
   </div>
 </section>
+{% else %}
+<!-- ===== GITHUB PROFILE LINK (stats not yet available) ===== -->
+<section class="section-pad section-dark" id="github">
+  <div class="container text-center" data-aos="fade-up">
+    <div class="section-header text-center mb-4">
+      <span class="section-tag">Open Source</span>
+      <h2 class="section-title">GitHub <span class="neon-text">Profile</span></h2>
+    </div>
+    <div class="github-profile-card d-inline-block px-5 py-4">
+      <i class="fab fa-github fa-5x mb-3"></i>
+      <h3 class="mb-1">{{ github_username }}</h3>
+      <p class="text-muted mb-4">Building and learning in public — projects coming soon!</p>
+      <a href="https://github.com/{{ github_username }}" target="_blank" rel="noopener" class="btn btn-neon">
+        <i class="fab fa-github me-2"></i>View GitHub Profile
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
 
 <!-- ===== AI CHATBOT ===== -->
 <section class="section-pad" id="chatbot">
@@ -512,7 +587,8 @@
         <div class="contact-info-card">
           <h5 class="mb-4">Let's work together!</h5>
           <p class="text-muted mb-4">
-            I'm open to freelance projects, collaborations, and exciting full-time opportunities.
+            I'm actively looking for internship opportunities where I can contribute,
+            learn from experienced engineers, and grow as a developer.
             Drop me a message and I'll get back to you within 24 hours.
           </p>
           <div class="contact-item d-flex align-items-center gap-3 mb-3">

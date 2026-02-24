@@ -24,10 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
     new Typed('#typed-output', {
       strings: [
         'Python Developer',
-        'AI Builder',
-        'Backend Enthusiast',
-        'Problem Solver',
-        'Flask Developer'
+        'AI & Backend Enthusiast',
+        'Open to Internship Opportunities'
       ],
       typeSpeed: 60,
       backSpeed: 35,
