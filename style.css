@@ -89,13 +89,38 @@ section {
 }
 
 .nav-logo {
-  font-size: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-main);
+  letter-spacing: 0.3px;
+}
+
+.nav-logo-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #eaf2ff;
+  background: radial-gradient(circle at 30% 25%, #1f2a46 0%, #0b1022 70%);
+  border: 1px solid transparent;
+  background-image:
+    radial-gradient(circle at 30% 25%, #1f2a46 0%, #0b1022 70%),
+    linear-gradient(135deg, var(--neon), var(--neon-2));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.32), 0 0 22px rgba(124, 58, 237, 0.24);
+}
+
+.nav-logo-text {
+  font-size: 0.95rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--neon), var(--neon-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.5px;
+  color: var(--text-main);
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -417,6 +442,15 @@ section {
   height: 280px;
 }
 
+.about-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  object-fit: cover;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 28px rgba(0, 212, 255, 0.15);
+}
+
 .avatar-ring {
   position: absolute;
   inset: -4px;
@@ -501,6 +535,17 @@ section {
   font-size: 0.78rem;
   color: var(--neon);
   font-weight: 500;
+}
+
+/* ============================================
+   FEATURED PROJECTS SECTION
+   ============================================ */
+#featured-projects {
+  background: var(--bg-secondary);
+}
+
+.featured-projects-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* ============================================
@@ -610,6 +655,7 @@ section {
   padding: 1px;
   background: linear-gradient(120deg, rgba(0, 212, 255, 0.5), rgba(124, 58, 237, 0.5), rgba(16, 185, 129, 0.5));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
@@ -745,13 +791,17 @@ section {
 }
 
 .project-btn.github:hover {
-  border-color: var(--neon);
-  color: var(--neon);
-  background: rgba(0, 212, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon);
 }
 
 .project-btn.demo {
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.22), rgba(124, 58, 237, 0.22));
+  border-color: rgba(0, 212, 255, 0.35);
+}
+
+.project-btn.github {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.26), rgba(124, 58, 237, 0.26));
   border-color: rgba(0, 212, 255, 0.35);
 }
 
@@ -1121,6 +1171,8 @@ footer {
 @media (max-width: 768px) {
   section { padding: 70px 0; }
 
+  .nav-logo-text { font-size: 0.82rem; }
+
   .nav-links {
     position: absolute;
     top: 100%;
@@ -1152,6 +1204,8 @@ footer {
   .hero-name { font-size: 2.2rem; }
   .skills-grid { grid-template-columns: 1fr; }
   .scroll-top { bottom: 1rem; right: 1rem; }
+  .nav-logo-text { display: none; }
+  .nav-logo-badge { width: 36px; height: 36px; font-size: 0.7rem; }
 }
 
 /* ---------- Neon glow text util ---------- */

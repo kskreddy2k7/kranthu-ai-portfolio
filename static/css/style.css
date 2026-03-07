@@ -80,13 +80,39 @@ a:hover {
 }
 
 .navbar-brand {
-  font-size: 1.4rem;
-  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
   color: #fff !important;
 }
 
-.brand-highlight {
-  color: var(--neon);
+.brand-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #eaf2ff;
+  background: radial-gradient(circle at 30% 25%, #1f2a46 0%, #0b1022 70%);
+  border: 1px solid transparent;
+  background-image:
+    radial-gradient(circle at 30% 25%, #1f2a46 0%, #0b1022 70%),
+    linear-gradient(135deg, var(--neon), var(--neon-2));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.32), 0 0 22px rgba(124, 58, 237, 0.24);
+}
+
+.brand-identity {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
 }
 
 .nav-link {
@@ -1164,6 +1190,10 @@ a:hover {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
+  .brand-identity {
+    font-size: 0.82rem;
+  }
+
   .section-pad {
     padding: 60px 0;
   }
@@ -1200,6 +1230,16 @@ a:hover {
 }
 
 @media (max-width: 576px) {
+  .brand-identity {
+    display: none;
+  }
+
+  .brand-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 0.7rem;
+  }
+
   .hero-name {
     font-size: 1.8rem;
   }

@@ -47,7 +47,10 @@
   <nav class="navbar" aria-label="Main navigation">
     <div class="container">
       <div class="nav-inner">
-        <a href="#hero" class="nav-logo">KSKR</a>
+        <a href="#hero" class="nav-logo" aria-label="KATA SAI KRANTHU REDDY | AI Developer">
+          <span class="nav-logo-badge" aria-hidden="true">KSKR</span>
+          <span class="nav-logo-text">KATA SAI KRANTHU REDDY | AI Developer</span>
+        </a>
 
         <ul class="nav-links" role="list">
           <li><a href="#hero">Home</a></li>
@@ -82,7 +85,7 @@
         <h1 class="hero-name">KATA SAI KRANTHU REDDY</h1>
 
         <p class="hero-title">
-          <span id="typed-text"></span><span class="typed-cursor">|</span>
+          AI Developer | Machine Learning Enthusiast | Software Engineer
         </p>
 
         <p class="hero-desc">
@@ -133,24 +136,15 @@
 
       <div class="about-grid">
         <div class="about-avatar" data-aos="fade-right">
-          <div class="avatar-wrapper" aria-hidden="true">
-            <div class="avatar-ring"></div>
-            <div class="avatar-inner">
-              <i class="fas fa-user-astronaut"></i>
-            </div>
+          <div class="avatar-wrapper">
+            <img src="assets/profile.jpg" alt="Kata Sai Kranthu Reddy profile photo" class="about-photo" />
           </div>
         </div>
 
         <div class="about-text" data-aos="fade-left">
-          <h3>Hello, I'm KATA SAI KRANTHU REDDY 👋</h3>
+          <h3>Hello, I'm KATA SAI KRANTHU REDDY</h3>
           <p>
-            I'm an AI Developer and Software Engineer passionate about building intelligent systems that solve real-world problems. My expertise spans machine learning, natural language processing, and developing scalable software applications that make a meaningful impact.
-          </p>
-          <p>
-            Currently pursuing B.Tech in Computer Science Engineering with specialization in Artificial Intelligence &amp; Machine Learning, I combine academic knowledge with hands-on project experience. I've built various AI-powered applications including resume screening systems, intelligent autocorrect keyboards, and speech recognition tools.
-          </p>
-          <p>
-            My interests lie at the intersection of Machine Learning, Natural Language Processing, and Software Engineering. I'm driven by the challenge of transforming complex problems into elegant solutions through code. I believe in continuous learning and staying updated with the latest advancements in AI technology.
+            I am Kata Sai Kranthu Reddy, an AI developer passionate about building intelligent systems using machine learning and modern software engineering practices. Currently pursuing B.Tech in Computer Science Engineering (AI &amp; ML).
           </p>
 
           <div class="about-stats">
@@ -304,13 +298,136 @@
   </section>
 
   <!-- ====================================================
+       FEATURED PROJECTS SECTION
+       ==================================================== -->
+  <section id="featured-projects">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Featured Projects</span>
+        <h2 class="section-title">Highlighted AI and Software Development Projects</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="projects-grid featured-projects-grid">
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="project-media" aria-hidden="true">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-title-wrap">
+                <h3>AI Resume Screening System</h3>
+              </div>
+            </div>
+            <p>An AI-powered resume analysis tool that ranks and filters candidates using NLP and machine learning.</p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag purple">NLP</span>
+            <span class="project-tag green">Machine Learning</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/kskreddy2k7/ai-resume-screening-system" class="project-btn github" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="https://kskreddy2k7.github.io/ai-resume-screening-system/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </article>
+
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-media" aria-hidden="true">
+            <i class="fas fa-keyboard"></i>
+          </div>
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-title-wrap">
+                <h3>Smart AutoCorrect Keyboard</h3>
+              </div>
+            </div>
+            <p>A smart keyboard project with context-aware autocorrection and improved typing assistance.</p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag orange">Algorithms</span>
+            <span class="project-tag purple">AI</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/kskreddy2k7/smart-autocorrect-keyboard" class="project-btn github" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </article>
+
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-media" aria-hidden="true">
+            <i class="fas fa-store"></i>
+          </div>
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-title-wrap">
+                <h3>Sri Sai Traders Website</h3>
+              </div>
+            </div>
+            <p>A responsive business website developed to showcase services and products with a clean UI.</p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag orange">HTML</span>
+            <span class="project-tag blue">CSS</span>
+            <span class="project-tag purple">JavaScript</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/kskreddy2k7/sri-sai-traders" class="project-btn github" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="https://kskreddy2k7.github.io/sri-sai-traders/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </article>
+
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-media" aria-hidden="true">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-title-wrap">
+                <h3>AI Developer Portfolio</h3>
+              </div>
+            </div>
+            <p>A modern AI developer portfolio with dynamic GitHub integration and interactive UI features.</p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag orange">HTML</span>
+            <span class="project-tag blue">CSS</span>
+            <span class="project-tag purple">JavaScript</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/kskreddy2k7/kranthu-ai-portfolio" class="project-btn github" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="https://kskreddy2k7.github.io/kranthu-ai-portfolio/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
        PROJECTS SECTION
        ==================================================== -->
   <section id="projects">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">What I've Built</span>
-        <h2 class="section-title">Featured Projects</h2>
+        <span class="section-tag">More Projects</span>
+        <h2 class="section-title">All Projects</h2>
         <div class="section-line"></div>
       </div>
 

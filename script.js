@@ -523,6 +523,13 @@
       "oopsbannerapp": "A Java-based application demonstrating object-oriented programming concepts through banner generation."
     };
 
+    const projectDemoLinks = {
+      "ai-resume-screening-system": "https://kskreddy2k7.github.io/ai-resume-screening-system/",
+      "smart-autocorrect-keyboard": "https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/",
+      "sri-sai-traders": "https://kskreddy2k7.github.io/sri-sai-traders/",
+      "kranthu-ai-portfolio": "https://kskreddy2k7.github.io/kranthu-ai-portfolio/"
+    };
+
     const languageMeta = {
       Python: { icon: "fab fa-python", color: "blue", tags: ["Python", "ML"] },
       JavaScript: { icon: "fab fa-js", color: "purple", tags: ["JavaScript"] },
@@ -589,6 +596,7 @@
           const projectTitle = toTitleCase(repo.name);
           const projectDescription = getDescription(repo);
           const homepage = repo.homepage && repo.homepage.trim() ? repo.homepage.trim() : "";
+          const demoUrl = projectDemoLinks[normalizedName] || homepage || repo.html_url;
           
           const card = document.createElement("article");
           card.className = `glass-card project-card ${isFeatured ? "featured" : ""}`;
@@ -609,7 +617,7 @@
                   <a href="${repo.html_url}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository">
                     <i class="fab fa-github" aria-hidden="true"></i>
                   </a>
-                  <a href="${repo.html_url}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Open project link">
+                  <a href="${demoUrl}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Open live demo">
                     <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
                   </a>
                 </div>
@@ -622,13 +630,11 @@
             </div>
             <div class="project-actions">
               <a href="${repo.html_url}" class="project-btn github" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> GitHub
+                <i class="fab fa-github"></i> View Code
               </a>
-              ${homepage ? `
-                <a href="${homepage}" class="project-btn demo" target="_blank" rel="noopener noreferrer">
-                  <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
-                </a>
-              ` : ""}
+              <a href="${demoUrl}" class="project-btn demo" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+              </a>
             </div>
           `;
           
