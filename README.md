@@ -1,114 +1,210 @@
-# Kata Sai Kranthu Reddy – AI Portfolio
+# 🚀 Kranthu AI Portfolio
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python)
-![Flask](https://img.shields.io/badge/Flask-3.0+-black?style=flat-square&logo=flask)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?style=flat-square&logo=bootstrap)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+<div align="center">
 
-A **premium dark-themed portfolio website** built with Python Flask for **Kata Sai Kranthu Reddy**, a Python Developer and AI & Backend Enthusiast.
+[![GitHub Stars](https://img.shields.io/github/stars/kskreddy2k7/kranthu-ai-portfolio?style=for-the-badge&logo=github&color=00d4ff)](https://github.com/kskreddy2k7/kranthu-ai-portfolio/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/kskreddy2k7/kranthu-ai-portfolio?style=for-the-badge&logo=github&color=7c3aed)](https://github.com/kskreddy2k7/kranthu-ai-portfolio/network/members)
+[![GitHub License](https://img.shields.io/github/license/kskreddy2k7/kranthu-ai-portfolio?style=for-the-badge&color=10b981)](LICENSE)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?style=for-the-badge&logo=github)](https://kskreddy2k7.github.io/kranthu-ai-portfolio/)
+[![Deploy](https://github.com/kskreddy2k7/kranthu-ai-portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/kskreddy2k7/kranthu-ai-portfolio/actions/workflows/deploy.yml)
 
-## 🚀 Live Demo
+**A Level-10 professional AI developer portfolio with futuristic glassmorphism UI, particle animations, and GitHub Pages deployment.**
 
-> Deploy to Render or PythonAnywhere and paste your URL here.
+[🌐 Live Demo](https://kskreddy2k7.github.io/kranthu-ai-portfolio/) · [📧 Contact](mailto:kskreddy2k7@gmail.com) · [💼 LinkedIn](https://linkedin.com/in/kranthu-reddy)
+
+</div>
+
+---
+
+## 📋 Project Overview
+
+This is the personal portfolio website of **Kranthu Reddy** — an AI Developer and Software Engineer passionate about building intelligent systems, scalable web applications, and open-source tools.
+
+The site is built as a **100% static website** (pure HTML/CSS/JavaScript), hosted for free on **GitHub Pages**, with automatic deployment via **GitHub Actions**.
+
+---
 
 ## ✨ Features
 
-- **Dark Neon Theme** – #0a0a0a background with cyan (#00d4ff) and purple (#7c3aed) accents
-- **Animated Hero** – Typed.js cycling through roles (Python Developer, AI Builder, etc.)
-- **Skills Section** – Animated progress bars + badge pills
-- **Projects** – 4 project cards with hover glow effects
-- **Experience Timeline** – Visual timeline with neon dots
-- **GitHub Stats** – Live API integration fetching repo count and top languages
-- **AI Chatbot** – FAQ bot at `/chatbot` endpoint with typing animation
-- **Blog** – 3 blog post cards
-- **Contact Form** – AJAX form with server-side validation via `/contact` endpoint
-- **AOS Animations** – Scroll-reveal on all sections
-- **Fully Responsive** – Mobile-first design
+| Feature | Description |
+|---------|-------------|
+| 🎨 **Glassmorphism UI** | Modern frosted-glass cards with neon glow effects |
+| ✨ **Particle Canvas** | Interactive particle network background in the hero section |
+| 🖊️ **Typed Animation** | Cycling role titles using a pure-JS typewriter effect |
+| 📊 **Skill Bars** | Animated progress bars that trigger on scroll |
+| 🃏 **Project Cards** | Hover-animated cards with tech stack tags and links |
+| 📈 **GitHub Stats** | Live GitHub README stats, streak, and top language widgets |
+| 📱 **Fully Responsive** | Mobile-first layout that works on all screen sizes |
+| ♿ **Accessible** | ARIA labels, semantic HTML, and keyboard-navigable |
+| 🔍 **SEO Optimized** | Meta tags, Open Graph, Twitter Card, and canonical URL |
+| ⚡ **Zero Backend** | Pure static files — no server, no build step required |
+| 🚀 **Auto-Deploy** | GitHub Actions workflow deploys on every push to `main` |
 
-## 🛠 Tech Stack
+---
 
-| Layer | Technology |
-|-------|-----------|
-| Backend | Python 3.10+, Flask 3.0 |
-| Frontend | HTML5, CSS3, Bootstrap 5, JavaScript ES6 |
-| Animations | AOS (Animate On Scroll), Typed.js |
-| Icons | Font Awesome 6 |
-| Fonts | Google Fonts – Poppins |
-| HTTP | requests (GitHub API) |
-| Server | Gunicorn |
+## 🌐 Live Demo
+
+> **[https://kskreddy2k7.github.io/kranthu-ai-portfolio/](https://kskreddy2k7.github.io/kranthu-ai-portfolio/)**
+
+---
+
+## 📸 Screenshots
+
+| Section | Preview |
+|---------|---------|
+| Hero | Particle animation background with typed text and CTA buttons |
+| About | Animated avatar with spinning gradient ring and stat counters |
+| Skills | Four glassmorphism category cards with animated progress bars |
+| Projects | Project cards with tech tag pills and GitHub/demo links |
+| GitHub Stats | Live stats, streak, and top language widgets |
+| Contact | Contact info cards + mailto-enabled form |
+
+---
 
 ## 📁 Project Structure
 
 ```
 kranthu-ai-portfolio/
-├── app.py                  # Flask application
-├── requirements.txt        # Python dependencies
-├── templates/
-│   ├── base.html           # Base layout (navbar, footer, CDN links)
-│   ├── index.html          # Home page (all sections)
-│   └── blog.html           # Blog page
-└── static/
-    ├── css/
-    │   └── style.css       # Full custom CSS
-    ├── js/
-    │   └── script.js       # Full custom JavaScript
-    └── images/             # Static images
+│
+├── index.html                          # ✅ Main static site (root)
+├── style.css                           # ✅ All styles (glassmorphism, neon, responsive)
+├── script.js                           # ✅ Particles, typed text, AOS, form handler
+│
+├── assets/
+│   └── favicon.svg                     # ✅ SVG favicon with gradient
+│
+├── static/
+│   ├── css/style.css                   # Legacy Flask stylesheet
+│   ├── js/script.js                    # Legacy Flask JavaScript
+│   └── resume/
+│       └── Kata_Sai_Kranthu_Reddy_Resume.docx
+│
+├── templates/                          # Legacy Flask Jinja2 templates
+│   ├── base.html
+│   ├── index.html
+│   └── blog.html
+│
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                  # ✅ GitHub Actions auto-deploy
+│
+├── app.py                              # Legacy Flask backend
+├── requirements.txt                    # Legacy Python dependencies
+└── README.md                           # ✅ This file
 ```
+
+> The **root-level** `index.html`, `style.css`, `script.js`, and `assets/` are the **live static site**.  
+> The `templates/`, `static/`, and `app.py` are legacy Flask files kept for reference.
+
+---
 
 ## ⚙️ Installation & Local Development
 
+### Option 1 — Just open in browser (zero setup)
+
 ```bash
-# 1. Clone the repository
+# Clone the repo
 git clone https://github.com/kskreddy2k7/kranthu-ai-portfolio.git
 cd kranthu-ai-portfolio
 
-# 2. Create a virtual environment
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+# Open in your browser (macOS)
+open index.html
 
-# 3. Install dependencies
-pip install -r requirements.txt
+# Open in your browser (Linux)
+xdg-open index.html
 
-# 4. (Optional) Set GitHub token for higher API rate limits
-export GITHUB_TOKEN=your_token_here
-
-# 5. Run the development server
-python app.py
+# Open in your browser (Windows)
+start index.html
 ```
 
-Open http://localhost:5000 in your browser.
+### Option 2 — Local HTTP server (recommended to avoid CORS issues with GitHub Stats)
 
-## 🌐 Deployment
+```bash
+# Python 3
+python -m http.server 8080
+# Visit http://localhost:8080
+```
 
-### Render (Recommended – Free Tier)
+---
 
-1. Push your code to GitHub
-2. Go to render.com → **New Web Service**
-3. Connect your GitHub repository
-4. Set:
-   - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `gunicorn app:app`
-   - **Environment:** Python 3
-5. Add environment variable `SECRET_KEY` with a random string
-6. Click **Deploy**
+## 🚀 Deployment on GitHub Pages
 
-### PythonAnywhere
+The site deploys automatically via **GitHub Actions** on every push to `main`.
 
-1. Upload files via the **Files** tab or `git clone` in a Bash console
-2. Create a new **Web App** → **Flask** → choose Python 3.10
-3. Set **Source code** and **Working directory** to your project folder
-4. Set **WSGI configuration file** to point to `app.py`
-5. Reload the web app
+### Manual setup (first time only):
 
-## 📸 Screenshots
+1. Go to your repository → **Settings** → **Pages**
+2. Set **Source** to **GitHub Actions**
+3. Push any change to `main` — the workflow triggers automatically
+4. Visit `https://<your-username>.github.io/<repo-name>/`
 
-> Add screenshots of your deployed portfolio here.
+### Workflow file: `.github/workflows/deploy.yml`
 
-## 📬 Contact
+```yaml
+on:
+  push:
+    branches: [main, master]
 
-- **LinkedIn:** [kata-sai-kranthu-reddy](https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377)
-- **GitHub:** [kskreddy2k7](https://github.com/kskreddy2k7)
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+      - uses: actions/deploy-pages@v4
+```
+
+---
+
+## 🛠 Technologies Used
+
+| Category | Technologies |
+|----------|-------------|
+| **Markup** | HTML5 (semantic, ARIA) |
+| **Styling** | CSS3, CSS Custom Properties, Glassmorphism |
+| **Scripting** | Vanilla JavaScript ES6+ |
+| **Icons** | Font Awesome 6 (CDN) |
+| **Fonts** | Google Fonts — Poppins |
+| **Stats Widgets** | github-readme-stats, GitHub Streak Stats |
+| **CI/CD** | GitHub Actions |
+| **Hosting** | GitHub Pages |
+
+---
+
+## 🔮 Future Improvements
+
+- [ ] Add a blog section with markdown-rendered posts
+- [ ] Integrate EmailJS for serverless contact form submissions
+- [ ] Add a dark/light theme toggle
+- [ ] Include project demo GIFs in project cards
+- [ ] Add a certifications carousel
+- [ ] Implement PWA (Progressive Web App) features
+- [ ] Add more GitHub contribution graph widgets
+- [ ] Integrate a headless CMS (e.g., Netlify CMS) for easy content updates
+
+---
 
 ## 📄 License
 
-MIT © 2025 Kata Sai Kranthu Reddy
+MIT © 2025 Kranthu Reddy
+
+```
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+```
+
+See the [LICENSE](LICENSE) file for full details.
+
+---
+
+<div align="center">
+
+Made with ❤️ and ☕ by **Kranthu Reddy**
+
+⭐ Star this repo if you found it helpful!
+
+</div>
