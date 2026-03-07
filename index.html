@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Kranthu Reddy | AI Developer &amp; Software Engineer</title>
+  <meta name="description" content="Portfolio of Kranthu Reddy — AI Developer, Machine Learning Engineer, and Software Engineer. Explore projects in AI, Python, Java, and JavaScript." />
+  <meta name="keywords" content="Kranthu Reddy, AI Developer, Machine Learning, Python, Software Engineer, Portfolio, GitHub, kskreddy2k7" />
+  <meta name="author" content="Kranthu Reddy" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kskreddy2k7.github.io/kranthu-ai-portfolio/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Kranthu Reddy | AI Developer &amp; Software Engineer" />
+  <meta property="og:description" content="Explore the AI developer portfolio of Kranthu Reddy — featuring machine learning projects, open-source work, and technical skills." />
+  <meta property="og:url"         content="https://kskreddy2k7.github.io/kranthu-ai-portfolio/" />
+  <meta property="og:image"       content="https://kskreddy2k7.github.io/kranthu-ai-portfolio/assets/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Kranthu Reddy | AI Developer" />
+  <meta name="twitter:description" content="AI Developer portfolio featuring ML projects, Python, and more." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ====================================================
+       NAVIGATION
+       ==================================================== -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">&lt;KranthuAI /&gt;</a>
+
+        <ul class="nav-links" role="list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#github-stats">GitHub</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====================================================
+       HERO SECTION
+       ==================================================== -->
+  <section id="hero">
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+    <div class="hero-gradient" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot" aria-hidden="true"></span>
+          Available for opportunities
+        </div>
+
+        <h1 class="hero-name">Kranthu Reddy</h1>
+
+        <p class="hero-title">
+          <span id="typed-text"></span><span class="typed-cursor">|</span>
+        </p>
+
+        <p class="hero-desc">
+          Passionate AI developer and software engineer building intelligent systems,
+          scalable applications, and open-source tools. Currently pursuing B.Tech CSE
+          (AI&amp;ML) at SRM University.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">
+            <i class="fas fa-rocket" aria-hidden="true"></i>
+            View Projects
+          </a>
+          <a href="static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx" class="btn-outline" download>
+            <i class="fas fa-download" aria-hidden="true"></i>
+            Download Resume
+          </a>
+        </div>
+
+        <div class="hero-social" aria-label="Social links">
+          <a href="https://github.com/kskreddy2k7" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://linkedin.com/in/kranthu-reddy" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:kskreddy2k7@gmail.com" class="social-icon" aria-label="Email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>scroll</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       ABOUT SECTION
+       ==================================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-avatar" data-aos="fade-right">
+          <div class="avatar-wrapper" aria-hidden="true">
+            <div class="avatar-ring"></div>
+            <div class="avatar-inner">
+              <i class="fas fa-user-astronaut"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text" data-aos="fade-left">
+          <h3>Hello, I'm Kranthu 👋</h3>
+          <p>
+            I'm an AI Developer and Software Engineer with a deep passion for building intelligent
+            systems that solve real-world problems. From machine learning pipelines to full-stack
+            web apps, I love turning ideas into impactful products.
+          </p>
+          <p>
+            Currently pursuing my B.Tech in Computer Science Engineering (AI&amp;ML) at SRM University
+            (2025–2029), I've already shipped projects spanning NLP, computer vision, and automation.
+            I'm driven by curiosity, caffeine, and clean code.
+          </p>
+          <p>
+            When I'm not training models, you'll find me contributing to open source, writing about
+            AI, or exploring the latest research papers. I believe AI should be accessible, ethical,
+            and genuinely useful.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-num">4+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Certifications</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">5+</div>
+              <div class="stat-label">Technologies</div>
+            </div>
+          </div>
+
+          <div class="about-tags">
+            <span class="tag">🤖 Machine Learning</span>
+            <span class="tag">🐍 Python</span>
+            <span class="tag">☕ Java</span>
+            <span class="tag">🌐 Web Dev</span>
+            <span class="tag">🔬 NLP</span>
+            <span class="tag">📊 Data Science</span>
+            <span class="tag">🎓 SRM University</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       SKILLS SECTION
+       ==================================================== -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">Skills &amp; Technologies</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="skills-grid">
+
+        <!-- AI / ML -->
+        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="0">
+          <div class="skill-category-header">
+            <div class="skill-icon blue"><i class="fas fa-brain" aria-hidden="true"></i></div>
+            <h3>AI &amp; Machine Learning</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Machine Learning</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-fill blue" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Natural Language Processing</span><span>78%</span></div>
+              <div class="skill-bar"><div class="skill-fill blue" data-width="78"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Deep Learning / TensorFlow</span><span>70%</span></div>
+              <div class="skill-bar"><div class="skill-fill blue" data-width="70"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Data Analysis (Pandas, NumPy)</span><span>82%</span></div>
+              <div class="skill-bar"><div class="skill-fill blue" data-width="82"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Programming Languages -->
+        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-category-header">
+            <div class="skill-icon purple"><i class="fas fa-code" aria-hidden="true"></i></div>
+            <h3>Programming Languages</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Python</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-fill purple" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Java</span><span>75%</span></div>
+              <div class="skill-bar"><div class="skill-fill purple" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>JavaScript</span><span>72%</span></div>
+              <div class="skill-bar"><div class="skill-fill purple" data-width="72"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>SQL</span><span>68%</span></div>
+              <div class="skill-bar"><div class="skill-fill purple" data-width="68"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-category-header">
+            <div class="skill-icon green"><i class="fas fa-globe" aria-hidden="true"></i></div>
+            <h3>Web Development</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-item-top"><span>HTML5 / CSS3</span><span>88%</span></div>
+              <div class="skill-bar"><div class="skill-fill green" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Flask / REST APIs</span><span>80%</span></div>
+              <div class="skill-bar"><div class="skill-fill green" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Bootstrap / Tailwind</span><span>75%</span></div>
+              <div class="skill-bar"><div class="skill-fill green" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Responsive Design</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-fill green" data-width="85"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & DevOps -->
+        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="300">
+          <div class="skill-category-header">
+            <div class="skill-icon orange"><i class="fas fa-tools" aria-hidden="true"></i></div>
+            <h3>Tools &amp; DevOps</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Git &amp; GitHub</span><span>88%</span></div>
+              <div class="skill-bar"><div class="skill-fill orange" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>GitHub Actions / CI-CD</span><span>72%</span></div>
+              <div class="skill-bar"><div class="skill-fill orange" data-width="72"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Linux / Bash</span><span>70%</span></div>
+              <div class="skill-bar"><div class="skill-fill orange" data-width="70"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-top"><span>Jupyter Notebooks</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-fill orange" data-width="85"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       PROJECTS SECTION
+       ==================================================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: AI Resume Screening System -->
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-icon ai"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
+              <div class="project-links">
+                <a href="https://github.com/kskreddy2k7/AI-Resume-Screening" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="project-link" aria-label="Live Demo (coming soon)" title="Live Demo Coming Soon">
+                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <h3>AI Resume Screening System</h3>
+            <p>
+              An intelligent resume screening tool powered by NLP that automatically ranks
+              and filters candidates based on job descriptions. Uses TF-IDF vectorization,
+              cosine similarity, and named-entity recognition to extract skills, experience,
+              and qualifications from resumes — reducing manual HR effort by over 70%.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag blue">NLP</span>
+            <span class="project-tag purple">scikit-learn</span>
+            <span class="project-tag green">Flask</span>
+            <span class="project-tag orange">spaCy</span>
+          </div>
+        </article>
+
+        <!-- Project 2: Smart AutoCorrect Keyboard -->
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-icon key"><i class="fas fa-keyboard" aria-hidden="true"></i></div>
+              <div class="project-links">
+                <a href="https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="project-link" aria-label="Live Demo (coming soon)" title="Live Demo Coming Soon">
+                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <h3>Smart AutoCorrect Keyboard</h3>
+            <p>
+              A context-aware autocorrect and word suggestion system built for Android.
+              Uses a Trie-based data structure for fast prefix matching combined with
+              Levenshtein distance for spelling correction. The system learns from user
+              patterns using an n-gram language model for personalized predictions.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag purple">Java</span>
+            <span class="project-tag purple">Android</span>
+            <span class="project-tag blue">NLP</span>
+            <span class="project-tag orange">Trie DSA</span>
+            <span class="project-tag green">N-gram Model</span>
+          </div>
+        </article>
+
+        <!-- Project 3: Quiz AI App -->
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-icon quiz"><i class="fas fa-brain" aria-hidden="true"></i></div>
+              <div class="project-links">
+                <a href="https://github.com/kskreddy2k7/Quiz-AI-App" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="project-link" aria-label="Live Demo (coming soon)" title="Live Demo Coming Soon">
+                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <h3>Quiz AI App</h3>
+            <p>
+              An AI-powered quiz generation application that creates dynamic, topic-specific
+              questions using large language model APIs. Features adaptive difficulty scoring,
+              real-time answer validation, detailed performance analytics, and a gamified
+              leaderboard to boost learner engagement.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag blue">LLM API</span>
+            <span class="project-tag green">Flask</span>
+            <span class="project-tag purple">JavaScript</span>
+            <span class="project-tag pink">Gamification</span>
+          </div>
+        </article>
+
+        <!-- Project 4: Speech-to-Text -->
+        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-top">
+            <div class="project-header">
+              <div class="project-icon speech"><i class="fas fa-microphone-alt" aria-hidden="true"></i></div>
+              <div class="project-links">
+                <a href="https://github.com/kskreddy2k7/Speech-to-Text-Python" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="project-link" aria-label="Live Demo (coming soon)" title="Live Demo Coming Soon">
+                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <h3>Speech-to-Text Converter</h3>
+            <p>
+              A real-time speech recognition application using Python's SpeechRecognition
+              library with Google Speech API integration. Supports multiple languages,
+              punctuation insertion, and exports transcripts as text files. Includes
+              noise reduction preprocessing for improved accuracy in noisy environments.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag blue">SpeechRecognition</span>
+            <span class="project-tag orange">Google API</span>
+            <span class="project-tag green">Audio DSP</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       GITHUB STATS SECTION
+       ==================================================== -->
+  <section id="github-stats">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Open Source</span>
+        <h2 class="section-title">GitHub Stats</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="glass-card stats-card" data-aos="fade-up" data-aos-delay="0">
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=kskreddy2k7&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d0d1f&title_color=00d4ff&icon_color=7c3aed&text_color=e2e8f0&count_private=true"
+            alt="Kranthu's GitHub Stats"
+            loading="lazy"
+          />
+        </div>
+        <div class="glass-card stats-card" data-aos="fade-up" data-aos-delay="100">
+          <img
+            src="https://streak-stats.demolab.com/?user=kskreddy2k7&theme=tokyonight&hide_border=true&background=0d0d1f&ring=00d4ff&fire=7c3aed&currStreakLabel=00d4ff"
+            alt="Kranthu's GitHub Streak"
+            loading="lazy"
+          />
+        </div>
+        <div class="glass-card langs-card" data-aos="fade-up" data-aos-delay="200">
+          <img
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=kskreddy2k7&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d0d1f&title_color=00d4ff&text_color=e2e8f0"
+            alt="Kranthu's Top Languages"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       CONTACT SECTION
+       ==================================================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Contact Me</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-info" data-aos="fade-right">
+          <h3>Let's build something amazing together</h3>
+          <p>
+            I'm currently open to internship opportunities, freelance projects, and exciting
+            collaborations. Whether you have a question, a project idea, or just want to say
+            hello — my inbox is always open!
+          </p>
+
+          <div class="contact-items">
+            <a href="mailto:kskreddy2k7@gmail.com" class="contact-item">
+              <div class="contact-item-icon blue">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+              </div>
+              <div class="contact-item-text">
+                <span>Email</span>
+                <strong>kskreddy2k7@gmail.com</strong>
+              </div>
+            </a>
+
+            <a href="https://github.com/kskreddy2k7" class="contact-item" target="_blank" rel="noopener noreferrer">
+              <div class="contact-item-icon purple">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </div>
+              <div class="contact-item-text">
+                <span>GitHub</span>
+                <strong>github.com/kskreddy2k7</strong>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/kranthu-reddy" class="contact-item" target="_blank" rel="noopener noreferrer">
+              <div class="contact-item-icon green">
+                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+              </div>
+              <div class="contact-item-text">
+                <span>LinkedIn</span>
+                <strong>linkedin.com/in/kranthu-reddy</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="glass-card contact-form-wrapper" data-aos="fade-left">
+          <h3>Send a Message</h3>
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project collaboration / Internship inquiry" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              Send Message
+            </button>
+          </form>
+          <div id="form-success" class="form-success" role="alert">
+            <i class="fas fa-check-circle"></i>
+            Your email client opened! Thanks for reaching out — I'll reply shortly.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">&lt;KranthuAI /&gt;</div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#github-stats">GitHub</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="footer-socials" aria-label="Social links">
+          <a href="https://github.com/kskreddy2k7" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://linkedin.com/in/kranthu-reddy" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:kskreddy2k7@gmail.com" class="social-icon" aria-label="Email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <p class="footer-copy">
+          Designed &amp; built with <span>❤️</span> by Kranthu Reddy &mdash;
+          &copy; <span id="year"></span> All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
