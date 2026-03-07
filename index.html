@@ -54,6 +54,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
 
@@ -103,7 +104,7 @@
           <a href="https://github.com/kskreddy2k7" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <i class="fab fa-github" aria-hidden="true"></i>
           </a>
-          <a href="https://linkedin.com/in/kranthu-reddy" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <i class="fab fa-linkedin-in" aria-hidden="true"></i>
           </a>
           <a href="mailto:kskreddy2k7@gmail.com" class="social-icon" aria-label="Email">
@@ -313,11 +314,83 @@
         <div class="section-line"></div>
       </div>
 
+      <!-- Project Filters -->
+      <div class="project-filters" data-aos="fade-up" data-aos-delay="100">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai">AI & ML</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="java">Java</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+      </div>
+
       <div id="projects-grid" class="projects-grid">
         <!-- Projects will be loaded dynamically from GitHub API -->
         <div class="loading-spinner">
           <i class="fas fa-spinner fa-spin"></i>
           <p>Loading projects from GitHub...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       GITHUB CONTRIBUTION SECTION
+       ==================================================== -->
+  <section id="github-activity">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Open Source</span>
+        <h2 class="section-title">GitHub Activity</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="github-contribution-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://ghchart.rshah.org/00d4ff/kskreddy2k7" alt="KATA SAI KRANTHU REDDY's GitHub Contribution Graph" class="github-chart" loading="lazy" />
+      </div>
+
+      <div class="github-stats-wrapper" data-aos="fade-up" data-aos-delay="300">
+        <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <i class="fab fa-github"></i>
+          View GitHub Profile
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       RESUME SECTION
+       ==================================================== -->
+  <section id="resume">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">My Credentials</span>
+        <h2 class="section-title">Resume</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="resume-content" data-aos="fade-up" data-aos-delay="200">
+        <p class="resume-description">
+          View my professional resume showcasing my skills, projects, education, and experience in AI, Machine Learning, and Software Development.
+        </p>
+
+        <div class="resume-viewer-wrapper glass-card">
+          <div class="resume-placeholder">
+            <i class="fas fa-file-pdf"></i>
+            <p>Resume Preview</p>
+            <small>KATA SAI KRANTHU REDDY</small>
+          </div>
+        </div>
+
+        <div class="resume-actions">
+          <a href="static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx" class="btn-primary" download>
+            <i class="fas fa-download"></i>
+            Download Resume
+          </a>
+          <a href="static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx" class="btn-outline" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            View Full Screen
+          </a>
         </div>
       </div>
     </div>
@@ -419,8 +492,6 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-logo">&lt;KSR.ai /&gt;</div>
-
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="#hero">Home</a>
           <a href="#about">About</a>
@@ -511,7 +582,38 @@
     </div>
   </div>
 
+  <!-- Project Detail Modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container glass-card">
+      <button class="modal-close" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modal-title"></h3>
+          <div id="modal-tech-stack" class="tech-stack"></div>
+        </div>
+        <div class="modal-body">
+          <div id="modal-description"></div>
+          <div class="modal-links">
+            <a id="modal-github-link" href="#" class="btn-primary" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i>
+              View Code
+            </a>
+            <a id="modal-demo-link" href="#" class="btn-outline" target="_blank" rel="noopener noreferrer" style="display: none;">
+              <i class="fas fa-external-link-alt"></i>
+              Live Demo
+            </a>
+          </div>
+          <div id="modal-stats" class="modal-stats"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>

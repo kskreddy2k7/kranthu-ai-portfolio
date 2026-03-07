@@ -1,6 +1,6 @@
 # 🚀 KSKR AI Developer Portfolio
 
-Welcome to the **personal portfolio of Kata Sai Kranthu Reddy**, an AI developer and software engineer passionate about building intelligent systems, machine learning applications, and scalable software solutions.
+Welcome to the **personal portfolio of Kata Sai Kranthu Reddy**, an AI developer and software engineer passionate about building intelligent systems, machine learning applications, and scalable software solutions.!
 
 ---
 
@@ -31,14 +31,41 @@ https://kskreddy2k7.github.io/kranthu-ai-portfolio/
 
 # ✨ Features
 
-✔ Modern AI developer portfolio
-✔ Dark futuristic UI design
-✔ Responsive layout for all devices
-✔ Dynamic GitHub projects display
-✔ Professional project showcase
-✔ AI portfolio chatbot
-✔ Smooth animations and transitions
-✔ Clean developer-focused design
+### 🎨 Advanced UI/UX
+- **Modern glassmorphism design** with dark theme and neon accents
+- **Animated hero section** with dynamic particle background
+- **Typing animation** showcasing multiple roles and expertise
+- **Smooth scroll animations** using AOS library
+- **Responsive layout** optimized for all devices
+
+### 🔍 Interactive Project Showcase
+- **Dynamic GitHub integration** - Automatically loads all repositories via GitHub API
+- **Project filtering** - Filter by category (All, AI & ML, Web Dev, Python, Java, JavaScript)
+- **Project modals** - Click any project card for detailed view with stats
+- **Featured projects** - Highlighted key projects at the top
+- **Professional formatting** - Smart title conversion and curated descriptions
+
+### 📄 Resume Section
+- **Integrated resume viewer** with download and fullscreen options
+- **Accessible resume download** - PDF/DOCX format
+- **Professional layout** - Showcasing credentials and experience
+
+### 📊 Developer Activity
+- **GitHub contribution graph** - Visual representation of coding activity
+- **Open source contributions** - Highlighting community involvement
+- **Direct GitHub profile link** for detailed stats
+
+### 🤖 AI Portfolio Chatbot
+- **Interactive chatbot widget** with knowledge base about the developer
+- **Intent-based responses** - Answers questions about skills, projects, and experience
+- **Smooth animations** - Professional chat interface
+
+### 🎯 Additional Features
+- **Contact form** with professional copy for recruiters
+- **Social media integration** (GitHub, LinkedIn, Email)
+- **SEO optimized** with meta tags and structured data
+- **Fast loading** - Optimized performance for GitHub Pages
+- **Accessibility** - ARIA labels and semantic HTML
 
 ---
 
@@ -62,22 +89,41 @@ A real-time speech recognition application that converts spoken audio into text.
 
 ---
 
-# 🛠 Technologies Used
+# 🛠 Technologies & Libraries
 
-Frontend
-HTML5
-CSS3
-JavaScript
+### Core Technologies
+- **HTML5** - Semantic markup and structure
+- **CSS3** - Modern styling with CSS Grid, Flexbox, and animations
+- **JavaScript (ES6+)** - Interactive functionality and API integration
 
-AI / Programming
-Python
-Machine Learning
-Natural Language Processing
+### External Libraries & APIs
+- **[Typed.js](https://github.com/mattboldt/typed.js/)** - Typing animation effect
+- **[AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)** - Scroll-triggered animations
+- **[Font Awesome 6.5.0](https://fontawesome.com/)** - Icon library
+- **[Google Fonts (Poppins)](https://fonts.google.com/)** - Typography
+- **[GitHub REST API](https://docs.github.com/en/rest)** - Dynamic repository loading
+- **[GitHub Chart API](https://ghchart.rshah.org/)** - Contribution graph visualization
 
-Tools
-Git
-GitHub
-Jupyter Notebook
+### Design Features
+- **Glassmorphism UI** - Modern frosted glass effect with blur
+- **Particle animations** - Canvas-based interactive background
+- **Neon gradients** - Cyan and purple color scheme
+- **Responsive design** - Mobile-first approach
+- **Dark theme** - Eye-friendly color palette
+
+### AI / Programming Skills Showcased
+- Python
+- Machine Learning
+- Natural Language Processing
+- Deep Learning
+- Computer Vision
+- Data Science
+
+### Development Tools
+- Git & GitHub
+- VS Code
+- GitHub Pages (Deployment)
+- Chrome DevTools
 
 ---
 
