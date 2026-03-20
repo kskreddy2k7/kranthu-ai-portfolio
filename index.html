@@ -3,737 +3,674 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kata Sai Kranthu Reddy – AI Developer Control Room</title>
+  <meta name="description" content="Portfolio of Kata Sai Kranthu Reddy – Python Developer, AI & Backend Enthusiast." />
 
-  <!-- SEO Meta Tags -->
-  <title>KATA SAI KRANTHU REDDY | AI Developer &amp; Software Engineer</title>
-  <meta name="description" content="Portfolio of KATA SAI KRANTHU REDDY — AI Developer, Machine Learning Engineer, and Software Engineer. Passionate about building intelligent systems, ML applications, and scalable software solutions." />
-  <meta name="keywords" content="KATA SAI KRANTHU REDDY, AI Developer, Machine Learning, Python, Software Engineer, Portfolio, GitHub, kskreddy2k7, NLP, Deep Learning" />
-  <meta name="author" content="KATA SAI KRANTHU REDDY" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://kskreddy2k7.github.io/kranthu-ai-portfolio/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="KATA SAI KRANTHU REDDY | AI Developer &amp; Software Engineer" />
-  <meta property="og:description" content="Explore the AI developer portfolio of KATA SAI KRANTHU REDDY — featuring machine learning projects, intelligent systems, and software engineering expertise." />
-  <meta property="og:url"         content="https://kskreddy2k7.github.io/kranthu-ai-portfolio/" />
-  <meta property="og:image"       content="https://kskreddy2k7.github.io/kranthu-ai-portfolio/assets/og-image.png" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="KATA SAI KRANTHU REDDY | AI Developer" />
-  <meta name="twitter:description" content="AI Developer &amp; Software Engineer portfolio featuring machine learning, NLP, and intelligent systems." />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-
-  <!-- Fonts -->
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS (kept for fallback / simple animations if needed) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <!-- Custom CSS -->
+  
+    <link rel="stylesheet" href="static/css/style.css" />
+  
 </head>
-
 <body>
 
-  <!-- ====================================================
-       NAVIGATION
-       ==================================================== -->
-  <nav class="navbar" aria-label="Main navigation">
-    <div class="container">
-      <div class="nav-inner">
-        <a href="#hero" class="nav-logo" aria-label="KATA SAI KRANTHU REDDY | AI Developer">
-          <span class="nav-logo-badge" aria-hidden="true">KSKR</span>
-          <span class="nav-logo-text">KATA SAI KRANTHU REDDY | AI Developer</span>
-        </a>
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-trail"></div>
 
-        <ul class="nav-links" role="list">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
 
-        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-          <span></span><span></span><span></span>
+  <!-- ADVANCED LOADING SCREEN -->
+  <div id="loader-screen" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="loader-content">
+      <div id="loader-logs" class="font-fira small text-muted mb-3" style="text-align: left; min-height: 80px;">
+        <!-- Logs will be populated by JS -->
+      </div>
+      <div class="typing-container text-center">
+        <span id="loader-typing" class="neon-text font-fira fw-bold"></span><span class="cursor font-fira">|</span>
+      </div>
+      <div class="progress loader-progress mt-4 mb-4" style="height: 2px;">
+        <div class="progress-bar neon-bar" id="loader-bar" style="width: 0%;"></div>
+      </div>
+      <div class="text-center">
+        <button id="enter-system-btn" class="btn btn-neon btn-lg magnetic-btn" style="display: none; opacity: 0; transform: translateY(20px);">
+          <i class="fas fa-fingerprint me-2"></i> ACCESS GRANTED: ENTER
         </button>
       </div>
     </div>
-  </nav>
+  </div>
 
-  <!-- ====================================================
-       HERO SECTION
-       ==================================================== -->
-  <section id="hero">
-    <canvas id="particles-canvas" aria-hidden="true"></canvas>
-    <div class="hero-gradient" aria-hidden="true"></div>
-
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="dot" aria-hidden="true"></span>
-          Available for opportunities
+  <div id="main-content-wrapper" style="opacity: 0; visibility: hidden; height: 100vh; overflow: hidden;">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand fw-bold font-orbitron" href="/">
+          <span class="brand-highlight">&lt;</span>Kranthu<span class="brand-highlight">_SYSTEM/&gt;</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+          aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto gap-2">
+            <li class="nav-item"><a class="nav-link font-fira" href="/#about">__about</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="/#skills">__skills</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="/#projects">__projects</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="/#experience">__logs</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="/#chatbot">__ai_assistant</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="/#contact">__link</a></li>
+          </ul>
         </div>
+      </div>
+    </nav>
 
-        <h1 class="hero-name">KATA SAI KRANTHU REDDY</h1>
+    <!-- PAGE CONTENT -->
+    
 
-        <p class="hero-title">
-          AI Developer | Machine Learning Enthusiast | Software Engineer
-        </p>
+<!-- ===== GLITCH OVERLAY (EASTER EGG) ===== -->
+<div id="glitch-overlay" class="d-none">
+  <div class="glitch-text font-orbitron text-danger" data-text="SYSTEM OVERRIDE INITIATED">SYSTEM OVERRIDE INITIATED</div>
+  <p class="font-fira text-white mt-3 text-center">Protocol 'kranthu.exe' activated.<br/>Welcome to the mainframe.</p>
+</div>
 
-        <p class="hero-desc">
-          Passionate AI developer and software engineer focused on building intelligent systems, machine learning applications, and scalable software solutions. Currently pursuing B.Tech in Computer Science Engineering (AI &amp; ML).
-        </p>
+<!-- ===== FULLSCREEN PROJECT MODAL ===== -->
+<div id="project-modal" class="cyber-modal d-none">
+  <div class="modal-bg-blur"></div>
+  <div class="cyber-modal-content">
+    <div class="modal-header border-bottom-neon p-3 d-flex justify-content-between align-items-center">
+      <h4 class="font-orbitron mb-0 text-white" id="modal-title">Project Name</h4>
+      <button class="btn btn-sm btn-outline-danger font-fira" id="modal-close-btn"><i class="fas fa-times me-1"></i> CLOSE_PROCESS</button>
+    </div>
+    <div class="modal-body p-0 position-relative">
+      <div id="modal-loader" class="position-absolute top-50 start-50 translate-middle text-neon font-fira text-center">
+        <div class="spinner-border spinner-border-sm mb-2" role="status"></div><br/>Establishing secure connection...
+      </div>
+      <iframe id="modal-iframe" src="" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
+    </div>
+    <div class="modal-footer border-top-neon p-3 d-flex justify-content-between">
+      <div id="modal-tech" class="d-flex gap-2 flex-wrap"></div>
+      <div class="d-flex gap-2">
+        <a href="#" id="modal-live-btn" target="_blank" class="btn btn-sm btn-neon font-fira magnetic-btn"><i class="fas fa-external-link-alt me-1"></i> LIVE DEMO</a>
+        <a href="#" id="modal-code-btn" target="_blank" class="btn btn-sm btn-outline-neon font-fira magnetic-btn"><i class="fab fa-github me-1"></i> VIEW CODE</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div class="hero-btns">
-          <a href="#projects" class="btn-primary">
-            <i class="fas fa-rocket" aria-hidden="true"></i>
-            View Projects
-          </a>
-          <a href="static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx" class="btn-outline" download>
-            <i class="fas fa-download" aria-hidden="true"></i>
-            Download Resume
-          </a>
-        </div>
-
-        <div class="hero-social" aria-label="Social links">
-          <a href="https://github.com/kskreddy2k7" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i class="fab fa-github" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-          </a>
-          <a href="mailto:kskreddy2k7@gmail.com" class="social-icon" aria-label="Email">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-          </a>
-        </div>
+<!-- ===== HERO ===== -->
+<section class="hero d-flex align-items-center" id="hero">
+  <div class="hero-bg-grid" id="parallax-grid"></div>
+  
+  <div class="container text-center position-relative z-1 hero-content-wrapper">
+    <!-- System Status Panel -->
+    <div class="system-status-panel glass-panel d-inline-flex align-items-center gap-4 px-4 py-2 mb-4 mx-auto rounded-pill gs-reveal">
+      <div class="status-item d-flex align-items-center gap-2 font-fira small text-muted">
+        <i class="far fa-clock text-neon"></i> <span id="live-clock">00:00:00</span>
+      </div>
+      <div class="status-divider"></div>
+      <div class="status-item d-flex align-items-center gap-2 font-fira small text-muted">
+        <i class="fas fa-satellite text-success"></i> <span>STATUS: ONLINE</span>
+      </div>
+      <div class="status-divider"></div>
+      <div class="status-item d-flex align-items-center gap-2 font-fira small text-muted">
+        <i class="fas fa-code-branch text-warning"></i> <span>ACTIVE_PROJ: 4</span>
       </div>
     </div>
 
-    <div class="scroll-indicator" aria-hidden="true">
-      <span>scroll</span>
-      <i class="fas fa-chevron-down"></i>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       ABOUT SECTION
-       ==================================================== -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Who I Am</span>
-        <h2 class="section-title">About Me</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-avatar" data-aos="fade-right">
-          <div class="avatar-wrapper">
-            <img src="assets/profile.jpg" alt="Kata Sai Kranthu Reddy profile photo" class="about-photo" />
-          </div>
-        </div>
-
-        <div class="about-text" data-aos="fade-left">
-          <h3>Hello, I'm KATA SAI KRANTHU REDDY</h3>
-          <p>
-            I am Kata Sai Kranthu Reddy, an AI developer passionate about building intelligent systems using machine learning and modern software engineering practices. Currently pursuing B.Tech in Computer Science Engineering (AI &amp; ML).
-          </p>
-
-          <div class="about-stats">
-            <div class="stat-item">
-              <div class="stat-num">4+</div>
-              <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num">3+</div>
-              <div class="stat-label">Certifications</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num">5+</div>
-              <div class="stat-label">Technologies</div>
-            </div>
-          </div>
-
-          <div class="about-tags">
-            <span class="tag">🤖 Machine Learning</span>
-            <span class="tag">🐍 Python</span>
-            <span class="tag">☕ Java</span>
-            <span class="tag">🌐 Web Dev</span>
-            <span class="tag">🔬 NLP</span>
-            <span class="tag">📊 Data Science</span>
-            <span class="tag">🎓 SRM University</span>
-          </div>
-        </div>
+    <!-- Avatar -->
+    <div class="hero-avatar-glow mx-auto mb-4 magnetic-btn">
+      <div class="avatar-ring"></div>
+      <div class="avatar-ring ring-2"></div>
+      <div class="avatar-inner">
+        <i class="fas fa-user-astronaut fa-4x neon-text"></i>
       </div>
     </div>
-  </section>
-
-  <!-- ====================================================
-       SKILLS SECTION
-       ==================================================== -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">What I Know</span>
-        <h2 class="section-title">Skills &amp; Technologies</h2>
-        <div class="section-line"></div>
+    
+    <div>
+      <p class="hero-greeting mb-2 font-fira text-muted">&gt; <span id="dynamic-greeting">Initializing...</span> <span class="neon-text">KSKR_USER</span></p>
+      <h1 class="hero-name mb-3 font-orbitron text-white">
+        I don't just build websites.<br/>
+        <span class="neon-text glow-text-anim">I build intelligent digital experiences.</span>
+      </h1>
+      <div class="hero-subtitle mb-4 font-fira">
+        <span class="text-primary">[</span> Full Stack Developer <span class="text-primary">|</span> AI Enthusiast <span class="text-primary">]</span>
+      </div>
+      
+      <!-- Floating Tech Icons -->
+      <div class="hero-floating-icons mb-5">
+        <div class="tech-icon floating-1 magnetic-btn"><i class="fab fa-python text-warning"></i></div>
+        <div class="tech-icon floating-2 magnetic-btn"><i class="fas fa-brain text-purple"></i></div>
+        <div class="tech-icon floating-3 magnetic-btn"><i class="fab fa-react text-info"></i></div>
+        <div class="tech-icon floating-4 magnetic-btn"><i class="fas fa-database text-success"></i></div>
       </div>
 
-      <div class="skills-grid">
-
-        <!-- AI / ML -->
-        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="0">
-          <div class="skill-category-header">
-            <div class="skill-icon blue"><i class="fas fa-brain" aria-hidden="true"></i></div>
-            <h3>AI &amp; Machine Learning</h3>
-          </div>
-          <div class="skill-items">
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Machine Learning</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill blue" data-width="85"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Natural Language Processing</span><span>78%</span></div>
-              <div class="skill-bar"><div class="skill-fill blue" data-width="78"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Deep Learning / TensorFlow</span><span>70%</span></div>
-              <div class="skill-bar"><div class="skill-fill blue" data-width="70"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Data Analysis (Pandas, NumPy)</span><span>82%</span></div>
-              <div class="skill-bar"><div class="skill-fill blue" data-width="82"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Programming Languages -->
-        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="100">
-          <div class="skill-category-header">
-            <div class="skill-icon purple"><i class="fas fa-code" aria-hidden="true"></i></div>
-            <h3>Programming Languages</h3>
-          </div>
-          <div class="skill-items">
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Python</span><span>90%</span></div>
-              <div class="skill-bar"><div class="skill-fill purple" data-width="90"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Java</span><span>75%</span></div>
-              <div class="skill-bar"><div class="skill-fill purple" data-width="75"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>JavaScript</span><span>72%</span></div>
-              <div class="skill-bar"><div class="skill-fill purple" data-width="72"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>SQL</span><span>68%</span></div>
-              <div class="skill-bar"><div class="skill-fill purple" data-width="68"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Web Development -->
-        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="200">
-          <div class="skill-category-header">
-            <div class="skill-icon green"><i class="fas fa-globe" aria-hidden="true"></i></div>
-            <h3>Web Development</h3>
-          </div>
-          <div class="skill-items">
-            <div class="skill-item">
-              <div class="skill-item-top"><span>HTML5 / CSS3</span><span>88%</span></div>
-              <div class="skill-bar"><div class="skill-fill green" data-width="88"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Flask / REST APIs</span><span>80%</span></div>
-              <div class="skill-bar"><div class="skill-fill green" data-width="80"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Bootstrap / Tailwind</span><span>75%</span></div>
-              <div class="skill-bar"><div class="skill-fill green" data-width="75"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Responsive Design</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill green" data-width="85"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools & DevOps -->
-        <div class="glass-card skill-category" data-aos="fade-up" data-aos-delay="300">
-          <div class="skill-category-header">
-            <div class="skill-icon orange"><i class="fas fa-tools" aria-hidden="true"></i></div>
-            <h3>Tools &amp; DevOps</h3>
-          </div>
-          <div class="skill-items">
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Git &amp; GitHub</span><span>88%</span></div>
-              <div class="skill-bar"><div class="skill-fill orange" data-width="88"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>GitHub Actions / CI-CD</span><span>72%</span></div>
-              <div class="skill-bar"><div class="skill-fill orange" data-width="72"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Linux / Bash</span><span>70%</span></div>
-              <div class="skill-bar"><div class="skill-fill orange" data-width="70"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-top"><span>Jupyter Notebooks</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill orange" data-width="85"></div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       FEATURED PROJECTS SECTION
-       ==================================================== -->
-  <section id="featured-projects">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Featured Projects</span>
-        <h2 class="section-title">Highlighted AI and Software Development Projects</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="projects-grid featured-projects-grid">
-        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="project-media" aria-hidden="true">
-            <i class="fas fa-brain"></i>
-          </div>
-          <div class="project-top">
-            <div class="project-header">
-              <div class="project-title-wrap">
-                <h3>AI Resume Screening System</h3>
-              </div>
-            </div>
-            <p>An AI-powered resume analysis tool that ranks and filters candidates using NLP and machine learning.</p>
-          </div>
-          <div class="project-tags">
-            <span class="project-tag blue">Python</span>
-            <span class="project-tag purple">NLP</span>
-            <span class="project-tag green">Machine Learning</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://github.com/kskreddy2k7/ai-resume-screening-system" class="project-btn github" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github"></i> View Code
-            </a>
-            <a href="https://kskreddy2k7.github.io/ai-resume-screening-system/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
-            </a>
-          </div>
-        </article>
-
-        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="project-media" aria-hidden="true">
-            <i class="fas fa-keyboard"></i>
-          </div>
-          <div class="project-top">
-            <div class="project-header">
-              <div class="project-title-wrap">
-                <h3>Smart AutoCorrect Keyboard</h3>
-              </div>
-            </div>
-            <p>A smart keyboard project with context-aware autocorrection and improved typing assistance.</p>
-          </div>
-          <div class="project-tags">
-            <span class="project-tag blue">Python</span>
-            <span class="project-tag orange">Algorithms</span>
-            <span class="project-tag purple">AI</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://github.com/kskreddy2k7/smart-autocorrect-keyboard" class="project-btn github" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github"></i> View Code
-            </a>
-            <a href="https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
-            </a>
-          </div>
-        </article>
-
-        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="project-media" aria-hidden="true">
-            <i class="fas fa-store"></i>
-          </div>
-          <div class="project-top">
-            <div class="project-header">
-              <div class="project-title-wrap">
-                <h3>Sri Sai Traders Website</h3>
-              </div>
-            </div>
-            <p>A responsive business website developed to showcase services and products with a clean UI.</p>
-          </div>
-          <div class="project-tags">
-            <span class="project-tag orange">HTML</span>
-            <span class="project-tag blue">CSS</span>
-            <span class="project-tag purple">JavaScript</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://github.com/kskreddy2k7/sri-sai-traders" class="project-btn github" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github"></i> View Code
-            </a>
-            <a href="https://kskreddy2k7.github.io/sri-sai-traders/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
-            </a>
-          </div>
-        </article>
-
-        <article class="glass-card project-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="project-media" aria-hidden="true">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <div class="project-top">
-            <div class="project-header">
-              <div class="project-title-wrap">
-                <h3>AI Developer Portfolio</h3>
-              </div>
-            </div>
-            <p>A modern AI developer portfolio with dynamic GitHub integration and interactive UI features.</p>
-          </div>
-          <div class="project-tags">
-            <span class="project-tag orange">HTML</span>
-            <span class="project-tag blue">CSS</span>
-            <span class="project-tag purple">JavaScript</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://github.com/kskreddy2k7/kranthu-ai-portfolio" class="project-btn github" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github"></i> View Code
-            </a>
-            <a href="https://kskreddy2k7.github.io/kranthu-ai-portfolio/" class="project-btn demo" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
-            </a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       PROJECTS SECTION
-       ==================================================== -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">More Projects</span>
-        <h2 class="section-title">All Projects</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <!-- Project Filters -->
-      <div class="project-filters" data-aos="fade-up" data-aos-delay="100">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ai">AI & ML</button>
-        <button class="filter-btn" data-filter="web">Web Development</button>
-        <button class="filter-btn" data-filter="python">Python</button>
-        <button class="filter-btn" data-filter="java">Java</button>
-        <button class="filter-btn" data-filter="javascript">JavaScript</button>
-      </div>
-
-      <div id="projects-grid" class="projects-grid">
-        <!-- Projects will be loaded dynamically from GitHub API -->
-        <div class="loading-spinner">
-          <i class="fas fa-spinner fa-spin"></i>
-          <p>Loading projects from GitHub...</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       GITHUB CONTRIBUTION SECTION
-       ==================================================== -->
-  <section id="github-activity">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Open Source</span>
-        <h2 class="section-title">GitHub Activity</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="github-contribution-wrapper" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://ghchart.rshah.org/00d4ff/kskreddy2k7" alt="KATA SAI KRANTHU REDDY's GitHub Contribution Graph" class="github-chart" loading="lazy" />
-      </div>
-
-      <div class="github-stats-wrapper" data-aos="fade-up" data-aos-delay="300">
-        <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener noreferrer" class="btn-primary">
-          <i class="fab fa-github"></i>
-          View GitHub Profile
+      <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+        <a href="#projects" class="btn btn-neon btn-lg font-orbitron magnetic-btn">
+          <i class="fas fa-terminal me-2"></i> EXECUTE ./projects
+        </a>
+        <a href="/static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn" target="_blank">
+          <i class="fas fa-file-download me-2"></i> DOWNLOAD_LOGS
         </a>
       </div>
     </div>
-  </section>
+    
+    <div class="hero-scroll-hint mt-5">
+      <a href="#about" class="scroll-hint-link magnetic-btn">
+        <i class="fas fa-chevron-down animate-bounce text-muted"></i>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <!-- ====================================================
-       RESUME SECTION
-       ==================================================== -->
-  <section id="resume">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">My Credentials</span>
-        <h2 class="section-title">Resume</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="resume-content" data-aos="fade-up" data-aos-delay="200">
-        <p class="resume-description">
-          View my professional resume showcasing my skills, projects, education, and experience in AI, Machine Learning, and Software Development.
-        </p>
-
-        <div class="resume-viewer-wrapper glass-card">
-          <div class="resume-placeholder">
-            <i class="fas fa-file-pdf"></i>
-            <p>Resume Preview</p>
-            <small>KATA SAI KRANTHU REDDY</small>
+<!-- ===== INTERACTIVE TERMINAL (ABOUT) ===== -->
+<section class="section-pad" id="about">
+  <div class="container">
+    <div class="section-header text-center mb-5 gs-reveal-up">
+      <span class="section-tag font-fira">__INTERACTIVE_SHELL</span>
+      <h2 class="section-title font-orbitron">SYSTEM <span class="neon-text">TERMINAL</span></h2>
+      <p class="font-fira text-muted mt-2 small">Type 'help' for available commands.</p>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-9 gs-reveal-up">
+        <!-- Terminal Window UI -->
+        <div class="terminal-window glass-panel" id="interactive-terminal">
+          <div class="terminal-header d-flex align-items-center px-3 py-2 cursor-pointer toggle-terminal-fs">
+            <div class="terminal-buttons d-flex gap-2">
+              <span class="t-btn red"></span><span class="t-btn yellow"></span><span class="t-btn green"></span>
+            </div>
+            <div class="terminal-title mx-auto font-fira small text-muted">root@kskr-os:~ (interactive)</div>
+            <i class="fas fa-expand text-muted small ms-auto"></i>
           </div>
-        </div>
-
-        <div class="resume-actions">
-          <a href="static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx" class="btn-primary" download>
-            <i class="fas fa-download"></i>
-            Download Resume
-          </a>
-          <a href="static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx" class="btn-outline" target="_blank">
-            <i class="fas fa-external-link-alt"></i>
-            View Full Screen
-          </a>
+          <div class="terminal-body font-fira p-4" id="terminal-history">
+            <div class="terminal-banner text-neon mb-3">
+              Kranthu OS Native Shell v1.2.0<br/>
+              Connected to Mainframe.<br/>
+              Type <span class="text-warning">help</span> to view all commands.
+            </div>
+            <!-- Initial command -->
+            <div class="terminal-line"><span class="prompt text-success">root@kskr-os:~$</span> whois kranthu</div>
+            <div class="terminal-output mt-2 mb-3 text-muted">
+              <span class="text-primary">Name:</span> Kata Sai Kranthu Reddy<br/>
+              <span class="text-primary">Role:</span> Full Stack Developer & AI Enthusiast<br/>
+              <span class="text-primary">Level:</span> 1st Year CS Student (AI/ML) @ SRM University<br/>
+              <span class="text-primary">Status:</span> Actively seeking internship opportunities.
+            </div>
+          </div>
+          <div class="terminal-input-row font-fira p-4 pt-0 d-flex align-items-center">
+            <span class="prompt text-success me-2">root@kskr-os:~$</span>
+            <input type="text" id="terminal-input" class="cyber-input flex-grow-1 font-fira text-white" style="font-size: 0.9rem;" autocomplete="off" spellcheck="false" autofocus>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ====================================================
-       CONTACT SECTION
-       ==================================================== -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Get In Touch</span>
-        <h2 class="section-title">Contact Me</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="contact-grid">
-
-        <div class="contact-info" data-aos="fade-right">
-          <h3>Let's Work Together</h3>
-          <p>
-            I am currently open to internships, freelance projects, and collaboration opportunities
-            in AI, machine learning, and software development. If you have a project idea or would
-            like to connect, feel free to send a message.
-          </p>
-
-          <div class="contact-items">
-            <a href="mailto:kskreddy2k7@gmail.com" class="contact-item">
-              <div class="contact-item-icon blue">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-              </div>
-              <div class="contact-item-text">
-                <span>Email</span>
-                <strong>kskreddy2k7@gmail.com</strong>
-              </div>
-            </a>
-
-            <a href="https://github.com/kskreddy2k7" class="contact-item" target="_blank" rel="noopener noreferrer">
-              <div class="contact-item-icon purple">
-                <i class="fab fa-github" aria-hidden="true"></i>
-              </div>
-              <div class="contact-item-text">
-                <span>GitHub</span>
-                <strong>github.com/kskreddy2k7</strong>
-              </div>
-            </a>
-
-            <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" class="contact-item" target="_blank" rel="noopener noreferrer">
-              <div class="contact-item-icon green">
-                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-              </div>
-              <div class="contact-item-text">
-                <span>LinkedIn</span>
-                <strong>linkedin.com/in/kata-sai-kranthu-reddy-b02848377</strong>
-              </div>
-            </a>
+<!-- ===== SKILLS ===== -->
+<section class="section-pad section-dark" id="skills">
+  <div class="container">
+    <div class="section-header text-center mb-5 gs-reveal-up">
+      <span class="section-tag font-fira">__CAPABILITIES</span>
+      <h2 class="section-title font-orbitron">SYSTEM <span class="neon-text">SKILLS</span></h2>
+    </div>
+    
+    <div class="row g-4 justify-content-center">
+      <!-- Logic Processing (Frontend/Backend) -->
+      <div class="col-lg-5 gs-reveal-left">
+        <div class="skill-container glass-panel p-4 h-100">
+          <h4 class="font-orbitron mb-4 text-white"><i class="fas fa-server neon-text me-2"></i> Logic Processing</h4>
+          
+          <div class="skill-item mb-3 filter-hover magnetic-btn">
+            <div class="d-flex justify-content-between mb-1 font-fira small">
+              <span class="text-light">Python / Flask</span><span class="neon-text">90%</span>
+            </div>
+            <div class="progress loader-progress" style="height: 6px;"><div class="progress-bar neon-bar js-skill-bar" data-width="90" style="width: 0%;"></div></div>
+          </div>
+          
+          <div class="skill-item mb-3 filter-hover magnetic-btn">
+            <div class="d-flex justify-content-between mb-1 font-fira small">
+              <span class="text-light">JavaScript / React</span><span class="neon-text">80%</span>
+            </div>
+            <div class="progress loader-progress" style="height: 6px;"><div class="progress-bar neon-bar js-skill-bar" data-width="80" style="width: 0%;"></div></div>
+          </div>
+          
+          <div class="skill-item mb-3 filter-hover magnetic-btn">
+            <div class="d-flex justify-content-between mb-1 font-fira small">
+              <span class="text-light">Java / Android</span><span class="neon-text">75%</span>
+            </div>
+            <div class="progress loader-progress" style="height: 6px;"><div class="progress-bar neon-bar js-skill-bar" data-width="75" style="width: 0%;"></div></div>
           </div>
         </div>
+      </div>
+      
+      <!-- Neural Cores (AI/ML) -->
+      <div class="col-lg-5 gs-reveal-right">
+        <div class="skill-container glass-panel p-4 h-100">
+          <h4 class="font-orbitron mb-4 text-white"><i class="fas fa-network-wired text-purple me-2"></i> Neural Cores</h4>
+          
+          <div class="d-flex flex-wrap gap-3">
+            <div class="glass-badge magnetic-btn"><i class="fas fa-robot text-purple me-1"></i> Machine Learning</div>
+            <div class="glass-badge magnetic-btn"><i class="fas fa-language text-purple me-1"></i> NLP (NLTK)</div>
+            <div class="glass-badge magnetic-btn"><i class="fas fa-table text-purple me-1"></i> Pandas & NumPy</div>
+            <div class="glass-badge magnetic-btn"><i class="fas fa-database text-success me-1"></i> SQLite / SQL</div>
+            <div class="glass-badge magnetic-btn"><i class="fab fa-github text-warning me-1"></i> Git / Version Control</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="glass-card contact-form-wrapper" data-aos="fade-left">
-          <h3>Send a Message</h3>
-          <form id="contact-form" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" />
+<!-- ===== SYSTEM LOGS (EXPERIENCE & EDUCATION) ===== -->
+<section class="section-pad" id="experience">
+  <div class="container">
+    <div class="section-header text-center mb-5 gs-reveal-up">
+      <span class="section-tag font-fira">__SYSTEM_HISTORY</span>
+      <h2 class="section-title font-orbitron">EXPERIENCE <span class="neon-text">LOGS</span></h2>
+    </div>
+    
+    <div class="timeline-container ps-md-5">
+      <!-- SRM University -->
+      <div class="timeline-item gs-reveal-up mb-5">
+        <div class="timeline-dot"></div>
+        <div class="glass-panel p-4 magnetic-card">
+          <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+            <h4 class="font-orbitron text-white mb-0">SRM University, KTR</h4>
+            <span class="cyber-badge cyan">2025 - 2029</span>
+          </div>
+          <h6 class="font-fira text-neon mb-2">B.Tech in Computer Science (AI & ML)</h6>
+          <p class="text-muted font-fira small">
+            Focus on Neural Networks, Algorithm Design, and Full Stack Development. Current focus: Building intelligent systems and OS-like interfaces.
+          </p>
+        </div>
+      </div>
+
+      <!-- Schooling (Inter) -->
+      <div class="timeline-item gs-reveal-up mb-5">
+        <div class="timeline-dot border-purple"></div>
+        <div class="glass-panel p-4 magnetic-card">
+          <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+            <h4 class="font-orbitron text-white mb-0">Higher Secondary Education</h4>
+            <span class="cyber-badge purple">2023 - 2025</span>
+          </div>
+          <h6 class="font-fira text-purple mb-2">MPC (Math, Physics, Chemistry)</h6>
+          <p class="text-muted font-fira small">
+            Completed Intermediate education with a major in MPC, providing the mathematical foundation for AI/ML specializations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Schooling (CBSE) -->
+      <div class="timeline-item gs-reveal-up">
+        <div class="timeline-dot border-success"></div>
+        <div class="glass-panel p-4 magnetic-card">
+          <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+            <h4 class="font-orbitron text-white mb-0">System Initialization</h4>
+            <span class="cyber-badge green">COMPLETED 2023</span>
+          </div>
+          <h6 class="font-fira text-success mb-2">Secondary School (CBSE Class X)</h6>
+          <p class="text-muted font-fira small">
+            Completed Class 10th under CBSE board. Initialized interest in automation and early Python scripting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREMIUM PROJECT SHOWCASE ===== -->
+<section class="section-pad" id="projects">
+  <div class="container">
+    <div class="section-header text-center mb-5 gs-reveal-up">
+      <span class="section-tag font-fira">__EXECUTABLES</span>
+      <h2 class="section-title font-orbitron">REAL-WORLD <span class="neon-text">APPLICATIONS</span></h2>
+      <p class="font-fira text-muted mt-2 small">Click cards to initialize live previews.</p>
+    </div>
+    
+    <div class="row justify-content-center g-4">
+      
+    <div class="project-filters d-flex justify-content-center gap-2 mb-5 gs-reveal-up">
+      <button class="filter-btn active" data-filter="all">ALL_MODULES</button>
+      <button class="filter-btn" data-filter="web">WEB_SYSTEMS</button>
+      <button class="filter-btn" data-filter="ai">AI_CORES</button>
+      <button class="filter-btn" data-filter="apps">MOBILE_APPS</button>
+    </div>
+    
+    <div class="row g-4 justify-content-center" id="project-container">
+      
+      <!-- Project 1: Sri Sai Traders (Web) -->
+      <div class="col-lg-4 col-md-6 project-item" data-category="web">
+        <div class="project-3d-card glass-panel open-modal h-100" data-tilt data-tilt-max="5"
+          data-title="Sri Sai Traders - Business Website" 
+          data-url="https://srisaitraders-kurnool.netlify.app/" 
+          data-repo="https://github.com/kskreddy2k7/-Sri-Sai-Traders-website"
+          data-tech='["HTML5", "CSS3", "JavaScript"]'>
+          <div class="project-card-inner p-4">
+            <span class="category-tag font-fira text-neon">[WEB_MODULE]</span>
+            <div class="project-icon-large glow-cyan mb-3">
+              <i class="fas fa-building"></i>
+            </div>
+            <h4 class="font-orbitron text-white mb-2">Sri Sai Traders</h4>
+            <p class="text-muted font-fira small mb-4">
+              A high-performance business landing page built for an enterprise.
+            </p>
+            <div class="tech-stack mt-auto d-flex gap-2 flex-wrap">
+              <span class="cyber-badge cyan">HTML</span>
+              <span class="cyber-badge cyan">JS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: AI Resume Screener (AI) -->
+      <div class="col-lg-4 col-md-6 project-item" data-category="ai">
+        <div class="project-3d-card glass-panel open-modal h-100" data-tilt data-tilt-max="5"
+          data-title="AI Resume Screening System" 
+          data-url="https://kskreddy2k7.github.io/ai-resume-screening-system/" 
+          data-repo="https://github.com/kskreddy2k7/ai-resume-screening-system"
+          data-tech='["NLP", "JavaScript", "ML"]'>
+          <div class="project-card-inner p-4">
+            <span class="category-tag font-fira text-purple">[AI_CORE]</span>
+            <div class="project-icon-large glow-purple mb-3">
+              <i class="fas fa-file-invoice"></i>
+            </div>
+            <h4 class="font-orbitron text-white mb-2">AI Resume Screener</h4>
+            <p class="text-muted font-fira small mb-4">
+              Automated recruitment system with NLP keyword ranking.
+            </p>
+            <div class="tech-stack mt-auto d-flex gap-2 flex-wrap">
+              <span class="cyber-badge ai">NLP</span>
+              <span class="cyber-badge ai">JS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: AI Voice OS (AI) -->
+      <div class="col-lg-4 col-md-6 project-item" data-category="ai">
+        <div class="project-3d-card glass-panel open-modal h-100" data-tilt data-tilt-max="5"
+          data-title="KSKR AI Voice Operating System" 
+          data-url="https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/" 
+          data-repo="https://github.com/kskreddy2k7/KSKR-AI-Voice-Operating-System"
+          data-tech='["Python", "SpeechRec", "SQLite"]'>
+          <div class="project-card-inner p-4">
+            <span class="category-tag font-fira text-success">[AI_CORE]</span>
+            <div class="project-icon-large glow-green mb-3">
+              <i class="fas fa-microphone-alt"></i>
+            </div>
+            <h4 class="font-orbitron text-white mb-2">AI Voice OS</h4>
+            <p class="text-muted font-fira small mb-4">
+              Offline voice-activated interface for system commands.
+            </p>
+            <div class="tech-stack mt-auto d-flex gap-2 flex-wrap">
+              <span class="cyber-badge py">Python</span>
+              <span class="cyber-badge green">Speech</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Smart Keyboard (Apps) -->
+      <div class="col-lg-4 col-md-6 project-item" data-category="apps">
+        <div class="project-3d-card glass-panel open-modal h-100" data-tilt data-tilt-max="5"
+          data-title="Smart AutoCorrect Keyboard" 
+          data-url="https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/" 
+          data-repo="https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard"
+          data-tech='["Android", "Java", "Kotlin"]'>
+          <div class="project-card-inner p-4">
+            <span class="category-tag font-fira text-warning">[APP_MODULE]</span>
+            <div class="project-icon-large glow-orange mb-3">
+              <i class="fas fa-keyboard"></i>
+            </div>
+            <h4 class="font-orbitron text-white mb-2">Smart Keyboard</h4>
+            <p class="text-muted font-fira small mb-4">
+              Android IME with real-time autocorrection algorithms.
+            </p>
+            <div class="tech-stack mt-auto d-flex gap-2 flex-wrap">
+              <span class="cyber-badge orange">Android</span>
+              <span class="cyber-badge orange">Java</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Quiz AI App (AI) -->
+      <div class="col-lg-4 col-md-6 project-item" data-category="ai">
+        <div class="project-3d-card glass-panel open-modal h-100" data-tilt data-tilt-max="5"
+          data-title="Quiz AI Application" 
+          data-url="https://github.com/kskreddy2k7/quiz-ai-app" 
+          data-repo="https://github.com/kskreddy2k7/quiz-ai-app"
+          data-tech='["Flask", "SQLite", "Dynamic-Evaluation"]'>
+          <div class="project-card-inner p-4">
+            <span class="category-tag font-fira text-purple">[AI_CORE]</span>
+            <div class="project-icon-large glow-purple mb-3">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <h4 class="font-orbitron text-white mb-2">Quiz AI App</h4>
+            <p class="text-muted font-fira small mb-4">
+              Interactive quiz engine with real-time evaluation.
+            </p>
+            <div class="tech-stack mt-auto d-flex gap-2 flex-wrap">
+              <span class="cyber-badge py">Flask</span>
+              <span class="cyber-badge ai">AI-Logic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6: Portfolio OS (Web) -->
+      <div class="col-lg-4 col-md-6 project-item" data-category="web">
+        <div class="project-3d-card glass-panel open-modal h-100" data-tilt data-tilt-max="5"
+          data-title="Kranthu AI Portfolio OS" 
+          data-url="/" 
+          data-repo="https://github.com/kskreddy2k7/kranthu-ai-portfolio"
+          data-tech='["Flask", "GSAP", "Glassmorphism"]'>
+          <div class="project-card-inner p-4">
+            <span class="category-tag font-fira text-neon">[WEB_MODULE]</span>
+            <div class="project-icon-large glow-cyan mb-3">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <h4 class="font-orbitron text-white mb-2">Portfolio OS</h4>
+            <p class="text-muted font-fira small mb-4">
+              The futuristic control room interface you see here.
+            </p>
+            <div class="tech-stack mt-auto d-flex gap-2 flex-wrap">
+              <span class="cyber-badge cyan">Flask</span>
+              <span class="cyber-badge cyan">GSAP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- View More -->
+    <div class="view-more-container text-center mt-5 gs-reveal-up">
+      <a href="https://github.com/kskreddy2k7?tab=repositories" target="_blank" class="btn btn-outline-neon font-orbitron magnetic-btn px-5 py-3">
+        <i class="fab fa-github me-2"></i> FETCH_ADDITIONAL_REPOS
+      </a>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI CHATBOT (FUTURISTIC UI) ===== -->
+<section class="section-pad section-dark" id="chatbot">
+  <div class="container">
+    <div class="section-header text-center mb-5 gs-reveal-up">
+      <span class="section-tag font-fira">__COMMS_LINK</span>
+      <h2 class="section-title font-orbitron">AI <span class="neon-text">ASSISTANT</span></h2>
+      <p class="section-subtitle font-fira mt-3">Engage with my digital twin neural net.</p>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-8 gs-reveal-up">
+        <div class="cyber-chat-interface glass-panel magnetic-card">
+          <div class="chat-header border-bottom-neon p-3 d-flex align-items-center">
+            <div class="status-indicator active me-3"></div>
+            <h5 class="font-orbitron mb-0 text-white">KSKR_AI_CORE.exe</h5>
+            <span class="ms-auto font-fira small text-success">NEURAL LINK: ESTABLISHED</span>
+          </div>
+          
+          <div class="chat-body p-4" id="chatMessages">
+            <div class="chat-message bot ms-0 mb-3 ds-slide-in">
+              <div class="msg-avatar"><i class="fas fa-robot"></i></div>
+              <div class="msg-content glass-bubble">
+                <span class="font-fira small d-block text-neon mb-1">SYSTEM_AI</span>
+                <p class="mb-0 font-inter">Greetings. I am the AI interface for Kata Sai Kranthu Reddy. You can query me regarding his <strong>skills</strong>, <strong>projects</strong>, or <strong>contact</strong> information.</p>
               </div>
-              <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email Address" required autocomplete="email" />
-              </div>
             </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Project Collaboration / Internship Opportunity" />
+          </div>
+          
+          <div class="chat-suggestions d-flex gap-2 p-3 border-top-neon bg-darker overflow-auto">
+            <button class="cyber-pill-btn magnetic-btn font-fira small" onclick="sendQuick('/skills')">/skills</button>
+            <button class="cyber-pill-btn magnetic-btn font-fira small" onclick="sendQuick('/projects')">/projects</button>
+            <button class="cyber-pill-btn magnetic-btn font-fira small" onclick="sendQuick('/contact')">/contact</button>
+          </div>
+          
+          <div class="chat-footer p-3 bg-darker rounded-bottom">
+            <form id="chatForm" class="d-flex align-items-center gap-2">
+              <span class="text-neon font-fira fw-bold">&gt;</span>
+              <input type="text" id="chatInput" class="cyber-input flex-grow-1 font-fira" placeholder="Enter query parameters..." autocomplete="off">
+              <button type="submit" class="cyber-send-btn magnetic-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section-pad" id="contact">
+  <div class="container">
+    <div class="section-header text-center mb-5 gs-reveal-up">
+      <span class="section-tag font-fira">__HANDSHAKE</span>
+      <h2 class="section-title font-orbitron">ESTABLISH <span class="neon-text">CONNECTION</span></h2>
+    </div>
+    
+    <div class="row g-5 justify-content-center">
+      <div class="col-lg-5 gs-reveal-right">
+        <div class="contact-info-panel glass-panel p-4 p-md-5 h-100 magnetic-card">
+          <h4 class="font-orbitron text-white mb-4">Transmission Endpoints</h4>
+          <p class="font-inter text-muted mb-5">
+            Systems are primed to receive your transmission within 24 standard hours. Ready for deployment and internships.
+          </p>
+          
+          <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" class="contact-endpoint magnetic-btn d-flex align-items-center gap-3 mb-4 text-decoration-none">
+            <div class="endpoint-icon glow-cyan text-neon"><i class="fab fa-linkedin-in"></i></div>
+            <div class="endpoint-text font-fira">
+              <span class="d-block text-muted small">NETWORK_LINK</span>
+              <span class="neon-link">/in/kata-sai-kranthu-reddy</span>
             </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          </a>
+          
+          <a href="https://github.com/kskreddy2k7" target="_blank" class="contact-endpoint magnetic-btn d-flex align-items-center gap-3 mb-4 text-decoration-none">
+            <div class="endpoint-icon glow-purple text-purple"><i class="fab fa-github"></i></div>
+            <div class="endpoint-text font-fira">
+              <span class="d-block text-muted small">CODE_VAULT</span>
+              <span class="neon-link text-purple">github.com/kskreddy2k7</span>
             </div>
-            <button type="submit" class="btn-submit">
-              <i class="fas fa-paper-plane" aria-hidden="true"></i>
-              Send Message
+          </a>
+          
+          <div class="contact-endpoint d-flex align-items-center gap-3">
+            <div class="endpoint-icon glow-green text-success"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="endpoint-text font-fira">
+              <span class="d-block text-muted small">BASE_NODE</span>
+              <span class="text-light">India 🇮🇳 (Willing to relocate)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-7 gs-reveal-left">
+        <div class="contact-form-panel glass-panel p-4 p-md-5 magnetic-card h-100">
+          <div id="formAlert" class="alert d-none mb-4 font-fira small" role="alert"></div>
+          
+          <form id="contactForm" novalidate>
+            <div class="cyber-input-group mb-4">
+              <input type="text" class="cyber-form-input font-fira" id="contactName" name="name" placeholder=" " required />
+              <label for="contactName" class="cyber-label font-fira">IDENTIFIER (Name)</label>
+              <div class="cyber-border"></div>
+              <div class="invalid-feedback font-fira small mt-1" id="nameError"></div>
+            </div>
+            
+            <div class="cyber-input-group mb-4">
+              <input type="email" class="cyber-form-input font-fira" id="contactEmail" name="email" placeholder=" " required />
+              <label for="contactEmail" class="cyber-label font-fira">ROUTING_ADDRESS (Email)</label>
+              <div class="cyber-border"></div>
+              <div class="invalid-feedback font-fira small mt-1" id="emailError"></div>
+            </div>
+            
+            <div class="cyber-input-group mb-5">
+              <textarea class="cyber-form-input font-fira" id="contactMessage" name="message" rows="4" placeholder=" " required></textarea>
+              <label for="contactMessage" class="cyber-label font-fira">PAYLOAD_DATA (Message)</label>
+              <div class="cyber-border"></div>
+              <div class="invalid-feedback font-fira small mt-1" id="messageError"></div>
+            </div>
+            
+            <button type="submit" class="btn btn-neon w-100 btn-lg font-orbitron magnetic-btn" id="submitBtn">
+              <i class="fas fa-satellite-dish me-2"></i> TRANSMIT_DATA
             </button>
           </form>
-          <div id="form-success" class="form-success" role="alert">
-            <i class="fas fa-check-circle"></i>
-            Your email client opened! Thanks for reaching out — I'll reply shortly.
-          </div>
         </div>
-
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ====================================================
-       FOOTER
-       ==================================================== -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="#hero">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
 
-        <div class="footer-socials" aria-label="Social links">
-          <a href="https://github.com/kskreddy2k7" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i class="fab fa-github" aria-hidden="true"></i>
+
+    <!-- FOOTER -->
+    <footer class="footer py-5 border-top-neon">
+      <div class="container text-center">
+        <p class="footer-name mb-2 font-orbitron neon-text">KATA SAI KRANTHU REDDY</p>
+        <p class="footer-tagline mb-3 font-fira text-muted">SYSTEM ONLINE · AI & BACKEND OPS</p>
+        <div class="footer-links d-flex justify-content-center gap-4 mb-4">
+          <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" rel="noopener" class="neon-link h4">
+            <i class="fab fa-linkedin"></i>
           </a>
-          <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-          </a>
-          <a href="mailto:kskreddy2k7@gmail.com" class="social-icon" aria-label="Email">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
+          <a href="https://github.com/kskreddy2k7" target="_blank" rel="noopener" class="neon-link h4">
+            <i class="fab fa-github"></i>
           </a>
         </div>
-
-        <div class="footer-divider"></div>
-
-        <p class="footer-copy">
-          Designed &amp; built with <span>❤️</span> by KATA SAI KRANTHU REDDY &mdash;
-          &copy; <span id="year"></span> All rights reserved.
-        </p>
+        <p class="footer-copy mb-0 font-fira small text-muted">&copy; 2026 // KSKR. ALL SYSTEMS NOMINAL.</p>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
-  <!-- Scroll to Top -->
-  <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- ====================================================
-       AI PORTFOLIO CHATBOT
-       ==================================================== -->
-  <div id="chatbot-container" class="chatbot-container">
-    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Toggle chatbot">
-      <i class="fas fa-robot" aria-hidden="true"></i>
-    </button>
-    
-    <div id="chatbot-window" class="chatbot-window">
-      <div class="chatbot-header">
-        <div class="chatbot-header-info">
-          <div class="chatbot-avatar">
-            <i class="fas fa-robot"></i>
-          </div>
-          <div>
-            <h4>Portfolio Assistant</h4>
-            <span class="chatbot-status"><span class="status-dot"></span> Online</span>
-          </div>
-        </div>
-        <button id="chatbot-close" class="chatbot-close-btn" aria-label="Close chatbot">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      
-      <div id="chatbot-messages" class="chatbot-messages">
-        <div class="message bot-message">
-          <div class="message-avatar">
-            <i class="fas fa-robot"></i>
-          </div>
-          <div class="message-content">
-            <p>Hi! I'm here to help you learn more about KATA SAI KRANTHU REDDY. Ask me anything!</p>
-            <div class="quick-questions">
-              <button class="quick-q" data-q="who">Who is Kata Sai Kranthu Reddy?</button>
-              <button class="quick-q" data-q="projects">What projects has he built?</button>
-              <button class="quick-q" data-q="skills">What are his skills?</button>
-              <button class="quick-q" data-q="contact">How can I contact him?</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="chatbot-input">
-        <input 
-          type="text" 
-          id="chatbot-input-field" 
-          placeholder="Ask me about KATA SAI KRANTHU REDDY..." 
-          autocomplete="off"
-        />
-        <button id="chatbot-send" aria-label="Send message">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Project Detail Modal -->
-  <div id="project-modal" class="modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-container glass-card">
-      <button class="modal-close" aria-label="Close modal">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 id="modal-title"></h3>
-          <div id="modal-tech-stack" class="tech-stack"></div>
-        </div>
-        <div class="modal-body">
-          <div id="modal-description"></div>
-          <div class="modal-links">
-            <a id="modal-github-link" href="#" class="btn-primary" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github"></i>
-              View Code
-            </a>
-            <a id="modal-demo-link" href="#" class="btn-outline" target="_blank" rel="noopener noreferrer" style="display: none;">
-              <i class="fas fa-external-link-alt"></i>
-              Live Demo
-            </a>
-          </div>
-          <div id="modal-stats" class="modal-stats"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  <script src="script.js"></script>
+  <!-- External Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Vanilla Tilt for Projects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  
+  <!-- Custom JS -->
+  
+    <script src="static/js/script.js"></script>
+  
 </body>
 </html>
