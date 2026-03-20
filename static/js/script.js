@@ -4,18 +4,25 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- 0. SOUND SYSTEMS (PHASE 9) ---
+  console.log("Initializing Sound Engine...");
   const sounds = {
     click: new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'),
     hover: new Audio('https://assets.mixkit.co/active_storage/sfx/2570/2570-preview.mp3'),
-    boot: new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3'),
+    boot: new Audio('https://assets.mixkit.co/active_storage/sfx/2573/2573-preview.mp3'),
     typing: new Audio('https://assets.mixkit.co/active_storage/sfx/2533/2533-preview.mp3'),
     notify: new Audio('https://assets.mixkit.co/active_storage/sfx/2569/2569-preview.mp3')
   };
 
+  // Force enabled for debugging if not set
+  if (localStorage.getItem('kskr_sound_enabled') === null) {
+      localStorage.setItem('kskr_sound_enabled', 'true');
+  }
   let soundEnabled = localStorage.getItem('kskr_sound_enabled') === 'true';
   const soundToggle = document.getElementById('sound-toggle');
   const soundIcon = document.getElementById('sound-icon');
   const soundText = document.getElementById('sound-text');
+
+  console.log("Sound Elements Found:", { soundToggle, soundIcon, soundText });
 
   function updateSoundUI() {
     if (soundIcon && soundText) {
