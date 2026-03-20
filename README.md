@@ -1,217 +1,96 @@
-# 🚀 KSKR AI Developer Portfolio
+# 🌌 KRANTHU AI SYSTEM: The Control Room Portfolio
 
-Welcome to the **personal portfolio of Kata Sai Kranthu Reddy**, an AI developer and software engineer passionate about building intelligent systems, machine learning applications, and scalable software solutions.!
+![Banner](static/images/banner.png)
 
----
-
-# 👨‍💻 Developer
-
-**Kata Sai Kranthu Reddy**
-
-AI Developer | Software Engineer | Machine Learning Enthusiast
-
-GitHub
-https://github.com/kskreddy2k7/
-
-LinkedIn
-https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377
-
-Email
-[kskreddy2k7@gmail.com](mailto:kskreddy2k7@gmail.com)
+Welcome to the **Premium AI Developer Control Room**. This isn't just a portfolio; it's an immersive, cinematic experience designed to showcase high-end software engineering and AI capabilities.
 
 ---
 
-# 🌐 Live Portfolio
+## 🚀 Experience the Mainframe
+**Live Demo:** [kskreddy2k7.github.io/kranthu-ai-portfolio/](https://kskreddy2k7.github.io/kranthu-ai-portfolio/)
 
-View the live website:
-
-https://kskreddy2k7.github.io/kranthu-ai-portfolio/
-
----
-
-# ✨ Features
-
-### 🎨 Advanced UI/UX
-- **Modern glassmorphism design** with dark theme and neon accents
-- **Animated hero section** with dynamic particle background
-- **Typing animation** showcasing multiple roles and expertise
-- **Smooth scroll animations** using AOS library
-- **Responsive layout** optimized for all devices
-
-### 🔍 Interactive Project Showcase
-- **Dynamic GitHub integration** - Automatically loads all repositories via GitHub API
-- **Project filtering** - Filter by category (All, AI & ML, Web Dev, Python, Java, JavaScript)
-- **Project modals** - Click any project card for detailed view with stats
-- **Featured projects** - Highlighted key projects at the top
-- **Professional formatting** - Smart title conversion and curated descriptions
-
-### 📄 Resume Section
-- **Integrated resume viewer** with download and fullscreen options
-- **Accessible resume download** - PDF/DOCX format
-- **Professional layout** - Showcasing credentials and experience
-
-### 📊 Developer Activity
-- **GitHub contribution graph** - Visual representation of coding activity
-- **Open source contributions** - Highlighting community involvement
-- **Direct GitHub profile link** for detailed stats
-
-### 🤖 AI Portfolio Chatbot
-- **Interactive chatbot widget** with knowledge base about the developer
-- **Intent-based responses** - Answers questions about skills, projects, and experience
-- **Smooth animations** - Professional chat interface
-
-### 🎯 Additional Features
-- **Contact form** with professional copy for recruiters
-- **Social media integration** (GitHub, LinkedIn, Email)
-- **SEO optimized** with meta tags and structured data
-- **Fast loading** - Optimized performance for GitHub Pages
-- **Accessibility** - ARIA labels and semantic HTML
+> [!IMPORTANT]
+> **Best experienced with sound enabled.** The system features a low-latency premium sound engine for a fully immersive "OS" feel.
 
 ---
 
-# 🧠 Featured Projects
+## ✨ Cinematic Features
 
-### AI Resume Screening System
+### 🖥️ OS-Themed Interface
+- **Neural Boot Sequence:** An interactive initialization sequence with real-time system logs.
+- **Glassmorphism UI:** Ultra-premium frosted glass panels with dynamic neon glow.
+- **Magnetic Interaction:** Buttons and UI elements respond to your presence with subtle 2D and 3D movements.
+- **Cyber-Cursor:** A custom glowing cursor with trailing effects (automatically disabled on mobile for native feel).
 
-An AI-powered resume analysis tool that ranks and filters candidates using natural language processing and machine learning.
+### 🔊 Premium Sound Engine
+- **Tactile Feedback:** Low-latency Audio FX for clicks, hovers, and system notifications.
+- **Cinematic Boot Chime:** A high-quality entry sound when the system is unlocked.
+- **Brand-Level Control:** A persistent sound toggle next to the logo (persists across sessions).
 
-### Smart AutoCorrect Keyboard
+### 🛠️ Advanced Project Showcase
+- **3D Grid System:** Project cards featuring a real-time mouse-follow tilt effect.
+- **GitHub Sync:** Dynamically pulls repository data via the GitHub REST API.
+- **Category Matrix:** Real-time filtering across Web, AI, Apps, and Logic modules.
 
-An intelligent Android keyboard with context-aware autocorrect and word prediction.
-
-### Quiz AI App
-
-An AI-based quiz generator that dynamically creates topic-based questions.
-
-### Speech-to-Text Converter
-
-A real-time speech recognition application that converts spoken audio into text.
-
----
-
-# 🛠 Technologies & Libraries
-
-### Core Technologies
-- **HTML5** - Semantic markup and structure
-- **CSS3** - Modern styling with CSS Grid, Flexbox, and animations
-- **JavaScript (ES6+)** - Interactive functionality and API integration
-
-### External Libraries & APIs
-- **[Typed.js](https://github.com/mattboldt/typed.js/)** - Typing animation effect
-- **[AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)** - Scroll-triggered animations
-- **[Font Awesome 6.5.0](https://fontawesome.com/)** - Icon library
-- **[Google Fonts (Poppins)](https://fonts.google.com/)** - Typography
-- **[GitHub REST API](https://docs.github.com/en/rest)** - Dynamic repository loading
-- **[GitHub Chart API](https://ghchart.rshah.org/)** - Contribution graph visualization
-
-### Design Features
-- **Glassmorphism UI** - Modern frosted glass effect with blur
-- **Particle animations** - Canvas-based interactive background
-- **Neon gradients** - Cyan and purple color scheme
-- **Responsive design** - Mobile-first approach
-- **Dark theme** - Eye-friendly color palette
-
-### AI / Programming Skills Showcased
-- Python
-- Machine Learning
-- Natural Language Processing
-- Deep Learning
-- Computer Vision
-- Data Science
-
-### Development Tools
-- Git & GitHub
-- VS Code
-- GitHub Pages (Deployment)
-- Chrome DevTools
+### 🤖 AI Neural Chatbot
+- **System Assistant:** An integrated chatbot that knows everything about the developer's journey and skills.
+- **Typing FX:** Realistic mechanical typing sounds synchronized with AI responses.
 
 ---
 
-# 📂 Project Structure
+## 🛠 Tech Stack
 
-kranthu-ai-portfolio
-
-index.html
-style.css
-script.js
-
-assets/
-images/
-icons/
-
-README.md
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend Core** | HTML5, Vanilla CSS3 (Custom Glassmorphism), JavaScript (ES6+) |
+| **Interactions** | Bootstrap 5, FontAwesome 6, Typed.js, AOS |
+| **System Logic** | Flask (Python), Context-Aware Audio Engine, Github REST API |
+| **Styling** | Neon Gradients, Ultra-Refractive Glass Blur, Custom Typography |
 
 ---
 
-# ⚡ Installation
+## 📂 Project Architecture
 
-Clone the repository
+```bash
+kranthu-ai-portfolio/
+├── app.py             # Flask System Gateway
+├── export_static.py   # Production Static Exporter (for GitHub Pages)
+├── templates/         # System Blueprints (Base & Index)
+├── static/
+│   ├── css/           # Neon Styling & Glass UI
+│   ├── js/            # Neural Engine & Sound Manager
+│   └── images/        # Cinematic Assets
+└── index.html         # Final Production Build
+```
 
+---
+
+## ⚡ Installation & Launch
+
+### 1. Developer Mode (Flask)
+Recommended for full AI Chatbot and dynamic functionality.
+```bash
+# Clone the system
 git clone https://github.com/kskreddy2k7/kranthu-ai-portfolio.git
 
-Open the project
-
+# Enter the mainframe
 cd kranthu-ai-portfolio
 
-Run locally
+# Initialize the server
+python app.py
+```
+Open `http://localhost:5000`
 
-open index.html
-
----
-
-# 🚀 Deployment
-
-This portfolio is deployed using **GitHub Pages**.
-
-Steps:
-
-1. Open repository **Settings**
-2. Navigate to **Pages**
-3. Select:
-
-Branch → main
-Folder → root
-
-4. Save
-
-Your site will be live at:
-
-https://kskreddy2k7.github.io/kranthu-ai-portfolio/
+### 2. Deployment Build (Static)
+To regenerate the static `index.html` for GitHub Pages:
+```bash
+python export_static.py
+```
 
 ---
 
-# 📈 Future Improvements
-
-Add more AI projects
-Add technical blog section
-Integrate advanced AI chatbot
-Add project filtering system
-Improve animations and UI
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-Feel free to fork the repository and submit pull requests.
-
----
-
-# ⭐ Support
-
-If you like this project, please **star the repository**.
-
----
-
-# 📜 License
-
-This project is licensed under the **MIT License**.
-
----
-
-# 💡 Author
+## 🤝 Support the System
+If you find the "Control Room" impressive, please give it a ⭐ on GitHub!
 
 **Kata Sai Kranthu Reddy**
-
-AI Developer focused on building intelligent software and machine learning applications.
+*AI Developer | Creative Technologist | Systems Architect*
