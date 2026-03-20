@@ -32,10 +32,9 @@ function TypedText() {
   const [index, setIndex] = React.useState(0)
   const [displayed, setDisplayed] = React.useState('')
   const [isDeleting, setIsDeleting] = React.useState(false)
-  const texts = TYPED_TEXTS
 
   React.useEffect(() => {
-    const current = texts[index]
+    const current = TYPED_TEXTS[index]
     let timeout
 
     if (!isDeleting && displayed.length < current.length) {
@@ -46,7 +45,7 @@ function TypedText() {
       timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40)
     } else if (isDeleting && displayed.length === 0) {
       setIsDeleting(false)
-      setIndex((prev) => (prev + 1) % texts.length)
+      setIndex((prev) => (prev + 1) % TYPED_TEXTS.length)
     }
 
     return () => clearTimeout(timeout)
