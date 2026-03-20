@@ -51,11 +51,13 @@ CHATBOT_RESPONSES = {
         "He also has experience with <strong>Java</strong> for Android development."
     ),
     'projects': (
-        "Kranthu's key projects include:<br>"
-        "• <strong>AI Resume Screening System</strong> – NLP parsing and ML ranking<br>"
-        "• <strong>Speech-to-Text Python</strong> – Real-time audio processing<br>"
-        "• <strong>Quiz AI App</strong> – Dynamic quiz engine with SQLite<br>"
-        "• <strong>Smart AutoCorrect Keyboard</strong> – Android IME (Java)"
+        "Kranthu's featured showcase includes 6 premium projects:<br>"
+        "• <strong>Sri Sai Traders</strong> (Web) – <a href='https://srisaitraders-kurnool.netlify.app/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
+        "• <strong>Portfolio OS</strong> (Web) – <a href='/' style='color:#00f3ff'>Current Site</a><br>"
+        "• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
+        "• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
+        "• <strong>Smart Keyboard</strong> (Apps) – <a href='https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
+        "• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a>"
     ),
     'contact': (
         "You can reach Kranthu via:<br>"
@@ -66,14 +68,13 @@ CHATBOT_RESPONSES = {
         "• Or use the <strong>Contact Form</strong> on this page!"
     ),
     'experience': (
-        "Kranthu is a 1st-year student building his experience through **Academic & Personal Projects**. "
-        "His most significant work is an <strong>AI Resume Screening System</strong> using Flask and NLTK, "
-        "alongside several AI and backend tools on GitHub."
+        "Kranthu is currently a 1st-year B.Tech student (2025-29) building his experience through **Academic & Personal Projects**. "
+        "He completed his Intermediate education (MPC) in 2025 and his CBSE Class 10th in 2023."
     ),
     'education': (
-        "Kranthu is currently a 1st Year B.Tech student in Computer Science & Engineering (AI/ML) "
-        "at <strong>SRM University, Kattankulathur</strong>. He is focused on applying his "
-        "learning to real-world AI projects."
+        "Kranthu is a 1st Year B.Tech student in Computer Science & Engineering (AI/ML) "
+        "at <strong>SRM University, KTR</strong> (Batch 2025-29). Previously, he completed "
+        "his Intermediate (MPC) in 2025 and Schooling (CBSE) in 2023."
     ),
     'certifications': (
         "Kranthu has completed certifications in <strong>Python Programming</strong>, "
@@ -93,11 +94,31 @@ CHATBOT_RESPONSES = {
 
 def get_chatbot_response(message):
     msg = message.lower().strip()
+    
+    # OS-style Slash Commands
+    if msg == '/whoami':
+        return CHATBOT_RESPONSES['experience']
+    if msg == '/skills':
+        return CHATBOT_RESPONSES['skills']
+    if msg == '/projects':
+        return CHATBOT_RESPONSES['projects']
+    if msg == '/contact':
+        return CHATBOT_RESPONSES['contact']
+    if msg == '/logs':
+        return CHATBOT_RESPONSES['experience']
+    if msg == '/resume' or 'resume' in msg:
+        return (
+            "You can download Kranthu's latest resume here: "
+            "<a href='/static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx' target='_blank' "
+            "style='color:#00d4ff'>[DOWNLOAD_RESUME.pdf]</a>"
+        )
+
+    # Keyword Matching
     if any(w in msg for w in ['hello', 'hi', 'hey', 'greet']):
         return CHATBOT_RESPONSES['hello']
     if any(w in msg for w in ['skill', 'know', 'language', 'tech', 'stack', 'python', 'flask', 'java']):
         return CHATBOT_RESPONSES['skills']
-    if any(w in msg for w in ['project', 'built', 'work', 'resume', 'autocorrect', 'quiz', 'speech']):
+    if any(w in msg for w in ['project', 'built', 'work', 'autocorrect', 'quiz', 'speech']):
         return CHATBOT_RESPONSES['projects']
     if any(w in msg for w in ['contact', 'reach', 'email', 'linkedin', 'github', 'hire', 'connect']):
         return CHATBOT_RESPONSES['contact']
