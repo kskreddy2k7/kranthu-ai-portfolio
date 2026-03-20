@@ -3,6 +3,43 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- 0. SOUND SYSTEMS (PHASE 9) ---
+  const sounds = {
+    click: new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'),
+    hover: new Audio('https://assets.mixkit.co/active_storage/sfx/2570/2570-preview.mp3'),
+    boot: new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3'),
+    typing: new Audio('https://assets.mixkit.co/active_storage/sfx/2533/2533-preview.mp3'),
+    notify: new Audio('https://assets.mixkit.co/active_storage/sfx/2569/2569-preview.mp3')
+  };
+
+  let soundEnabled = localStorage.getItem('kskr_sound_enabled') === 'true';
+  const soundToggle = document.getElementById('sound-toggle');
+  const soundIcon = document.getElementById('sound-icon');
+  const soundText = document.getElementById('sound-text');
+
+  function updateSoundUI() {
+    if (soundIcon && soundText) {
+      soundIcon.className = soundEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+      soundText.textContent = soundEnabled ? 'SOUND_ON' : 'SOUND_OFF';
+    }
+  }
+
+  function playSound(key, volume = 0.3) {
+    if (!soundEnabled || !sounds[key]) return;
+    const s = sounds[key].cloneNode();
+    s.volume = volume;
+    s.play().catch(() => {}); // Catch browser auto-play blocks
+  }
+
+  if (soundToggle) {
+    soundToggle.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('kskr_sound_enabled', soundEnabled);
+      updateSoundUI();
+      if (soundEnabled) playSound('click');
+    });
+  }
+  updateSoundUI();
 
   // --- 1. CUSTOM CURSOR & MAGNETIC PHYSICS ---
   const cursorDot = document.querySelector('.cursor-dot');
@@ -41,10 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
   magneticEls.forEach(el => {
     el.addEventListener('mouseenter', () => {
       document.body.classList.add('cursor-hover');
+      playSound('hover', 0.15); // Subtle hover sound
     });
     el.addEventListener('mouseleave', () => {
       document.body.classList.remove('cursor-hover');
       gsap.to(el, { x: 0, y: 0, duration: 0.3, ease: 'power2.out' });
+    });
+    el.addEventListener('click', () => {
+      if (!el.id.includes('sound-toggle')) playSound('click');
     });
     
     // Only apply heavy magnetic effect to strictly magnetic-btn class elements
@@ -85,8 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function simulateBootLogs() {
     if (logIndex < bootLogs.length) {
       const p = document.createElement('div');
-      p.textContent = `> ${bootLogs[logIndex]}`;
+       p.textContent = `> ${bootLogs[logIndex]}`;
       loaderLogsEl.appendChild(p);
+      playSound('typing', 0.2);
       logIndex++;
       setTimeout(simulateBootLogs, Math.random() * 400 + 200);
     } else {
@@ -101,11 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function typeFinalAccess() {
     if (fIndex < finalText.length) {
       typingEl.innerHTML += finalText.charAt(fIndex);
+      playSound('typing', 0.25);
       fIndex++;
       setTimeout(typeFinalAccess, 60);
     } else {
       setTimeout(() => {
         loaderBar.style.width = '100%';
+        playSound('notify', 0.4);
         setTimeout(() => {
           gsap.to(enterBtn, { display: 'inline-block', autoAlpha: 1, y: 0, duration: 0.5 });
         }, 500);
@@ -117,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(simulateBootLogs, 300);
 
   enterBtn.addEventListener('click', () => {
+    playSound('boot', 0.5);
     gsap.to(loaderScreen, {
       yPercent: -100,
       duration: 1,
@@ -248,6 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Echo command
         appendTerminalLine(`<span class="prompt text-success">root@kskr-os:~$</span> ${escapeHtml(terminalInput.value)}`);
+        playSound('typing', 0.2);
         terminalInput.value = '';
 
         // Process Command
@@ -301,11 +347,13 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'kranthu.exe':
         output = `<span class="text-danger">WARNING: UNAUTHORIZED EXECUTION DETECTED.</span>`;
         appendTerminalLine(`<div class="terminal-output mt-1 mb-3 text-muted">${output}</div>`);
+        playSound('notify', 0.5);
         triggerEasterEgg();
         return;
       default:
         output = `<span class="text-danger">bash: ${escapeHtml(cmd)}: command not found. Type 'help'.</span>`;
     }
+    playSound('typing', 0.3);
     appendTerminalLine(`<div class="terminal-output mt-1 mb-3 text-muted">${output}</div>`);
   }
 
@@ -316,6 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Play glitch sound if possible, else visual
       setTimeout(() => {
         glitchEl.classList.add('d-none');
+        playSound('notify', 0.4);
         appendTerminalLine(`<div class="terminal-output mt-1 mb-3 text-success">SYSTEM RESTORED. Master override acknowledged.</div>`);
       }, 3500);
     }
@@ -333,6 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update UI
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      playSound('click', 0.2);
 
       const filter = btn.getAttribute('data-filter');
 
@@ -354,6 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.open-modal').forEach(card => {
     card.addEventListener('click', function() {
+      playSound('click', 0.3);
       const title = this.getAttribute('data-title');
       const url = this.getAttribute('data-url');
       const repo = this.getAttribute('data-repo');
@@ -381,6 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modalIframe.onload = () => {
         if (modalLoader) modalLoader.style.display = 'none';
+        playSound('notify', 0.2);
         modalIframe.classList.add('loaded');
       };
 
@@ -394,6 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (modalCloseBtn) {
     modalCloseBtn.addEventListener('click', () => {
+      playSound('click', 0.2);
       projectModal.classList.remove('show');
       setTimeout(() => {
         projectModal.classList.add('d-none');
@@ -455,11 +508,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!message.trim()) return;
     
     appendChat(escapeHtml(message), true);
+    playSound('typing', 0.2);
     if (chatInput) chatInput.value = '';
     
     // Slight simulated delay before showing "typing..."
     setTimeout(() => {
       showTypingIndicator();
+      playSound('typing', 0.1);
       
       // Actual Fetch Call
       fetch('/chatbot', {
@@ -472,11 +527,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add extra artificial delay for "AI processing effect"
         setTimeout(() => {
           removeTypingIndicator();
+          playSound('notify', 0.3);
           appendChat(data.response || 'Invalid neural ping.', false);
         }, 800);
       })
       .catch(() => {
         removeTypingIndicator();
+        playSound('notify', 0.4);
         appendChat('<span class="text-danger">CRITICAL ERROR: Mainframe disconnected.</span>', false);
       });
     }, 400); 
@@ -503,6 +560,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      playSound('click', 0.2);
       // standard validation/ajax (left streamlined for control room UX)
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> TRANSMITTING...';
@@ -520,6 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(res => res.json())
       .then(result => {
+        playSound('notify', 0.4);
         submitBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i> DATA RECEIVED';
         submitBtn.classList.replace('btn-neon', 'btn-outline-neon');
         contactForm.reset();
@@ -529,6 +588,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
       })
       .catch(() => {
+        playSound('notify', 0.5);
         submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> LINK FAILED';
       });
     });

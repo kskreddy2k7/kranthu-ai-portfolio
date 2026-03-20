@@ -145,6 +145,30 @@ a, button, input, textarea, .magnetic-btn, .cursor-pointer { cursor: none !impor
 .nav-link { color: var(--text-muted) !important; font-size: 0.85rem; transition: var(--transition); text-transform: lowercase; }
 .nav-link:hover, .nav-link.active { color: var(--neon) !important; text-shadow: var(--glow-cyan); }
 
+/* Sound Toggle Specific */
+#sound-toggle { 
+  transition: var(--transition); 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  border: 1px solid rgba(0, 243, 255, 0.2) !important;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-left: 10px;
+  background: rgba(0, 243, 255, 0.05) !important;
+}
+#sound-toggle:hover { 
+  color: #fff !important; 
+  text-shadow: var(--glow-cyan); 
+  border-color: var(--neon) !important;
+  background: rgba(0, 243, 255, 0.1) !important;
+}
+#sound-toggle i { width: 18px; text-align: center; }
+@media (max-width: 991px) {
+  #sound-toggle { margin-left: 0; margin-top: 10px; width: fit-content; }
+}
+
 /* ---------- Buttons ---------- */
 .btn-neon { background: rgba(0, 243, 255, 0.1); color: var(--neon); border: 1px solid var(--neon); position: relative; overflow: hidden; z-index: 1; transition: var(--transition); box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); }
 .btn-neon::before { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: var(--neon); z-index: -1; transition: var(--transition); }
