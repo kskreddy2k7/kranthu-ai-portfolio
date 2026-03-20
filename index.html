@@ -25,6 +25,7 @@
   <!-- CUSTOM CURSOR -->
   <div class="cursor-dot"></div>
   <div class="cursor-trail"></div>
+
   <!-- SCROLL PROGRESS BAR -->
   <div id="scroll-progress-container">
     <div id="scroll-progress-bar"></div>
@@ -57,6 +58,14 @@
         <a class="navbar-brand fw-bold font-orbitron" href="/">
           <span class="brand-highlight">&lt;</span>Kranthu<span class="brand-highlight">_SYSTEM/&gt;</span>
         </a>
+        
+        <!-- Sound Control moved to Brand Level for absolute visibility -->
+        <div class="ms-2 d-flex align-items-center">
+          <button id="sound-toggle" class="btn btn-sm btn-outline-neon font-fira px-2 py-0 rounded" title="Toggle Sound Systems" style="font-size: 0.7rem; height: 24px;">
+            <i class="fas fa-volume-mute" id="sound-icon"></i> <span id="sound-text" class="ms-1 d-none d-md-inline">SOUND_OFF</span>
+          </button>
+        </div>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
           aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -69,11 +78,6 @@
             <li class="nav-item"><a class="nav-link font-fira" href="/#experience">__logs</a></li>
             <li class="nav-item"><a class="nav-link font-fira" href="/#chatbot">__ai_assistant</a></li>
             <li class="nav-item"><a class="nav-link font-fira" href="/#contact">__link</a></li>
-            <li class="nav-item ms-lg-2">
-              <button id="sound-toggle" class="nav-link font-fira border-0 bg-transparent text-neon" title="Toggle Sound Systems">
-                <i class="fas fa-volume-mute" id="sound-icon"></i> <span id="sound-text">SOUND_OFF</span>
-              </button>
-            </li>
           </ul>
         </div>
       </div>
