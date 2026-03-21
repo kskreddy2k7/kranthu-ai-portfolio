@@ -52,7 +52,7 @@ CHATBOT_RESPONSES = {
     ),
     'projects': (
         "Kranthu's featured showcase includes 6 premium projects:<br>"
-        "• <strong>Sri Sai Traders</strong> (Web) – <a href='https://srisaitraders-kurnool.netlify.app/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
+        "• <strong>Sri Sai Traders</strong> (Web) – <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
         "• <strong>Portfolio OS</strong> (Web) – <a href='/' style='color:#00f3ff'>Current Site</a><br>"
         "• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
         "• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
