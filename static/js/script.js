@@ -164,8 +164,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Start Boot
-  setTimeout(simulateBootLogs, 300);
+  // Start Boot Logic with User Interaction (Fix for Mobile Audio)
+  const initBtn = document.getElementById('init-system-btn');
+  const initContainer = document.getElementById('boot-init-container');
+
+  if (initBtn && initContainer) {
+    initBtn.addEventListener('click', () => {
+      playSound('click', 0.5);
+      gsap.to(initContainer, { 
+        autoAlpha: 0, 
+        height: 0, 
+        marginBottom: 0, 
+        duration: 0.5,
+        onComplete: () => {
+          initContainer.style.display = 'none';
+          simulateBootLogs();
+        }
+      });
+    });
+  } else {
+    // Fallback if elements not found
+    setTimeout(simulateBootLogs, 300);
+  }
 
   enterBtn.addEventListener('click', () => {
     playSound('boot', 0.5);
