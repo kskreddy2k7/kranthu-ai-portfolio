@@ -432,49 +432,53 @@
   </div>
 </section>
 
-<!-- ===== AI CHATBOT (FUTURISTIC UI) ===== -->
+
+<!-- ===== AI ASSISTANT / CHATBOT ===== -->
 <section class="section-pad section-dark" id="chatbot">
   <div class="container">
     <div class="section-header text-center mb-5 gs-reveal-up">
-      <span class="section-tag font-fira">__COMMS_LINK</span>
+      <span class="section-tag font-fira">__NEURAL_INTERFACE</span>
       <h2 class="section-title font-orbitron">AI <span class="neon-text">ASSISTANT</span></h2>
-      <p class="section-subtitle font-fira mt-3">Engage with my digital twin neural net.</p>
+      <p class="font-fira text-muted mt-2 small">Engage with the KSKR_CORE intelligence.</p>
     </div>
     
     <div class="row justify-content-center">
       <div class="col-lg-8 gs-reveal-up">
-        <div class="cyber-chat-interface glass-panel magnetic-card">
-          <div class="chat-header border-bottom-neon p-3 d-flex align-items-center">
-            <div class="status-indicator active me-3"></div>
-            <h5 class="font-orbitron mb-0 text-white">KSKR_AI_CORE.exe</h5>
-            <span class="ms-auto font-fira small text-success">NEURAL LINK: ESTABLISHED</span>
+        <div class="cyber-chat-interface glass-panel overflow-hidden">
+          <div class="chat-header d-flex align-items-center justify-content-between px-4 py-3 border-bottom-neon">
+            <div class="d-flex align-items-center gap-2">
+              <div class="status-indicator"></div>
+              <span class="font-orbitron small text-white">KSKR_CORE [ACTIVE_SESSION]</span>
+            </div>
+            <div class="d-flex gap-2">
+              <span class="t-btn red"></span><span class="t-btn yellow"></span><span class="t-btn green"></span>
+            </div>
           </div>
           
           <div class="chat-body p-4" id="chatMessages">
-            <div class="chat-message bot ms-0 mb-3 ds-slide-in">
+            <div class="chat-message bot mb-3">
               <div class="msg-avatar"><i class="fas fa-robot"></i></div>
               <div class="msg-content glass-bubble">
-                <span class="font-fira small d-block text-neon mb-1">SYSTEM_AI</span>
-                <p class="mb-0 font-inter">Greetings. I am the AI interface for Kata Sai Kranthu Reddy. You can query me regarding his <strong>skills</strong>, <strong>projects</strong>, or <strong>contact</strong> information.</p>
+                <span class="font-fira small d-block mb-1 text-neon">KSKR_AI_CORE.exe</span>
+                <p class="mb-0 font-inter text-light">Greeting established. I am the central intelligence for Kranthu's Portfolio. How can I assist you with project logs or system capabilities today?</p>
               </div>
             </div>
           </div>
           
-          <div class="chat-suggestions d-flex gap-2 p-3 border-top-neon bg-darker overflow-auto">
-            <button class="cyber-pill-btn magnetic-btn font-fira small" onclick="sendQuick('/skills')">/skills</button>
-            <button class="cyber-pill-btn magnetic-btn font-fira small" onclick="sendQuick('/projects')">/projects</button>
-            <button class="cyber-pill-btn magnetic-btn font-fira small" onclick="sendQuick('/contact')">/contact</button>
+          <div class="chat-suggestions px-4 mb-3 d-flex gap-2 flex-wrap">
+            <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Who is Kranthu?')">whois_kranthu</button>
+            <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Show projects')">list_projects</button>
+            <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Contact info')">establish_link</button>
           </div>
           
-          <div class="chat-footer p-3 bg-darker rounded-bottom">
-            <form id="chatForm" class="d-flex align-items-center gap-2">
-              <span class="text-neon font-fira fw-bold">&gt;</span>
-              <input type="text" id="chatInput" class="cyber-input flex-grow-1 font-fira" placeholder="Enter query parameters..." autocomplete="off">
-              <button type="submit" class="cyber-send-btn magnetic-btn">
+          <form id="chatForm" class="chat-input-area p-4 pt-0">
+            <div class="glass-panel p-2 d-flex align-items-center">
+              <input type="text" id="chatInput" class="cyber-input flex-grow-1" placeholder="Enter query..." autocomplete="off">
+              <button type="submit" class="cyber-send-btn ms-2 px-3 py-2">
                 <i class="fas fa-paper-plane"></i>
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -5,13 +5,24 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- 0. SOUND SYSTEMS (PHASE 9) ---
   console.log("Initializing Sound Engine...");
+  // Initial state for boot protection
+  document.body.classList.add('booting');
+
   const sounds = {
     click: new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'),
     hover: new Audio('https://assets.mixkit.co/active_storage/sfx/2570/2570-preview.mp3'),
     boot: new Audio('https://assets.mixkit.co/active_storage/sfx/2573/2573-preview.mp3'),
     typing: new Audio('https://assets.mixkit.co/active_storage/sfx/2533/2533-preview.mp3'),
-    notify: new Audio('https://assets.mixkit.co/active_storage/sfx/2569/2569-preview.mp3')
+    notify: new Audio('https://assets.mixkit.co/active_storage/sfx/2569/2569-preview.mp3'),
+    glitch: new Audio('https://assets.mixkit.co/active_storage/sfx/2567/2567-preview.mp3'),
+    ambient: new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3')
   };
+
+  // Setup Ambient Loop (Deep Space Drone)
+  if (sounds.ambient) {
+    sounds.ambient.loop = true;
+    sounds.ambient.volume = 0.4;
+  }
 
   // Force enabled for debugging if not set
   if (localStorage.getItem('kskr_sound_enabled') === null) {
@@ -33,17 +44,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function playSound(key, volume = 0.3) {
     if (!soundEnabled || !sounds[key]) return;
-    const s = sounds[key].cloneNode();
-    s.volume = volume;
-    s.play().catch(() => {}); // Catch browser auto-play blocks
+    try {
+      const s = sounds[key].cloneNode();
+      s.volume = volume;
+      s.play().catch(() => {});
+    } catch(e) {}
   }
 
   if (soundToggle) {
-    soundToggle.addEventListener('click', () => {
+    soundToggle.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent trigger bubbling
       soundEnabled = !soundEnabled;
       localStorage.setItem('kskr_sound_enabled', soundEnabled);
       updateSoundUI();
-      if (soundEnabled) playSound('click');
+      
+      // Control Ambient loop on toggle
+      if (soundEnabled) {
+        playSound('click');
+        if (document.body.classList.contains('system-active')) {
+          sounds.ambient.play().catch(() => {});
+        }
+      } else {
+        sounds.ambient.pause();
+      }
+      
+      // Notify other systems (like the React Avatar)
+      console.log("🔊 Global sound changed to:", soundEnabled);
+      window.dispatchEvent(new CustomEvent('kskr_sound_change', { detail: { enabled: soundEnabled } }));
     });
   }
   updateSoundUI();
@@ -169,8 +196,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const initContainer = document.getElementById('boot-init-container');
 
   if (initBtn && initContainer) {
+    console.log("🤖 [Portfolio OS] Boot button found, waiting for user click...");
     initBtn.addEventListener('click', () => {
-      playSound('click', 0.5);
+      console.log("🤖 [Portfolio OS] INITIALIZE_SYSTEM clicked.");
+      try {
+        playSound('click', 0.5);
+      } catch(e) { console.warn("Sound play failed", e); }
+      
       gsap.to(initContainer, { 
         autoAlpha: 0, 
         height: 0, 
@@ -178,23 +210,37 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.5,
         onComplete: () => {
           initContainer.style.display = 'none';
+          console.log("🤖 [Portfolio OS] Starting boot logs...");
           simulateBootLogs();
         }
       });
     });
   } else {
-    // Fallback if elements not found
+    console.warn("🤖 [Portfolio OS] Boot elements missing, triggering auto-boot fallback.");
     setTimeout(simulateBootLogs, 300);
   }
 
+  // Global override for stuck users
+  window.FORCE_BOOT = () => {
+    if (initContainer) initContainer.style.display = 'none';
+    simulateBootLogs();
+  };
+
   enterBtn.addEventListener('click', () => {
     playSound('boot', 0.5);
+    
+    // Immediate state change for reliability
+    document.body.style.overflow = 'visible';
+    
     gsap.to(loaderScreen, {
       yPercent: -100,
       duration: 1,
       ease: "power3.inOut",
       onComplete: () => {
+        document.body.classList.remove('booting');
+        loaderScreen.classList.add('hidden'); // This disables pointer-events in CSS
         loaderScreen.style.display = 'none';
+        loaderScreen.remove(); // Remove from DOM to be sure
         initHeroAnimations();
       }
     });
@@ -202,10 +248,16 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.to(mainWrapper, { 
       autoAlpha: 1, 
       duration: 0.5, 
-      delay: 0.5,
+      delay: 0.2, // Faster entry
       onComplete: () => {
+        document.body.classList.add('system-active');
+        if (soundEnabled) {
+          sounds.ambient.play().catch(() => {});
+        }
         mainWrapper.style.height = 'auto';
+        mainWrapper.style.minHeight = '100vh';
         mainWrapper.style.overflow = 'visible';
+        document.body.style.overflow = 'visible';
         ScrollTrigger.refresh();
       }
     });
@@ -243,6 +295,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { passive: true });
+
+  // Manual Smooth Scroll Interceptor
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.includes('#')) {
+        const id = href.split('#')[1];
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          playSound('click', 0.2);
+          const offset = 80; // Navbar offset
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = target.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
 
   // --- 4. REAL-TIME CLOCK & HERO DASHBOARD ---
   function updateClock() {
@@ -388,6 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const glitchEl = document.getElementById('glitch-overlay');
     if(glitchEl) {
       glitchEl.classList.remove('d-none');
+      playSound('glitch', 0.6);
       // Play glitch sound if possible, else visual
       setTimeout(() => {
         glitchEl.classList.add('d-none');

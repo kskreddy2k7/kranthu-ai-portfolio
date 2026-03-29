@@ -138,6 +138,11 @@ def index():
                            github_username=GITHUB_USERNAME)
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return app.send_static_file('favicon.ico')
+
+
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
