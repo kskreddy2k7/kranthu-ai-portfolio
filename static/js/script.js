@@ -566,6 +566,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatInput = document.getElementById('chatInput');
   const chatMessages = document.getElementById('chatMessages');
 
+  // --- Static Backend (for GitHub Pages) ---
+  const CHATBOT_RESPONSES = {
+    'skills': "Kranthu is skilled in <strong>Python</strong>, <strong>Flask</strong>, <strong>NLP</strong>, and Machine Learning libraries like <strong>Pandas</strong> and <strong>NumPy</strong>. He also has experience with <strong>Java</strong> for Android development.",
+    'projects': "Kranthu's featured showcase includes 6 premium projects:<br>• <strong>Sri Sai Traders</strong> (Web) – <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Portfolio OS</strong> (Web) – <a href='https://kskreddy2k7.github.io/kranthu-ai-portfolio/' target='_blank' style='color:#00f3ff'>Current Site</a><br>• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Smart Keyboard</strong> (Apps) – <a href='https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a>",
+    'contact': "You can reach Kranthu via:<br>• <strong>LinkedIn:</strong> <a href='https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377' target='_blank' style='color:#00d4ff'>linkedin.com/in/kata-sai-kranthu-reddy</a><br>• <strong>GitHub:</strong> <a href='https://github.com/kskreddy2k7' target='_blank' style='color:#00d4ff'>github.com/kskreddy2k7</a><br>• Or use the <strong>Contact Form</strong> on this page!",
+    'experience': "Kranthu is currently a 1st-year B.Tech student (2025-29) building his experience through **Academic & Personal Projects**. He completed his Intermediate education (MPC) in 2025 and his CBSE Class 10th in 2023.",
+    'education': "Kranthu is a 1st Year B.Tech student in Computer Science & Engineering (AI/ML) at <strong>SRM University, KTR</strong> (Batch 2025-29). Previously, he completed his Intermediate (MPC) in 2025 and Schooling (CBSE) in 2023.",
+    'certifications': "Kranthu has completed certifications in <strong>Python Programming</strong>, <strong>AI & Machine Learning</strong>, and <strong>Web Development</strong>.",
+    'hello': "Hi there! 👋 I'm Kranthu's AI assistant. Ask me about his <strong>skills</strong>, <strong>projects</strong>, or how to <strong>contact</strong> him!",
+    'default': "I can help you learn about Kranthu's <strong>skills</strong>, <strong>projects</strong>, <strong>academic work</strong>, or <strong>contact</strong> details. What would you like to know?"
+  };
+
+  function getLocalResponse(msg) {
+    const m = msg.toLowerCase().trim();
+    if (m === '/whoami' || any(m, ['experience', 'year', 'background', 'history'])) return CHATBOT_RESPONSES['experience'];
+    if (m === '/skills' || any(m, ['skill', 'know', 'language', 'tech', 'stack', 'python', 'flask', 'java'])) return CHATBOT_RESPONSES['skills'];
+    if (m === '/projects' || any(m, ['project', 'built', 'work', 'autocorrect', 'quiz', 'speech'])) return CHATBOT_RESPONSES['projects'];
+    if (m === '/contact' || any(m, ['contact', 'reach', 'email', 'linkedin', 'github', 'hire', 'connect'])) return CHATBOT_RESPONSES['contact'];
+    if (any(m, ['hello', 'hi', 'hey', 'greet'])) return CHATBOT_RESPONSES['hello'];
+    if (any(m, ['education', 'study', 'degree', 'college', 'university'])) return CHATBOT_RESPONSES['education'];
+    if (any(m, ['certif', 'course', 'training'])) return CHATBOT_RESPONSES['certifications'];
+    if (any(m, ['resume'])) return "You can download Kranthu's latest resume here: <a href='static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx' target='_blank' style='color:#00d4ff'>[DOWNLOAD_RESUME.pdf]</a>";
+    return CHATBOT_RESPONSES['default'];
+  }
+  function any(m, words) { return words.some(w => m.includes(w)); }
+
   function appendChat(htmlContent, isUser) {
     const msgDiv = document.createElement('div');
     msgDiv.className = `chat-message ${isUser ? 'user me-0' : 'bot ms-0'} mb-3`;
