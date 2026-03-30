@@ -47,17 +47,20 @@ def fetch_github_stats():
 CHATBOT_RESPONSES = {
     'skills': (
         "Kranthu is skilled in <strong>Python</strong>, <strong>Flask</strong>, "
-        "<strong>NLP</strong>, and Machine Learning libraries like <strong>Pandas</strong> and <strong>NumPy</strong>. "
-        "He also has experience with <strong>Java</strong> for Android development."
+        "<strong>NLP</strong>, <strong>Java</strong>, <strong>Kotlin</strong>, and <strong>Dart</strong>. "
+        "He uses libraries like <strong>Pandas</strong> and <strong>NumPy</strong> for machine learning "
+        "and builds mobile apps with <strong>Flutter</strong> and <strong>Android Studio</strong>."
     ),
     'projects': (
-        "Kranthu's featured showcase includes 6 premium projects:<br>"
+        "Kranthu's featured showcase includes 8 premium projects:<br>"
         "• <strong>Sri Sai Traders</strong> (Web) – <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
         "• <strong>Portfolio OS</strong> (Web) – <a href='https://kskreddy2k7.github.io/kranthu-ai-portfolio/' target='_blank' style='color:#00f3ff'>Current Site</a><br>"
         "• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
         "• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
-        "• <strong>Smart Keyboard</strong> (Apps) – <a href='https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
-        "• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a>"
+        "• <strong>Smart Keyboard</strong> (Apps) – <a href='https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard' target='_blank' style='color:#00f3ff'>Repo</a><br>"
+        "• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a><br>"
+        "• <strong>Sambhasha App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/sambhasha_app' target='_blank' style='color:#00f3ff'>Repo</a><br>"
+        "• <strong>OOPS Banner App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/-OOPSBannerApp' target='_blank' style='color:#00f3ff'>Repo</a>"
     ),
     'contact': (
         "You can reach Kranthu via:<br>"

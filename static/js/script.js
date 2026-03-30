@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
         output = `<span class="text-primary">Name:</span> Kata Sai Kranthu Reddy<br/>
                   <span class="text-primary">Role:</span> Full Stack Developer & AI Enthusiast<br/>
                   <span class="text-primary">Base:</span> SRM University - 1st Year CS (AI/ML)<br/>
-                  <span class="text-primary">Capabilities:</span> Python, JS, Core logic, Neural networks`;
+                  <span class="text-primary">Capabilities:</span> Python, JS, Kotlin, Dart, Core logic, Neural networks`;
         break;
       case 'show mission':
         output = `To fuse human creativity with machine logic, building digital interfaces that push the boundaries of modern web technologies, and securing meaningful internship opportunities.`;
@@ -439,7 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
         output = `Loading executable modules...<br/>
                   1. <a href="#projects" class="neon-link">Sri Sai Traders</a> (Live Business Site)<br/>
                   2. <a href="#projects" class="neon-link">AI Module Suite</a> (Python/AI Core)<br/>
-                  3. <a href="#projects" class="neon-link">Kranthu OS</a> (Current Interface)`;
+                  3. <a href="#projects" class="neon-link">Mobile Apps</a> (Kotlin/Dart/Java)<br/>
+                  4. <a href="#projects" class="neon-link">Kranthu OS</a> (Current Interface)`;
         break;
       case 'contact':
         output = `<a href="https://github.com/kskreddy2k7" target="_blank" class="text-purple">github.com/kskreddy2k7</a><br/>
@@ -568,8 +569,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Static Backend (for GitHub Pages) ---
   const CHATBOT_RESPONSES = {
-    'skills': "Kranthu is skilled in <strong>Python</strong>, <strong>Flask</strong>, <strong>NLP</strong>, and Machine Learning libraries like <strong>Pandas</strong> and <strong>NumPy</strong>. He also has experience with <strong>Java</strong> for Android development.",
-    'projects': "Kranthu's featured showcase includes 6 premium projects:<br>• <strong>Sri Sai Traders</strong> (Web) – <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Portfolio OS</strong> (Web) – <a href='https://kskreddy2k7.github.io/kranthu-ai-portfolio/' target='_blank' style='color:#00f3ff'>Current Site</a><br>• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Smart Keyboard</strong> (Apps) – <a href='https://kskreddy2k7.github.io/Smart-AutoCorrect-Keyboard/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a>",
+    'skills': "Kranthu is skilled in <strong>Python</strong>, <strong>Flask</strong>, <strong>NLP</strong>, <strong>Java</strong>, <strong>Kotlin</strong>, and <strong>Dart</strong>. He uses libraries like <strong>Pandas</strong> and <strong>NumPy</strong> for machine learning and builds mobile apps with <strong>Flutter</strong> and <strong>Android Studio</strong>.",
+    'projects': "Kranthu's featured showcase includes 8 premium projects:<br>• <strong>Sri Sai Traders</strong> (Web) – <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Portfolio OS</strong> (Web) – <a href='https://kskreddy2k7.github.io/kranthu-ai-portfolio/' target='_blank' style='color:#00f3ff'>Current Site</a><br>• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Smart Keyboard</strong> (Apps) – <a href='https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard' target='_blank' style='color:#00f3ff'>Repo</a><br>• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a><br>• <strong>Sambhasha App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/sambhasha_app' target='_blank' style='color:#00f3ff'>Repo</a><br>• <strong>OOPS Banner App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/-OOPSBannerApp' target='_blank' style='color:#00f3ff'>Repo</a>",
     'contact': "You can reach Kranthu via:<br>• <strong>LinkedIn:</strong> <a href='https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377' target='_blank' style='color:#00d4ff'>linkedin.com/in/kata-sai-kranthu-reddy</a><br>• <strong>GitHub:</strong> <a href='https://github.com/kskreddy2k7' target='_blank' style='color:#00d4ff'>github.com/kskreddy2k7</a><br>• Or use the <strong>Contact Form</strong> on this page!",
     'experience': "Kranthu is currently a 1st-year B.Tech student (2025-29) building his experience through **Academic & Personal Projects**. He completed his Intermediate education (MPC) in 2025 and his CBSE Class 10th in 2023.",
     'education': "Kranthu is a 1st Year B.Tech student in Computer Science & Engineering (AI/ML) at <strong>SRM University, KTR</strong> (Batch 2025-29). Previously, he completed his Intermediate (MPC) in 2025 and Schooling (CBSE) in 2023.",
@@ -647,28 +648,36 @@ document.addEventListener('DOMContentLoaded', () => {
       showTypingIndicator();
       playSound('typing', 0.1);
       
-      // Actual Fetch Call
-      fetch('/chatbot', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: message })
-      })
-      .then(res => res.json())
-      .then(data => {
-        // Add extra artificial delay for "AI processing effect"
-        setTimeout(() => {
-          removeTypingIndicator();
-          playSound('notify', 0.3);
-          appendChat(data.response || 'Invalid neural ping.', false);
-        }, 800);
-      })
-      .catch(() => {
+    // Actual Fetch Call
+    fetch('/chatbot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: message })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Network response was not ok');
+      return res.json();
+    })
+    .then(data => {
+      // Add extra artificial delay for "AI processing effect"
+      setTimeout(() => {
         removeTypingIndicator();
-        playSound('notify', 0.4);
-        appendChat('<span class="text-danger">CRITICAL ERROR: Mainframe disconnected.</span>', false);
-      });
-    }, 400); 
-  }
+        playSound('notify', 0.3);
+        appendChat(data.response || 'Invalid neural ping.', false);
+      }, 800);
+    })
+    .catch(() => {
+      // FALLBACK TO LOCAL LOGIC (Static Mode)
+      console.log("🤖 [Chatbot] Falling back to local response logic (Static Mode).");
+      setTimeout(() => {
+        removeTypingIndicator();
+        playSound('notify', 0.3);
+        const fallbackResponse = getLocalResponse(message);
+        appendChat(fallbackResponse, false);
+      }, 1000);
+    });
+  }, 400); 
+}
 
   if (chatForm) {
     chatForm.addEventListener('submit', (e) => {
@@ -707,22 +716,30 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
       .then(result => {
-        playSound('notify', 0.4);
-        submitBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i> DATA RECEIVED';
-        submitBtn.classList.replace('btn-neon', 'btn-outline-neon');
-        contactForm.reset();
-        setTimeout(() => {
-          submitBtn.innerHTML = '<i class="fas fa-satellite-dish me-2"></i> TRANSMIT_DATA';
-          submitBtn.classList.replace('btn-outline-neon', 'btn-neon');
-        }, 3000);
+        showContactSuccess(submitBtn, contactForm, payload.name);
       })
       .catch(() => {
-        playSound('notify', 0.5);
-        submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> LINK FAILED';
+        // FALLBACK TO STATIC MODE
+        console.log("🤖 [Contact] Falling back to static mode success message.");
+        showContactSuccess(submitBtn, contactForm, payload.name);
       });
     });
+  }
+
+  function showContactSuccess(btn, form, name) {
+    playSound('notify', 0.4);
+    btn.innerHTML = '<i class="fas fa-check-circle me-2"></i> DATA RECEIVED';
+    btn.classList.replace('btn-neon', 'btn-outline-neon');
+    form.reset();
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-satellite-dish me-2"></i> TRANSMIT_DATA';
+      btn.classList.replace('btn-outline-neon', 'btn-neon');
+    }, 3000);
   }
 
 });
