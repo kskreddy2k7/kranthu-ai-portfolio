@@ -66,36 +66,35 @@ export function useSpeech() {
     const voices = window.speechSynthesis.getVoices();
     if (!voices.length) return null;
 
-    // Filter out obvious female voices first
-    const femaleNames = ['samantha', 'victoria', 'karen', 'moira', 'fiona',
-      'tessa', 'veena', 'ava', 'allison', 'susan', 'zoe', 'nicky', 'sara',
-      'ellen', 'alice', 'amelie', 'anna', 'kyoko', 'sin-ji', 'mei-jia',
-      'female', 'woman', 'girl'];
+    // Names known to be female — explicitly exclude these
+    const femaleNames = ['samantha','victoria','karen','moira','fiona','tessa',
+      'veena','ava','allison','susan','zoe','nicky','sara','ellen','alice',
+      'amelie','anna','kyoko','female','woman','girl','siri'];
 
     function isFemale(v) {
       const n = v.name.toLowerCase();
       return femaleNames.some(f => n.includes(f));
     }
 
-    const enVoices = voices.filter(v => v.lang.startsWith('en'));
-    const maleEnVoices = enVoices.filter(v => !isFemale(v));
+    const enVoices    = voices.filter(v => v.lang.startsWith('en'));
+    const maleVoices  = enVoices.filter(v => !isFemale(v));
 
     return (
-      // Top priority: named male voices
-      voices.find(v => v.name === 'Google UK English Male')  ||
-      voices.find(v => v.name === 'Google US English Male')  ||
-      voices.find(v => v.name.includes('Microsoft Mark'))    ||
-      voices.find(v => v.name.includes('Microsoft David'))   ||
-      voices.find(v => v.name.includes('Microsoft Guy'))     ||
-      voices.find(v => v.name === 'Daniel')                  || // iOS UK Male
-      voices.find(v => v.name === 'Alex')                    || // iOS US Male
-      voices.find(v => v.name === 'Fred')                    || // iOS Male
-      voices.find(v => v.name === 'Tom')                     || // some iOS
-      // Any English voice that isn't female
-      maleEnVoices.find(v => v.lang === 'en-GB')             ||
-      maleEnVoices.find(v => v.lang === 'en-US')             ||
-      maleEnVoices[0]                                        ||
-      // Absolute last resort: any English
+      voices.find(v => v.name === 'Google UK English Male')    ||
+      voices.find(v => v.name === 'Google US English Male')    ||
+      voices.find(v => v.name === 'Google हिन्दी' && false)    || // skip Hindi
+      voices.find(v => v.name.includes('Microsoft Mark'))      ||
+      voices.find(v => v.name.includes('Microsoft David'))     ||
+      voices.find(v => v.name.includes('Microsoft Guy'))       ||
+      voices.find(v => v.name === 'Daniel')                    || // iOS UK Male
+      voices.find(v => v.name === 'Alex')                      || // iOS US Male
+      voices.find(v => v.name === 'Fred')                      || // iOS Male
+      voices.find(v => v.name === 'Tom')                       ||
+      maleVoices.find(v => v.lang === 'en-US')                 ||
+      maleVoices.find(v => v.lang === 'en-GB')                 ||
+      maleVoices.find(v => v.lang === 'en-IN')                 ||
+      maleVoices[0]                                            ||
+      enVoices.find(v => v.lang === 'en-US')                   ||
       enVoices[0]
     );
   }

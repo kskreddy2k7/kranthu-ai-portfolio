@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let greeting = 'Good Evening,';
     if (hour < 12) greeting = 'Good Morning,';
     else if (hour < 18) greeting = 'Good Afternoon,';
-    greetingEl.textContent = greeting;
+    if (greetingEl) greetingEl.closest('.hero-greeting')?.remove(); // hide entire greeting line
   }
   setInterval(updateClock, 1000);
   updateClock();
