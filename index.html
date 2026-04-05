@@ -415,18 +415,22 @@
                   <div class="msg-avatar"><i class="fas fa-robot"></i></div>
                   <div class="msg-content glass-bubble">
                     <span class="font-fira small d-block mb-1 text-neon">KSKR_AI_CORE.exe</span>
-                    <p class="mb-0 font-inter text-light">Greeting established. How can I assist you with Kranthu's portfolio today?</p>
+                    <p class="mb-0 font-inter text-light">Hello! 👋 I'm <strong>KSKR AI</strong> — Kranthu's personal intelligence system. Ask me about his <strong>skills</strong>, <strong>projects</strong>, <strong>education</strong>, <strong>internship availability</strong>, or how to <strong>contact</strong> him!</p>
                   </div>
                 </div>
               </div>
               <div class="chat-suggestions px-4 mb-3 d-flex gap-2 flex-wrap">
                 <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Who is Kranthu?')">whois_kranthu</button>
-                <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Show projects')">list_projects</button>
+                <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Show me all projects')">list_projects</button>
+                <button class="cyber-pill-btn font-fira small" onclick="sendQuick('What are his skills?')">tech_skills</button>
+                <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Is he available for internship?')">internship</button>
+                <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Education details')">education</button>
                 <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Contact info')">establish_link</button>
+                <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Download resume')">get_resume</button>
               </div>
               <form id="chatForm" class="chat-input-area p-4 pt-0">
                 <div class="glass-panel p-2 d-flex align-items-center">
-                  <input type="text" id="chatInput" class="cyber-input flex-grow-1" placeholder="Enter query...">
+                  <input type="text" id="chatInput" class="cyber-input flex-grow-1" placeholder="Ask anything about Kranthu..." autocomplete="off">
                   <button type="submit" class="cyber-send-btn ms-2 px-3 py-2"><i class="fas fa-paper-plane"></i></button>
                 </div>
               </form>

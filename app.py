@@ -45,93 +45,180 @@ def fetch_github_stats():
 
 
 CHATBOT_RESPONSES = {
+    'greeting': (
+        "Hello! 👋 I'm <strong>KSKR AI</strong> — Kranthu's personal intelligence system. "
+        "I can tell you about his <strong>skills</strong>, <strong>projects</strong>, "
+        "<strong>education</strong>, <strong>goals</strong>, or how to <strong>contact</strong> him. "
+        "What would you like to know?"
+    ),
+    'identity': (
+        "I represent <strong>Kata Sai Kranthu Reddy</strong> — a passionate Full Stack Developer and AI Engineer.<br>"
+        "📍 <strong>University:</strong> SRM University, Kattankulathur — B.Tech CS (AI/ML) 2025–2029<br>"
+        "🎯 <strong>Role:</strong> Full Stack Developer · AI Engineer · Mobile App Developer<br>"
+        "🔥 <strong>Status:</strong> <span style='color:#00ff88'>Actively Open to Internship Opportunities</span>"
+    ),
     'skills': (
-        "Kranthu is skilled in <strong>Python</strong>, <strong>Flask</strong>, "
-        "<strong>NLP</strong>, <strong>Java</strong>, <strong>Kotlin</strong>, and <strong>Dart</strong>. "
-        "He uses libraries like <strong>Pandas</strong> and <strong>NumPy</strong> for machine learning "
-        "and builds mobile apps with <strong>Flutter</strong> and <strong>Android Studio</strong>."
+        "Kranthu's full technical stack:<br>"
+        "💻 <strong>Languages:</strong> Python · JavaScript · Java · Dart · Kotlin<br>"
+        "⚙️ <strong>Frameworks:</strong> Flask · React · Flutter · Android Studio<br>"
+        "🤖 <strong>AI/ML:</strong> Machine Learning · NLP · Neural Networks · Pandas · NumPy<br>"
+        "🗄️ <strong>Databases:</strong> Firebase · SQLite · MySQL<br>"
+        "🛠️ <strong>Tools:</strong> Git · GitHub · VS Code · Postman · Linux"
     ),
     'projects': (
-        "Kranthu's featured showcase includes 8 premium projects:<br>"
-        "• <strong>Sri Sai Traders</strong> (Web) – <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
-        "• <strong>Portfolio OS</strong> (Web) – <a href='https://kskreddy2k7.github.io/kranthu-ai-portfolio/' target='_blank' style='color:#00f3ff'>Current Site</a><br>"
-        "• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
-        "• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>"
-        "• <strong>Smart Keyboard</strong> (Apps) – <a href='https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard' target='_blank' style='color:#00f3ff'>Repo</a><br>"
-        "• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a><br>"
-        "• <strong>Sambhasha App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/sambhasha_app' target='_blank' style='color:#00f3ff'>Repo</a><br>"
-        "• <strong>OOPS Banner App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/-OOPSBannerApp' target='_blank' style='color:#00f3ff'>Repo</a>"
+        "Here are Kranthu's deployed systems:<br>"
+        "🌐 <strong>Sri Sai Traders</strong> — Full enterprise business web platform "
+        "<a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>[Live]</a><br>"
+        "🤖 <strong>AI Resume Screener</strong> — Intelligent candidate filtering system (Python/NLP) "
+        "<a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>[Demo]</a><br>"
+        "🎙️ <strong>Offline AI Voice OS</strong> — Voice-controlled AI operating interface "
+        "<a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>[Demo]</a><br>"
+        "⌨️ <strong>Smart Auto-Correct Keyboard</strong> — NLP-powered Android keyboard "
+        "<a href='https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard' target='_blank' style='color:#00f3ff'>[Repo]</a><br>"
+        "💬 <strong>Sambhasha App</strong> — Real-time messaging platform (Flutter/Firebase) "
+        "<a href='https://github.com/kskreddy2k7/sambhasha_app' target='_blank' style='color:#00f3ff'>[Repo]</a><br>"
+        "🧠 <strong>Quiz AI App</strong> — AI-driven adaptive quiz system "
+        "<a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>[Repo]</a><br>"
+        "🚀 <strong>Portfolio OS</strong> — This very AI-powered portfolio interface (current site)<br>"
+        "📱 <strong>OOPS Banner App</strong> — OOP concepts visual app "
+        "<a href='https://github.com/kskreddy2k7/-OOPSBannerApp' target='_blank' style='color:#00f3ff'>[Repo]</a>"
     ),
     'contact': (
-        "You can reach Kranthu via:<br>"
-        "• <strong>LinkedIn:</strong> <a href='https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377' "
+        "You can connect with Kranthu through:<br>"
+        "🔗 <strong>LinkedIn:</strong> <a href='https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377' "
         "target='_blank' style='color:#00d4ff'>linkedin.com/in/kata-sai-kranthu-reddy</a><br>"
-        "• <strong>GitHub:</strong> <a href='https://github.com/kskreddy2k7' "
+        "💻 <strong>GitHub:</strong> <a href='https://github.com/kskreddy2k7' "
         "target='_blank' style='color:#00d4ff'>github.com/kskreddy2k7</a><br>"
-        "• Or use the <strong>Contact Form</strong> on this page!"
-    ),
-    'experience': (
-        "Kranthu is currently a 1st-year B.Tech student (2025-29) building his experience through **Academic & Personal Projects**. "
-        "He completed his Intermediate education (MPC) in 2025 and his CBSE Class 10th in 2023."
+        "📧 <strong>Email:</strong> Use the Contact Form on this page for a direct message!<br>"
+        "He typically responds within <strong>24 hours</strong>. 🚀"
     ),
     'education': (
-        "Kranthu is a 1st Year B.Tech student in Computer Science & Engineering (AI/ML) "
-        "at <strong>SRM University, KTR</strong> (Batch 2025-29). Previously, he completed "
-        "his Intermediate (MPC) in 2025 and Schooling (CBSE) in 2023."
+        "📚 <strong>Academic Profile:</strong><br>"
+        "🎓 <strong>Current:</strong> B.Tech — Computer Science & Engineering (AI/ML)<br>"
+        "🏫 SRM University, Kattankulathur — Batch 2025–2029<br>"
+        "📋 <strong>Intermediate (MPC):</strong> Completed 2025<br>"
+        "📋 <strong>CBSE Class 10:</strong> Completed 2023"
+    ),
+    'experience': (
+        "Kranthu is a <strong>1st-year student</strong> actively building real-world experience through:<br>"
+        "✅ 8 independently built and deployed applications<br>"
+        "✅ Full-stack, AI, and mobile domains covered<br>"
+        "✅ Live platforms already serving real users<br>"
+        "✅ Consistently learning through practical implementation<br>"
+        "He learns fast and ships faster. 🚀"
     ),
     'certifications': (
-        "Kranthu has completed certifications in <strong>Python Programming</strong>, "
-        "<strong>AI & Machine Learning</strong>, and <strong>Web Development</strong>."
+        "📜 Kranthu's certifications include:<br>"
+        "• <strong>Python Programming</strong> — Core & Advanced<br>"
+        "• <strong>AI & Machine Learning</strong> — Fundamentals to NLP<br>"
+        "• <strong>Web Development</strong> — Full Stack (HTML, CSS, JS, Flask)<br>"
+        "• <strong>Android Development</strong> — Kotlin & Java<br>"
+        "• <strong>Flutter Development</strong> — Cross-platform mobile apps"
     ),
-    'hello': (
-        "Hi there! 👋 I'm Kranthu's AI assistant. Ask me about his "
-        "<strong>skills</strong>, <strong>projects</strong>, or how to <strong>contact</strong> him!"
+    'goal': (
+        "🎯 <strong>Kranthu's Mission:</strong><br>"
+        "To engineer intelligent, scalable systems that bridge human creativity with advanced AI technology. "
+        "He aims to build products that matter and secure meaningful opportunities in "
+        "<strong>AI Research</strong> or <strong>Software Engineering</strong>."
+    ),
+    'resume': (
+        "📄 You can download Kranthu's latest resume here:<br>"
+        "<a href='/static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx' target='_blank' "
+        "style='color:#00d4ff;font-weight:bold;'>[⬇ DOWNLOAD RESUME]</a>"
+    ),
+    'internship': (
+        "✅ Yes! Kranthu is <strong>actively seeking internship opportunities</strong> in:<br>"
+        "• Artificial Intelligence & Machine Learning<br>"
+        "• Full Stack Web Development<br>"
+        "• Mobile App Development (Flutter/Android)<br>"
+        "Feel free to reach out via LinkedIn or the Contact Form below! 🚀"
     ),
     'default': (
-        "I can help you learn about Kranthu's <strong>skills</strong>, "
-        "<strong>projects</strong>, <strong>academic work</strong>, or <strong>contact</strong> details. "
-        "What would you like to know?"
+        "I'm not sure about that, but I can help with:<br>"
+        "💬 <strong>skills</strong> · <strong>projects</strong> · <strong>education</strong> · "
+        "<strong>contact</strong> · <strong>internship</strong> · <strong>resume</strong><br>"
+        "Just ask me anything about Kranthu! 😊"
     ),
 }
 
 
 def get_chatbot_response(message):
-    msg = message.lower().strip()
-    
-    # OS-style Slash Commands
-    if msg == '/whoami':
-        return CHATBOT_RESPONSES['experience']
-    if msg == '/skills':
-        return CHATBOT_RESPONSES['skills']
-    if msg == '/projects':
-        return CHATBOT_RESPONSES['projects']
-    if msg == '/contact':
-        return CHATBOT_RESPONSES['contact']
-    if msg == '/logs':
-        return CHATBOT_RESPONSES['experience']
-    if msg == '/resume' or 'resume' in msg:
-        return (
-            "You can download Kranthu's latest resume here: "
-            "<a href='/static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx' target='_blank' "
-            "style='color:#00d4ff'>[DOWNLOAD_RESUME.pdf]</a>"
-        )
+    import re
+    # Clean: lowercase + strip all punctuation for reliable matching
+    raw = message.lower().strip()
+    msg = re.sub(r'[^\w\s]', ' ', raw)  # replace ?,!,. etc with space
 
-    # Keyword Matching
-    if any(w in msg for w in ['hello', 'hi', 'hey', 'greet']):
-        return CHATBOT_RESPONSES['hello']
-    if any(w in msg for w in ['skill', 'know', 'language', 'tech', 'stack', 'python', 'flask', 'java']):
+    def has(*keywords):
+        return any(k in msg for k in keywords)
+
+    # Resume (top priority)
+    if has('resume', 'cv', 'download resume'):
+        return CHATBOT_RESPONSES['resume']
+
+    # Skills
+    if has('skill', 'skills', 'tech', 'stack', 'python', 'flask',
+            'java', 'react', 'flutter', 'kotlin', 'dart', 'nlp',
+            'language', 'languages', 'capable', 'technology'):
         return CHATBOT_RESPONSES['skills']
-    if any(w in msg for w in ['project', 'built', 'work', 'autocorrect', 'quiz', 'speech']):
+
+    # Projects
+    if has('project', 'projects', 'app', 'apps', 'built', 'autocorrect',
+            'keyboard', 'sambhasha', 'quiz', 'traders', 'deployed', 'work',
+            'voice os', 'resume screener', 'portfolio'):
         return CHATBOT_RESPONSES['projects']
-    if any(w in msg for w in ['contact', 'reach', 'email', 'linkedin', 'github', 'hire', 'connect']):
+
+    # Contact
+    if has('contact', 'reach', 'email', 'linkedin', 'github',
+            'connect', 'message', 'dm', 'link'):
         return CHATBOT_RESPONSES['contact']
-    if any(w in msg for w in ['experience', 'year', 'background', 'history']):
-        return CHATBOT_RESPONSES['experience']
-    if any(w in msg for w in ['education', 'study', 'degree', 'college', 'university']):
+
+    # Education
+    if has('education', 'study', 'degree', 'college', 'university',
+            'srm', 'school', 'batch', 'btech', 'student', 'studying'):
         return CHATBOT_RESPONSES['education']
-    if any(w in msg for w in ['certif', 'course', 'training']):
+
+    # Experience
+    if has('experience', 'history', 'fresher', 'background'):
+        return CHATBOT_RESPONSES['experience']
+
+    # Certifications
+    if has('certif', 'certification', 'course', 'training', 'certificate'):
         return CHATBOT_RESPONSES['certifications']
+
+    # Goals / Mission
+    if has('goal', 'goals', 'mission', 'dream', 'aspire', 'future', 'vision', 'plan'):
+        return CHATBOT_RESPONSES['goal']
+
+    # Internship / Hire
+    if has('intern', 'internship', 'hire', 'job', 'opportunity', 'available', 'looking'):
+        return CHATBOT_RESPONSES['internship']
+
+    # Identity / About (after skills/projects to avoid false triggers)
+    if has('who', 'about', 'introduce', 'kranthu', 'identity', 'tell me'):
+        return CHATBOT_RESPONSES['identity']
+
+    # Slash Commands
+    slash_map = {
+        '/skills': 'skills', '/tech': 'skills', '/stack': 'skills',
+        '/projects': 'projects', '/apps': 'projects',
+        '/contact': 'contact', '/reach': 'contact',
+        '/resume': 'resume', '/cv': 'resume',
+        '/goal': 'goal', '/mission': 'goal',
+        '/intern': 'internship', '/internship': 'internship',
+        '/edu': 'education', '/education': 'education',
+        '/whoami': 'identity', '/who': 'identity',
+    }
+    for cmd, key in slash_map.items():
+        if raw == cmd:
+            return CHATBOT_RESPONSES[key]
+
+    # Greetings — checked LAST, exact word only to avoid 'his' matching 'hi'
+    cleaned_words = set(msg.split())
+    if cleaned_words & {'hello', 'hey', 'greet', 'namaste', 'howdy'} or raw in ['hi', 'hello', 'hey', 'hi!']:
+        return CHATBOT_RESPONSES['greeting']
+
     return CHATBOT_RESPONSES['default']
+
 
 
 @app.route('/')

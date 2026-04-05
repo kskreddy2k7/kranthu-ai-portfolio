@@ -22,10 +22,10 @@ export function useSpeech() {
     window.speechSynthesis.cancel();
 
     const utterance   = new SpeechSynthesisUtterance(cleanText(text));
-    utterance.rate    = 0.95;   // Slightly faster than before but still robotic
-    utterance.pitch   = 1.9;    // Peppy robotic pitch
+    utterance.rate    = 1.1;    // Slightly faster, confident pace
+    utterance.pitch   = 0.85;    // Deep male AI pitch
     utterance.volume  = 1.0;
-    utterance.lang    = 'en-US';
+    utterance.lang    = 'en-GB';  // British/Neutral accents tend to sound more professional
 
     if (onEnd) {
       utterance.onend = onEnd;
@@ -34,11 +34,14 @@ export function useSpeech() {
     function pickVoice() {
       const voices = window.speechSynthesis.getVoices();
       return (
+        voices.find(v => v.name.includes('Google UK English Male')) ||
         voices.find(v => v.name.includes('Google US English Male')) ||
+        voices.find(v => v.name.includes('Microsoft Mark')) ||
         voices.find(v => v.name.includes('Microsoft David')) ||
         voices.find(v => v.name.includes('Daniel')) ||
-        voices.find(v => v.name.includes('Male') && v.lang.startsWith('en')) ||
-        voices.find(v => v.name.includes('Google')) ||
+        voices.find(v => v.name.includes('Alex')) ||
+        voices.find(v => v.name.toLowerCase().includes('male') && v.lang.startsWith('en')) ||
+        voices.find(v => v.lang.startsWith('en-GB')) ||
         voices.find(v => v.lang.startsWith('en'))
       );
     }

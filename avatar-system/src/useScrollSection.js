@@ -4,37 +4,37 @@ const SECTIONS = [
   {
     id: 'hero',
     xPercent: 82,
-    speech: "Hey! 👋 I'm Kranthu's AI companion — ask me anything, I'm right here!",
+    speech: "Hello. I'm KSKR, your intelligent guide. This portfolio belongs to Kata Sai Kranthu Reddy — a passionate Full Stack Developer and AI Engineer. Let me walk you through his work.",
   },
   {
     id: 'about',
     xPercent: 15,
-    speech: "Let me tell you about Kranthu — a passionate developer and AI builder! 😄",
+    speech: "Kranthu is a Computer Science student at SRM University, specializing in Artificial Intelligence. He builds real-world products — from AI voice systems to enterprise web platforms. A driven engineer with a clear vision.",
   },
   {
     id: 'skills',
     xPercent: 15,
-    speech: "Here's what I'm really good at 💻 — Python, AI, web dev and more!",
+    speech: "His technical stack spans Python, Flask, React, and Java — backed by hands-on experience in Machine Learning, Natural Language Processing, and mobile development with Flutter. He ships solutions, not just code.",
   },
   {
     id: 'experience',
     xPercent: 80,
-    speech: "This is the journey so far 🎓 — shaping my developer mindset every day!",
+    speech: "Every project and learning milestone has sharpened his edge. From academic coursework to independently deployed systems, Kranthu consistently applies theory to real engineering challenges.",
   },
   {
     id: 'projects',
     xPercent: 50,
-    speech: "These are some powerful builds I've worked on 🚀 — click to explore!",
+    speech: "His projects solve real problems. An AI Resume Screener, an Offline Voice Operating System, an intelligent Auto-Correct engine, and a full enterprise web platform — each built with purpose and precision.",
   },
   {
     id: 'chatbot',
     xPercent: 15,
-    speech: "Try the AI terminal — or click me and let's chat directly! 🤖",
+    speech: "This is the interactive module. You can ask questions, and I'll respond with information about Kranthu's background, skills, and projects. Go ahead — I'm listening.",
   },
   {
     id: 'contact',
     xPercent: 78,
-    speech: "I'd love to connect 🤝 — reach out anytime, I'm open to opportunities!",
+    speech: "Ready to connect? You can reach Kranthu via GitHub, LinkedIn, or email for collaboration, internships, or technical discussions. The contact details are right here.",
   },
 ];
 

@@ -419,32 +419,51 @@ document.addEventListener('DOMContentLoaded', () => {
     let output = '';
     switch(cmd) {
       case 'help':
-        output = `Available commands:<br/>
-          <span class="text-warning">whois kranthu</span> - Display creator information<br/>
-          <span class="text-warning">show mission</span>  - Display objective<br/>
-          <span class="text-warning">projects</span>      - List deployed applications<br/>
-          <span class="text-warning">contact</span>       - Show transmission endpoints<br/>
-          <span class="text-warning">clear</span>         - Clear terminal output`;
+        output = `<span class="text-neon">Available commands:</span><br/>
+          <span class="text-warning">whois kranthu</span>  — Developer profile &amp; identity<br/>
+          <span class="text-warning">skills</span>         — Full technical skill set<br/>
+          <span class="text-warning">projects</span>       — Deployed applications &amp; repositories<br/>
+          <span class="text-warning">show mission</span>  — Career objective<br/>
+          <span class="text-warning">contact</span>        — Contact links &amp; endpoints<br/>
+          <span class="text-warning">clear</span>          — Clear terminal`;
         break;
       case 'whois kranthu':
-        output = `<span class="text-primary">Name:</span> Kata Sai Kranthu Reddy<br/>
-                  <span class="text-primary">Role:</span> Full Stack Developer & AI Enthusiast<br/>
-                  <span class="text-primary">Base:</span> SRM University - 1st Year CS (AI/ML)<br/>
-                  <span class="text-primary">Capabilities:</span> Python, JS, Kotlin, Dart, Core logic, Neural networks`;
+        output = `<span class="text-primary">Name:         </span> Kata Sai Kranthu Reddy<br/>
+                  <span class="text-primary">Role:         </span> Full Stack Developer &amp; AI Engineer<br/>
+                  <span class="text-primary">University:   </span> SRM University, KTR — B.Tech CS (AI/ML) 2025–2029<br/>
+                  <span class="text-primary">Tech Stack:   </span> Python · Flask · React · Java · Flutter · ML · NLP<br/>
+                  <span class="text-primary">Projects:     </span> 8 live applications across Web, AI &amp; Mobile<br/>
+                  <span class="text-primary">Status:       </span> <span class="text-success">Open to Internship Opportunities</span>`;
+        break;
+      case 'skills':
+        output = `<span class="text-neon">TECHNICAL CAPABILITIES</span><br/>
+                  <span class="text-primary">Languages:    </span> Python · JavaScript · Java · Dart · Kotlin<br/>
+                  <span class="text-primary">Frameworks:   </span> Flask · React · Flutter · Android Studio<br/>
+                  <span class="text-primary">AI/ML:        </span> Machine Learning · NLP · Neural Networks<br/>
+                  <span class="text-primary">Databases:    </span> Firebase · SQLite · MySQL<br/>
+                  <span class="text-primary">Tools:        </span> Git · GitHub · VS Code · Postman`;
         break;
       case 'show mission':
-        output = `To fuse human creativity with machine logic, building digital interfaces that push the boundaries of modern web technologies, and securing meaningful internship opportunities.`;
+        output = `<span class="text-neon">MISSION OBJECTIVE:</span><br/>
+                  To engineer intelligent, scalable systems that bridge human creativity <br/>
+                  with advanced AI — and secure meaningful internship opportunities in<br/>
+                  software development or AI research.`;
         break;
       case 'projects':
-        output = `Loading executable modules...<br/>
-                  1. <a href="#projects" class="neon-link">Sri Sai Traders</a> (Live Business Site)<br/>
-                  2. <a href="#projects" class="neon-link">AI Module Suite</a> (Python/AI Core)<br/>
-                  3. <a href="#projects" class="neon-link">Mobile Apps</a> (Kotlin/Dart/Java)<br/>
-                  4. <a href="#projects" class="neon-link">Kranthu OS</a> (Current Interface)`;
+        output = `<span class="text-neon">DEPLOYED SYSTEMS:</span><br/>
+                  1. <a href="#projects" class="neon-link">Sri Sai Traders</a>          — Enterprise Business Web Platform<br/>
+                  2. <a href="#projects" class="neon-link">AI Resume Screener</a>        — Intelligent Candidate Filtering (Python/NLP)<br/>
+                  3. <a href="#projects" class="neon-link">Offline AI Voice OS</a>       — Voice-Controlled Operating Interface<br/>
+                  4. <a href="#projects" class="neon-link">Smart Auto-Correct Keyboard</a>— NLP-powered Keyboard (Android)<br/>
+                  5. <a href="#projects" class="neon-link">Sambhasha App</a>             — Real-time Messaging Platform (Flutter)<br/>
+                  6. <a href="#projects" class="neon-link">Quiz AI App</a>               — AI-driven Quiz System<br/>
+                  7. <a href="#projects" class="neon-link">Portfolio OS</a>              — This AI-powered Portfolio Interface`;
         break;
       case 'contact':
-        output = `<a href="https://github.com/kskreddy2k7" target="_blank" class="text-purple">github.com/kskreddy2k7</a><br/>
-                  <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" class="text-neon">linkedin.com/in/kata-sai...</a>`;
+        output = `<span class="text-neon">TRANSMISSION ENDPOINTS:</span><br/>
+                  <span class="text-primary">GitHub:   </span> <a href="https://github.com/kskreddy2k7" target="_blank" class="text-purple">github.com/kskreddy2k7</a><br/>
+                  <span class="text-primary">LinkedIn: </span> <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" class="text-neon">linkedin.com/in/kata-sai-kranthu-reddy</a><br/>
+                  <span class="text-primary">Email:    </span> Available via Contact Form below`;
         break;
       case 'clear':
         terminalHistory.innerHTML = '';
@@ -567,31 +586,61 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatInput = document.getElementById('chatInput');
   const chatMessages = document.getElementById('chatMessages');
 
-  // --- Static Backend (for GitHub Pages) ---
-  const CHATBOT_RESPONSES = {
-    'skills': "Kranthu is skilled in <strong>Python</strong>, <strong>Flask</strong>, <strong>NLP</strong>, <strong>Java</strong>, <strong>Kotlin</strong>, and <strong>Dart</strong>. He uses libraries like <strong>Pandas</strong> and <strong>NumPy</strong> for machine learning and builds mobile apps with <strong>Flutter</strong> and <strong>Android Studio</strong>.",
-    'projects': "Kranthu's featured showcase includes 8 premium projects:<br>• <strong>Sri Sai Traders</strong> (Web) – <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Portfolio OS</strong> (Web) – <a href='https://kskreddy2k7.github.io/kranthu-ai-portfolio/' target='_blank' style='color:#00f3ff'>Current Site</a><br>• <strong>AI Resume Screener</strong> (AI) – <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>AI Voice OS</strong> (AI) – <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>Demo</a><br>• <strong>Smart Keyboard</strong> (Apps) – <a href='https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard' target='_blank' style='color:#00f3ff'>Repo</a><br>• <strong>Quiz AI App</strong> (AI) – <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>Repo</a><br>• <strong>Sambhasha App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/sambhasha_app' target='_blank' style='color:#00f3ff'>Repo</a><br>• <strong>OOPS Banner App</strong> (Apps) – <a href='https://github.com/kskreddy2k7/-OOPSBannerApp' target='_blank' style='color:#00f3ff'>Repo</a>",
-    'contact': "You can reach Kranthu via:<br>• <strong>LinkedIn:</strong> <a href='https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377' target='_blank' style='color:#00d4ff'>linkedin.com/in/kata-sai-kranthu-reddy</a><br>• <strong>GitHub:</strong> <a href='https://github.com/kskreddy2k7' target='_blank' style='color:#00d4ff'>github.com/kskreddy2k7</a><br>• Or use the <strong>Contact Form</strong> on this page!",
-    'experience': "Kranthu is currently a 1st-year B.Tech student (2025-29) building his experience through **Academic & Personal Projects**. He completed his Intermediate education (MPC) in 2025 and his CBSE Class 10th in 2023.",
-    'education': "Kranthu is a 1st Year B.Tech student in Computer Science & Engineering (AI/ML) at <strong>SRM University, KTR</strong> (Batch 2025-29). Previously, he completed his Intermediate (MPC) in 2025 and Schooling (CBSE) in 2023.",
-    'certifications': "Kranthu has completed certifications in <strong>Python Programming</strong>, <strong>AI & Machine Learning</strong>, and <strong>Web Development</strong>.",
-    'hello': "Hi there! 👋 I'm Kranthu's AI assistant. Ask me about his <strong>skills</strong>, <strong>projects</strong>, or how to <strong>contact</strong> him!",
-    'default': "I can help you learn about Kranthu's <strong>skills</strong>, <strong>projects</strong>, <strong>academic work</strong>, or <strong>contact</strong> details. What would you like to know?"
+  // --- Static Chatbot (GitHub Pages fallback + primary on static hosting) ---
+  const LOCAL_RESPONSES = {
+    greeting: "Hello! 👋 I'm <strong>KSKR AI</strong> — Kranthu's personal intelligence system. Ask me about his <strong>skills</strong>, <strong>projects</strong>, <strong>education</strong>, <strong>internship availability</strong>, or how to <strong>contact</strong> him!",
+    identity: "I represent <strong>Kata Sai Kranthu Reddy</strong> — a passionate Full Stack Developer and AI Engineer.<br>📍 <strong>University:</strong> SRM University, Kattankulathur — B.Tech CS (AI/ML) 2025–2029<br>🎯 <strong>Role:</strong> Full Stack Developer · AI Engineer · Mobile App Developer<br>🔥 <strong>Status:</strong> <span style='color:#00ff88'>Actively Open to Internship Opportunities</span>",
+    skills: "Kranthu's full technical stack:<br>💻 <strong>Languages:</strong> Python · JavaScript · Java · Dart · Kotlin<br>⚙️ <strong>Frameworks:</strong> Flask · React · Flutter · Android Studio<br>🤖 <strong>AI/ML:</strong> Machine Learning · NLP · Neural Networks · Pandas · NumPy<br>🗄️ <strong>Databases:</strong> Firebase · SQLite · MySQL<br>🛠️ <strong>Tools:</strong> Git · GitHub · VS Code · Postman · Linux",
+    projects: "Here are Kranthu's deployed systems:<br>🌐 <strong>Sri Sai Traders</strong> — Enterprise web platform <a href='https://kskreddy2k7.github.io/-Sri-Sai-Traders-website/' target='_blank' style='color:#00f3ff'>[Live]</a><br>🤖 <strong>AI Resume Screener</strong> — Python/NLP candidate filter <a href='https://kskreddy2k7.github.io/ai-resume-screening-system/' target='_blank' style='color:#00f3ff'>[Demo]</a><br>🎙️ <strong>Offline AI Voice OS</strong> — Voice-controlled AI interface <a href='https://kskreddy2k7.github.io/KSKR-AI-Voice-Operating-System/' target='_blank' style='color:#00f3ff'>[Demo]</a><br>⌨️ <strong>Smart Auto-Correct Keyboard</strong> — NLP Android keyboard <a href='https://github.com/kskreddy2k7/Smart-AutoCorrect-Keyboard' target='_blank' style='color:#00f3ff'>[Repo]</a><br>💬 <strong>Sambhasha App</strong> — Flutter/Firebase messaging <a href='https://github.com/kskreddy2k7/sambhasha_app' target='_blank' style='color:#00f3ff'>[Repo]</a><br>🧠 <strong>Quiz AI App</strong> — Adaptive AI quiz system <a href='https://github.com/kskreddy2k7/quiz-ai-app' target='_blank' style='color:#00f3ff'>[Repo]</a><br>📱 <strong>OOPS Banner App</strong> — OOP showcase <a href='https://github.com/kskreddy2k7/-OOPSBannerApp' target='_blank' style='color:#00f3ff'>[Repo]</a>",
+    contact: "You can connect with Kranthu through:<br>🔗 <strong>LinkedIn:</strong> <a href='https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377' target='_blank' style='color:#00d4ff'>linkedin.com/in/kata-sai-kranthu-reddy</a><br>💻 <strong>GitHub:</strong> <a href='https://github.com/kskreddy2k7' target='_blank' style='color:#00d4ff'>github.com/kskreddy2k7</a><br>📧 <strong>Email:</strong> Use the Contact Form on this page! He responds within <strong>24 hours</strong>.",
+    education: "📚 <strong>Academic Profile:</strong><br>🎓 <strong>Current:</strong> B.Tech — Computer Science & Engineering (AI/ML)<br>🏫 SRM University, Kattankulathur — Batch 2025–2029<br>📋 <strong>Intermediate (MPC):</strong> Completed 2025<br>📋 <strong>CBSE Class 10:</strong> Completed 2023",
+    experience: "Kranthu is a <strong>1st-year student</strong> actively building real-world experience:<br>✅ 8 independently built & deployed applications<br>✅ Full-stack, AI, and mobile domains covered<br>✅ Live platforms serving real users. He learns fast and ships faster. 🚀",
+    certifications: "📜 Certifications:<br>• <strong>Python Programming</strong> — Core & Advanced<br>• <strong>AI & Machine Learning</strong> — Fundamentals to NLP<br>• <strong>Web Development</strong> — Full Stack (HTML, CSS, JS, Flask)<br>• <strong>Android Development</strong> — Kotlin & Java<br>• <strong>Flutter Development</strong> — Cross-platform mobile",
+    goal: "🎯 <strong>Kranthu's Mission:</strong><br>To engineer intelligent, scalable systems that bridge human creativity with advanced AI — and secure meaningful opportunities in <strong>AI Research</strong> or <strong>Software Engineering</strong>.",
+    resume: "📄 Download Kranthu's latest resume:<br><a href='static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx' target='_blank' style='color:#00d4ff;font-weight:bold'>[⬇ DOWNLOAD RESUME]</a>",
+    internship: "✅ Yes! Kranthu is <strong>actively seeking internship opportunities</strong> in:<br>• Artificial Intelligence & Machine Learning<br>• Full Stack Web Development<br>• Mobile App Development (Flutter/Android)<br>Reach out via LinkedIn or the Contact Form! 🚀",
+    default: "I can help with: 💬 <strong>skills</strong> · <strong>projects</strong> · <strong>education</strong> · <strong>contact</strong> · <strong>internship</strong> · <strong>resume</strong><br>Just ask me anything about Kranthu! 😊"
   };
 
-  function getLocalResponse(msg) {
-    const m = msg.toLowerCase().trim();
-    if (m === '/whoami' || any(m, ['experience', 'year', 'background', 'history'])) return CHATBOT_RESPONSES['experience'];
-    if (m === '/skills' || any(m, ['skill', 'know', 'language', 'tech', 'stack', 'python', 'flask', 'java'])) return CHATBOT_RESPONSES['skills'];
-    if (m === '/projects' || any(m, ['project', 'built', 'work', 'autocorrect', 'quiz', 'speech'])) return CHATBOT_RESPONSES['projects'];
-    if (m === '/contact' || any(m, ['contact', 'reach', 'email', 'linkedin', 'github', 'hire', 'connect'])) return CHATBOT_RESPONSES['contact'];
-    if (any(m, ['hello', 'hi', 'hey', 'greet'])) return CHATBOT_RESPONSES['hello'];
-    if (any(m, ['education', 'study', 'degree', 'college', 'university'])) return CHATBOT_RESPONSES['education'];
-    if (any(m, ['certif', 'course', 'training'])) return CHATBOT_RESPONSES['certifications'];
-    if (any(m, ['resume'])) return "You can download Kranthu's latest resume here: <a href='static/resume/Kata_Sai_Kranthu_Reddy_Resume.docx' target='_blank' style='color:#00d4ff'>[DOWNLOAD_RESUME.pdf]</a>";
-    return CHATBOT_RESPONSES['default'];
+  function getLocalResponse(input) {
+    // Clean punctuation for reliable matching
+    const raw = input.toLowerCase().trim();
+    const m = raw.replace(/[^\w\s]/g, ' ');
+
+    // Slash commands
+    const slashMap = {'/skills':'skills','/tech':'skills','/projects':'projects','/apps':'projects',
+      '/contact':'contact','/resume':'resume','/cv':'resume','/goal':'goal','/mission':'goal',
+      '/intern':'internship','/internship':'internship','/edu':'education','/whoami':'identity','/who':'identity'};
+    if (slashMap[raw]) return LOCAL_RESPONSES[slashMap[raw]];
+
+    // Skills — checked BEFORE greetings
+    if (/skill|tech|stack|python|flask|java|react|flutter|kotlin|dart|nlp|language|capable|technology/.test(m))
+      return LOCAL_RESPONSES.skills;
+    // Projects
+    if (/project|built|app|autocorrect|keyboard|sambhasha|quiz|traders|deployed|voice os|portfolio/.test(m))
+      return LOCAL_RESPONSES.projects;
+    // Resume
+    if (/resume|cv|download/.test(m)) return LOCAL_RESPONSES.resume;
+    // Contact
+    if (/contact|reach|email|linkedin|github|connect|message/.test(m)) return LOCAL_RESPONSES.contact;
+    // Education
+    if (/education|study|degree|college|university|srm|school|btech|student/.test(m)) return LOCAL_RESPONSES.education;
+    // Experience
+    if (/experience|history|fresher/.test(m)) return LOCAL_RESPONSES.experience;
+    // Certifications
+    if (/certif|course|training|certificate/.test(m)) return LOCAL_RESPONSES.certifications;
+    // Goals
+    if (/goal|mission|dream|aspire|future|vision|plan/.test(m)) return LOCAL_RESPONSES.goal;
+    // Internship
+    if (/intern|hire|job|opportunity|available|looking/.test(m)) return LOCAL_RESPONSES.internship;
+    // Identity
+    if (/who|about|introduce|kranthu|identity/.test(m)) return LOCAL_RESPONSES.identity;
+    // Greetings — LAST (to avoid 'his' matching 'hi')
+    if (/\bhello\b|\bhey\b|\bgreet\b|\bnamaste\b/.test(m) || raw === 'hi')
+      return LOCAL_RESPONSES.greeting;
+
+    return LOCAL_RESPONSES.default;
   }
-  function any(m, words) { return words.some(w => m.includes(w)); }
 
   function appendChat(htmlContent, isUser) {
     const msgDiv = document.createElement('div');
@@ -642,42 +691,51 @@ document.addEventListener('DOMContentLoaded', () => {
     appendChat(escapeHtml(message), true);
     playSound('typing', 0.2);
     if (chatInput) chatInput.value = '';
-    
-    // Slight simulated delay before showing "typing..."
+
     setTimeout(() => {
       showTypingIndicator();
       playSound('typing', 0.1);
-      
-    // Actual Fetch Call
-    fetch('/chatbot', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: message })
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Network response was not ok');
-      return res.json();
-    })
-    .then(data => {
-      // Add extra artificial delay for "AI processing effect"
-      setTimeout(() => {
-        removeTypingIndicator();
-        playSound('notify', 0.3);
-        appendChat(data.response || 'Invalid neural ping.', false);
-      }, 800);
-    })
-    .catch(() => {
-      // FALLBACK TO LOCAL LOGIC (Static Mode)
-      console.log("🤖 [Chatbot] Falling back to local response logic (Static Mode).");
-      setTimeout(() => {
-        removeTypingIndicator();
-        playSound('notify', 0.3);
-        const fallbackResponse = getLocalResponse(message);
-        appendChat(fallbackResponse, false);
-      }, 1000);
-    });
-  }, 400); 
-}
+
+      // On GitHub Pages (no Flask), use local logic immediately
+      const isGitHubPages = window.location.hostname.includes('github.io') ||
+                            window.location.protocol === 'file:';
+
+      if (isGitHubPages) {
+        setTimeout(() => {
+          removeTypingIndicator();
+          playSound('notify', 0.3);
+          appendChat(getLocalResponse(message), false);
+        }, 900);
+        return;
+      }
+
+      // Local dev: try Flask backend
+      fetch('/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('not ok');
+        return res.json();
+      })
+      .then(data => {
+        setTimeout(() => {
+          removeTypingIndicator();
+          playSound('notify', 0.3);
+          appendChat(data.response || getLocalResponse(message), false);
+        }, 800);
+      })
+      .catch(() => {
+        setTimeout(() => {
+          removeTypingIndicator();
+          playSound('notify', 0.3);
+          appendChat(getLocalResponse(message), false);
+        }, 900);
+      });
+    }, 400);
+  }
+
 
   if (chatForm) {
     chatForm.addEventListener('submit', (e) => {

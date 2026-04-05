@@ -6,22 +6,40 @@ import CuteRobot from './CuteRobot';
 import { useScrollSection } from './useScrollSection';
 import { useSpeech } from './useSpeech';
 
+// ── Native JS Synthetic UI Blip ───────────────────────────────────────────
+function playSciFiBlip() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(1200, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.04, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.1);
+  } catch(e) { } // Ignore if browser blocks autoplay
+}
+
 // ── Kranthu Q&A knowledge base ────────────────────────────────────────────
 const QA = [
   { keys: ['who are you','yourself','introduce','kranthu','about you'],
-    answer: `Hi! I'm Kata Sai Kranthu Reddy — an aspiring Full Stack Developer and AI enthusiast. I'm studying B.Tech CS with AI and ML at SRM University, batch 2025 to 2029. I love building real-world apps!` },
+    answer: `I represent Kata Sai Kranthu Reddy — a Computer Science student at SRM University, Batch 2025 to 2029, specializing in AI and Machine Learning. He is a Full Stack Developer who builds intelligent, real-world systems with a focus on impact.` },
   { keys: ['skill','tech','stack','language','code','know','good at'],
-    answer: `I'm skilled in Python, Flask, HTML, CSS, JavaScript, Java, SQL, Machine Learning, NLP, and Git. Both frontend and backend, with growing AI expertise!` },
+    answer: `Kranthu's technical skills include Python, Flask, JavaScript, React, and Java. He applies these in building Machine Learning models, NLP systems, and mobile applications using Flutter and Android Studio.` },
   { keys: ['project','built','work','create','made','portfolio'],
-    answer: `I've built: Sri Sai Traders (live business site), AI Resume Screener (NLP), AI Voice OS, Smart Auto-Correct Keyboard, Quiz AI App, and this Portfolio OS itself!` },
+    answer: `His notable projects include: Sri Sai Traders, a complete enterprise web system. An AI Resume Screener for smart candidate filtering. An Offline AI Voice Operating System. And a Smart Auto-Correct Keyboard driven by Natural Language Processing.` },
   { keys: ['contact','reach','hire','linkedin','github','email','internship'],
-    answer: `Find me on GitHub at github.com/kskreddy2k7 and LinkedIn at kata-sai-kranthu-reddy. I'm actively looking for internship opportunities!` },
+    answer: `You can connect with Kranthu on GitHub at github dot com slash kskreddy2k7, or on LinkedIn as kata-sai-kranthu-reddy. He is actively open to internships and collaborative opportunities in AI and software development.` },
   { keys: ['university','college','study','education','degree','srm','year'],
-    answer: `I'm a first year B.Tech student at SRM University, Kattankulathur, specializing in CS with Artificial Intelligence and Machine Learning. Graduating 2029.` },
+    answer: `Kranthu is a first-year Computer Science student at SRM University, Kattankulathur, pursuing a specialization in Artificial Intelligence and Machine Learning. His expected graduation year is 2029.` },
   { keys: ['goal','dream','aspire','future','plan','job'],
-    answer: `My goal is to fuse human creativity with machine intelligence, land a meaningful internship, and grow into a senior Full Stack Developer. Always learning!` },
+    answer: `Kranthu's goal is to engineer intelligent systems that bridge the gap between human creativity and advanced technology. He aims to work on products that scale and matter.` },
   { keys: ['hello','hi','hey','greet','namaste'],
-    answer: `Hey there! I'm Kranthu — your interactive portfolio guide. Ask me about my skills, projects, education, or how to reach me!` },
+    answer: `Hello! I'm KSKR, Kranthu's AI guide. Ask me anything about his skills, projects, education, or how to get in touch.` },
 ];
 
 async function getAIResponse(input) {
@@ -72,7 +90,7 @@ function AvatarPlaceholder() {
 }
 
 // ── Speech Bubble ─────────────────────────────────────────────────────────
-function SpeechBubble({ text, visible, sectionXPercent }) {
+function SpeechBubble({ text, visible, sectionXPercent, speaking }) {
   if (!visible) return null;
   
   const xPos = sectionXPercent ?? 50;
@@ -80,37 +98,33 @@ function SpeechBubble({ text, visible, sectionXPercent }) {
   return (
     <div style={{
       position: 'fixed',
-      bottom: window.innerWidth < 768 ? '160px' : '280px',
-      left: window.innerWidth < 768 ? '50%' : `${xPos}%`,
-      transform: 'translateX(-50%)',
-      width: window.innerWidth < 768 ? 'min(90vw, 320px)' : '260px',
-      background: 'rgba(2, 2, 10, 0.98)',
-      backdropFilter: 'blur(12px)',
-      border: '2px solid rgba(0, 242, 255, 0.6)',
-      borderImage: 'linear-gradient(to bottom, #00f3ff, #b53cff) 1',
-      borderRadius: '12px',
-      padding: '14px 18px',
-      fontFamily: '"Outfit", sans-serif',
+      top: window.innerWidth < 768 ? '10%' : '25%',
+      right: window.innerWidth < 768 ? '5%' : '1%',
+      transform: 'none',
+      width: window.innerWidth < 768 ? 'min(90vw, 320px)' : '300px',
+      background: 'rgba(10, 10, 18, 0.65)',
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      border: '1px solid rgba(255, 255, 255, 0.12)',
+      borderRadius: '16px',
+      padding: '16px 20px',
+      fontFamily: '"Inter", sans-serif',
       fontSize: '14px',
-      lineHeight: '1.5',
-      color: '#ffffff',
-      fontWeight: 500,
+      lineHeight: '1.6',
+      color: '#f8fafc',
+      fontWeight: 400,
       textAlign: 'center',
-      boxShadow: '0 0 30px rgba(0, 242, 255, 0.2), inset 0 0 15px rgba(181, 60, 255, 0.1)',
+      boxShadow: speaking ? '0 0 35px rgba(0, 242, 255, 0.25), 0 10px 40px rgba(0,0,0,0.5)' : '0 10px 40px rgba(0,0,0,0.4)',
       zIndex: 999999,
       pointerEvents: 'none',
-      animation: 'kavBubbleSlide 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+      animation: 'kavBubbleSlide 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
+      transition: 'box-shadow 0.3s ease',
     }}>
-      <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#00f3ff', marginBottom: '8px', fontWeight: 700, textTransform: 'uppercase', textShadow: '0 0 5px rgba(0, 242, 255, 0.5)' }}>
-        🤖 KSKR_SYSTEMS_V2.5
+      <div style={{ fontSize: '11px', letterSpacing: '1px', color: '#00f3ff', marginBottom: '8px', fontWeight: 600, textTransform: 'uppercase' }}>
+        {speaking ? <span style={{display: 'inline-block', width: '6px', height: '6px', borderRadius: '50%', background: '#00f3ff', marginRight: '6px', animation: 'kavPulse 1.5s infinite'}}></span> : null}
+        AI Assistant
       </div>
       {text}
-      <div style={{
-        position: 'absolute', bottom: '-8px', left: '50%', transform: 'translateX(-50%)',
-        width: '0', height: '0',
-        borderLeft: '10px solid transparent', borderRight: '10px solid transparent',
-        borderTop: '10px solid #b53cff', // matches the bottom of the gradient
-      }} />
     </div>
   );
 }
@@ -127,19 +141,14 @@ function InjectStyles() {
     const s = document.createElement('style');
     s.textContent = `
       @keyframes kavBubbleSlide {
-        from { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.9); }
-        to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+        from { opacity: 0; transform: translateX(-15px) scale(0.95); }
+        to   { opacity: 1; transform: translateX(0) scale(1); }
       }
       @keyframes kavPulse {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,85,0.7); }
-        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255,0,85,0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,85,0); }
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,243,255,0.7); }
+        70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0,243,255,0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,243,255,0); }
       }
-      @keyframes kavDotPulse {
-        0%, 100% { transform: scale(1); opacity: 0.5; }
-        50% { transform: scale(1.5); opacity: 1; }
-      }
-      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
     `;
     document.head.appendChild(s);
   }, []);
@@ -214,21 +223,6 @@ export default function App() {
     });
 
     ob.observe(loader, { attributes: true, attributeFilter: ['style', 'class'] });
-    
-    // Welcome speech
-    const welcomeMsg = "Welcome to the AI Control Room. I am your system assistant. I am currently monitoring Kranthu's neural portfolio projects. Use the navigation bar above or scroll down to explore the mainframe.";
-    
-    if (localStorage.getItem('kskr_sound_enabled') === 'true') {
-      setTimeout(() => {
-        setBubbleText(welcomeMsg);
-        setBubbleVis(true);
-        speak(welcomeMsg, () => {
-          setSpeaking(false);
-          setTimeout(() => setBubbleVis(false), 5000);
-        });
-        setSpeaking(true);
-      }, 3500); // after boot chime
-    }
 
     return () => {
       ob.disconnect();
@@ -236,10 +230,28 @@ export default function App() {
     };
   }, []);
 
-  // Hint logic removed
+  // ── Welcome Speech fires AFTER home page loads ──
   useEffect(() => {
     if (!booted) return;
+    if (localStorage.getItem('kskr_sound_enabled') !== 'true') return;
+
+    const welcomeMsg = "Welcome. I am KSKR, an AI assistant built into this portfolio. I'll guide you as you explore Kranthu's work, projects, and capabilities. Let's get started.";
+
+    const t = setTimeout(() => {
+      setBubbleText(welcomeMsg);
+      setBubbleVis(true);
+      if (!muted) playSciFiBlip();
+      speak(welcomeMsg, () => {
+        setSpeaking(false);
+        setBubbleVis(false);
+      });
+      setSpeaking(true);
+    }, 800); // small delay after home page appears
+
+    return () => clearTimeout(t);
   }, [booted]);
+
+  // Hint logic removed
 
   // Section change → speak + bubble
   useEffect(() => {
@@ -247,20 +259,24 @@ export default function App() {
     const text = section.speech;
     setBubbleText(text);
     setBubbleVis(true);
+    if (!muted) playSciFiBlip();
+    
     clearTimeout(bubbleTimer.current);
-    bubbleTimer.current = setTimeout(() => setBubbleVis(false), 6000);
 
     if (!muted) {
       setSpeaking(true);
       speak(text, () => {
         setSpeaking(false);
-        setBubbleVis(false);
+        bubbleTimer.current = setTimeout(() => setBubbleVis(false), 2000);
       });
     } else {
-      // If muted, still show bubble for 6s
-      clearTimeout(bubbleTimer.current);
-      bubbleTimer.current = setTimeout(() => setBubbleVis(false), 6000);
+      setSpeaking(true);
+      bubbleTimer.current = setTimeout(() => {
+        setSpeaking(false);
+        setBubbleVis(false);
+      }, 4000);
     }
+
   }, [section?.id]);
 
   // Interaction functions removed to prevent screen blockage
@@ -303,7 +319,7 @@ export default function App() {
         </Canvas>
       </div>
 
-      <SpeechBubble text={bubbleText} visible={bubbleVis} sectionXPercent={xPct} />
+      <SpeechBubble text={bubbleText} visible={bubbleVis} sectionXPercent={xPct} speaking={speaking} />
     </>
   );
 }

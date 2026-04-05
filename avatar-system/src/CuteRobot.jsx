@@ -1,103 +1,198 @@
 import { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Float, RoundedBox } from '@react-three/drei';
+import { Float, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
 
-/* ── Section → position map ─────────────────────────────────────────── */
 const SECTION_MAP = {
-  hero:       [2.0,  0.0, 0],
-  about:      [1.8,  0.2, 0],
-  skills:     [1.8,  0.1, 0],
-  experience: [1.8,  0.0, 0],
-  projects:   [1.8, -0.1, 0],
-  chatbot:    [1.8,  0.0, 0],
-  contact:    [1.8,  0.0, 0],
+  hero:       [2.0,  1.2, 0],
+  about:      [2.0,  1.2, 0],
+  skills:     [2.0,  1.2, 0],
+  experience: [2.0,  1.2, 0],
+  projects:   [2.0,  1.2, 0],
+  chatbot:    [2.0,  1.2, 0],
+  contact:    [2.0,  1.2, 0],
 };
 
-/* ── Reusable glowing material helper ──────────────────────────────── */
-function GlowMesh({ color, emissive, emissiveIntensity = 2, ...props }) {
-  return (
-    <mesh {...props}>
-      {props.children}
-      <meshStandardMaterial
-        color={color}
-        emissive={emissive || color}
-        emissiveIntensity={emissiveIntensity}
-        roughness={0.05}
-        metalness={0.1}
-      />
-    </mesh>
-  );
-}
+// ── Cute Ring LED Eyes ──
+function Eyes({ speaking }) {
+  const leftCoreMat  = useRef();
+  const rightCoreMat = useRef();
+  const leftHaloMat  = useRef();
+  const rightHaloMat = useRef();
+  const group = useRef();
 
-/* ── Big oval eye with animated blink ──────────────────────────────── */
-function AnimatedEye({ position, speaking }) {
-  const meshRef = useRef();
-  const pupilRef = useRef();
+  const cyan = new THREE.Color("#00d4ff");
+  const pink = new THREE.Color("#ff4dd2");
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
     const t = clock.elapsedTime;
-    if (!meshRef.current) return;
 
-    // Blink every ~4 seconds
-    const blinkPhase = (t % 4.0);
-    const blink = blinkPhase < 0.12 ? 0.05 : 1.0;
-    
-    // Speaking pulse
-    const pulsate = speaking ? 1.0 + Math.sin(t * 12) * 0.15 : 1.0;
+    // Smooth Blue <-> Pink when speaking, otherwise steady cyan
+    if (speaking) {
+      const mix = (Math.sin(t * 2.5) + 1) / 2;
+      const col = new THREE.Color().lerpColors(cyan, pink, mix);
+      if (leftCoreMat.current)  leftCoreMat.current.color.lerp(col, delta * 4);
+      if (rightCoreMat.current) rightCoreMat.current.color.lerp(col, delta * 4);
+      if (leftHaloMat.current)  leftHaloMat.current.color.lerp(col, delta * 4);
+      if (rightHaloMat.current) rightHaloMat.current.color.lerp(col, delta * 4);
+    } else {
+      if (leftCoreMat.current)  leftCoreMat.current.color.lerp(cyan, delta * 2);
+      if (rightCoreMat.current) rightCoreMat.current.color.lerp(cyan, delta * 2);
+      if (leftHaloMat.current)  leftHaloMat.current.color.lerp(cyan, delta * 2);
+      if (rightHaloMat.current) rightHaloMat.current.color.lerp(cyan, delta * 2);
+    }
 
-    // Apply combined scales to the whole eye group
-    meshRef.current.scale.y = THREE.MathUtils.lerp(meshRef.current.scale.y, blink * 0.048, 0.35);
-    meshRef.current.scale.x = THREE.MathUtils.lerp(meshRef.current.scale.x, pulsate * 0.042, 0.2);
-
-    // Pupil micro-drift
-    if (pupilRef.current) {
-      pupilRef.current.position.x = Math.sin(t * 0.7) * 0.15;
-      pupilRef.current.position.y = Math.cos(t * 0.5) * 0.12;
+    if (group.current) {
+      group.current.position.y = Math.sin(t * 1.0) * 0.003;
     }
   });
 
   return (
-    <group position={position} ref={meshRef}>
-      {/* Eye white glow backing */}
-      <mesh>
-        <circleGeometry args={[1, 32]} />
-        <meshStandardMaterial color="#0af" emissive="#0af" emissiveIntensity={1.2} roughness={0} transparent opacity={0.25} />
-      </mesh>
-      {/* Bright cyan iris */}
-      <mesh position={[0, 0, 0.01]}>
-        <circleGeometry args={[0.8, 32]} />
-        <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={3.5} roughness={0} />
-      </mesh>
-      {/* Dark pupil */}
-      <mesh ref={pupilRef} position={[0, 0, 0.02]}>
-        <circleGeometry args={[0.3, 24]} />
-        <meshStandardMaterial color="#001a22" roughness={0} />
-      </mesh>
-      {/* Catchlight sparkle */}
-      <mesh position={[0.3, 0.4, 0.03]}>
-        <circleGeometry args={[0.15, 12]} />
-        <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={4} roughness={0} />
-      </mesh>
+    <group ref={group} position={[0, 0.03, 0.31]}>
+      {/* LEFT EYE */}
+      <group position={[-0.085, 0, 0]}>
+        {/* Core bright circle */}
+        <mesh>
+          <circleGeometry args={[0.028, 32]} />
+          <meshBasicMaterial ref={leftCoreMat} color="#00d4ff" />
+        </mesh>
+        {/* Soft glow halo */}
+        <mesh position={[0, 0, -0.001]} scale={[2.2, 2.2, 1]}>
+          <circleGeometry args={[0.028, 32]} />
+          <meshBasicMaterial ref={leftHaloMat} color="#00d4ff" transparent opacity={0.25} blending={THREE.AdditiveBlending} depthWrite={false} />
+        </mesh>
+      </group>
+
+      {/* RIGHT EYE */}
+      <group position={[0.085, 0, 0]}>
+        {/* Core bright circle */}
+        <mesh>
+          <circleGeometry args={[0.028, 32]} />
+          <meshBasicMaterial ref={rightCoreMat} color="#00d4ff" />
+        </mesh>
+        {/* Soft glow halo */}
+        <mesh position={[0, 0, -0.001]} scale={[2.2, 2.2, 1]}>
+          <circleGeometry args={[0.028, 32]} />
+          <meshBasicMaterial ref={rightHaloMat} color="#00d4ff" transparent opacity={0.25} blending={THREE.AdditiveBlending} depthWrite={false} />
+        </mesh>
+      </group>
     </group>
   );
 }
 
-/* ── Main Robot ─────────────────────────────────────────────────────── */
-export default function CuteRobot({ sectionId, speaking, onReady }) {
-  const group    = useRef();
-  const head     = useRef();
-  const antenna  = useRef();
-  const antennaTip = useRef();
-  const bodyRef  = useRef();
-  const armL     = useRef();
-  const armR     = useRef();
-  const auraRef  = useRef();
-  const ringRef  = useRef();
-  const [hovered, setHovered] = useState(false);
 
-  const targetPos  = useRef(new THREE.Vector3(2.0, 0, 0));
-  const currentPos = useRef(new THREE.Vector3(2.0, 0, 0));
+// ── Glowing Chest Core ──
+function ChestCore({ speaking }) {
+    const coreGlow = useRef();
+    
+    useFrame(({ clock }) => {
+        const pulse = speaking ? Math.sin(clock.elapsedTime * 20) * 0.3 : 0;
+        if (coreGlow.current) {
+            coreGlow.current.scale.setScalar(1.0 + pulse);
+            coreGlow.current.material.opacity = speaking ? 1.0 : 0.8;
+        }
+    });
+
+    return (
+        <group position={[0, 0, 0.20]}>
+            <mesh>
+                <torusGeometry args={[0.06, 0.015, 16, 32]} />
+                <meshStandardMaterial color="#112233" roughness={0.3} metalness={0.8} />
+            </mesh>
+            <mesh ref={coreGlow} position={[0, 0, 0.01]}>
+                <circleGeometry args={[0.055, 32]} />
+                <meshBasicMaterial color="#00e5ff" transparent blending={THREE.AdditiveBlending} />
+            </mesh>
+            <pointLight distance={1.5} intensity={speaking ? 4 : 1.5} color="#00e5ff" />
+        </group>
+    );
+}
+
+// ── Realistic Plasma Jet Flame ──
+function JetFlame({ speaking }) {
+  const innerFlame = useRef();
+  const midFlame = useRef();
+  const outerFlame = useRef();
+
+  useFrame(({ clock }) => {
+     const t = clock.elapsedTime;
+     // Constant, steady flow logic (NO BLINKING)
+     const basePulse = Math.sin(t * 10) * 0.02; // Very slow, subtle drift
+     const speakGlow = speaking ? 0.1 : 0; 
+     const scaleY = (0.25 + basePulse + speakGlow); // MUCH SHORTER
+     
+     if (innerFlame.current) {
+        innerFlame.current.scale.y = scaleY * 1.2;
+        innerFlame.current.scale.x = 1.4; // Fixed width for constancy
+        innerFlame.current.scale.z = 1.4;
+     }
+     if (midFlame.current) {
+        midFlame.current.scale.y = scaleY * 1.0;
+        midFlame.current.scale.x = 2.0; 
+        midFlame.current.scale.z = 2.0;
+     }
+     if (outerFlame.current) {
+        outerFlame.current.scale.y = scaleY * 0.7;
+        outerFlame.current.scale.x = 2.8; 
+        outerFlame.current.scale.z = 2.8;
+     }
+  });
+
+  return (
+      <group position={[0, -0.05, 0]}>
+         {/* Nozzle Heat Base */}
+         <mesh position={[0, -0.02, 0]}>
+            <sphereGeometry args={[0.04, 16, 16]} />
+            <meshBasicMaterial color="#ffffff" transparent opacity={0.6} blending={THREE.AdditiveBlending} />
+         </mesh>
+
+         {/* Hot Core - Pure White Hot Plasma */}
+         <mesh ref={innerFlame} position={[0, -0.05, 0]}>
+             <coneGeometry args={[0.02, 0.45, 24]} />
+             <meshBasicMaterial color="#ffffff" transparent opacity={0.95} blending={THREE.AdditiveBlending} depthWrite={false} />
+         </mesh>
+         
+         {/* Mid Plasma - Intense Cyan Heat */}
+         <mesh ref={midFlame} position={[0, -0.06, 0]}>
+             <coneGeometry args={[0.055, 0.65, 24]} />
+             <meshBasicMaterial color="#00f7ff" transparent opacity={0.6} blending={THREE.AdditiveBlending} depthWrite={false} />
+         </mesh>
+
+         {/* Outer Atmospheric Glow - Deep Blue Trail */}
+         <mesh ref={outerFlame} position={[0, -0.08, 0]}>
+             <coneGeometry args={[0.08, 0.4, 24]} />
+             <meshBasicMaterial color="#0033ff" transparent opacity={speaking ? 0.2 : 0.1} blending={THREE.AdditiveBlending} depthWrite={false} />
+         </mesh>
+
+         {/* Realistic Embers/Sparkles trailing the exhaust */}
+         <Sparkles 
+            count={12} 
+            scale={[0.2, 0.2, 0.2]} 
+            position={[0, -0.15, 0]}
+            color="#00f7ff"
+            size={4}
+            speed={1.0}
+            noise={1}
+            opacity={speaking ? 0.9 : 0.5}
+         />
+      </group>
+  );
+}
+
+
+export default function CuteRobot({ sectionId, speaking, onReady }) {
+  const group = useRef();
+  const headGroup = useRef();
+  const bodyGroup = useRef();
+  
+  const leftArm = useRef();
+  const rightArm = useRef();
+  const leftLeg = useRef();
+  const rightLeg = useRef();
+  
+  const [hovered, setHovered] = useState(false);
+  const targetPos = useRef(new THREE.Vector3(1.2, 1.2, 0));
+  const currentPos = useRef(new THREE.Vector3(1.2, 1.2, 0));
 
   useEffect(() => { if (onReady) onReady(); }, []);
 
@@ -105,189 +200,168 @@ export default function CuteRobot({ sectionId, speaking, onReady }) {
     const t = clock.elapsedTime;
     if (!group.current) return;
 
-    /* Position lerp */
+    // Movement Tracking locked slightly left of far right edge
     const isMobile = window.innerWidth < 768;
-    const raw = SECTION_MAP[sectionId] || [2.0, 0, 0];
-    const responsiveX = isMobile ? raw[0] * 0.35 : raw[0]; // Bring closer to center on mobile
-    targetPos.current.set(responsiveX, raw[1], raw[2]);
+    const defaultRawX = 1.2;
+    const responsiveX = isMobile ? defaultRawX * 0.5 : defaultRawX;
+    targetPos.current.set(responsiveX, 1.2, 0);
     currentPos.current.lerp(targetPos.current, delta * 3);
     group.current.position.copy(currentPos.current);
 
-    /* Floating bob */
-    group.current.position.y += Math.sin(t * 1.4) * 0.055;
-
-    /* Head gentle look-around */
-    if (head.current) {
-      head.current.rotation.y = Math.sin(t * 0.45) * 0.18;
-      head.current.rotation.x = Math.cos(t * 0.38) * 0.07;
+    // Look-At logic towards UI
+    const lookLeft = -0.3;
+    
+    if (headGroup.current && bodyGroup.current) {
+        // Head tracking
+        headGroup.current.position.y = Math.sin(t * 2) * 0.02 + 0.35;
+        headGroup.current.rotation.y = THREE.MathUtils.lerp(headGroup.current.rotation.y, lookLeft, delta * 5);
+        headGroup.current.rotation.z = THREE.MathUtils.lerp(headGroup.current.rotation.z, Math.sin(t*0.5)*0.05, delta * 4);
+        headGroup.current.rotation.x = THREE.MathUtils.lerp(headGroup.current.rotation.x, hovered ? 0.05 : 0.02, delta * 4);
+        
+        // Body tracking
+        bodyGroup.current.position.y = Math.sin(t * 1.5) * 0.03 - 0.15; // Shifted up slightly
+        bodyGroup.current.rotation.y = THREE.MathUtils.lerp(bodyGroup.current.rotation.y, lookLeft * 0.5, delta * 3);
+        bodyGroup.current.rotation.x = THREE.MathUtils.lerp(bodyGroup.current.rotation.x, 0.1, delta * 3); // tilt forward a bit
     }
-
-    /* Antenna sway */
-    if (antenna.current) antenna.current.rotation.z = Math.sin(t * 2.1) * 0.12;
-
-    /* Antenna tip pulse */
-    if (antennaTip.current) {
-      const p = 0.6 + Math.sin(t * 4) * 0.4;
-      antennaTip.current.material.emissiveIntensity = p * 3;
+    
+    // Arms swinging gently
+    if (leftArm.current && rightArm.current) {
+        leftArm.current.rotation.x = Math.sin(t * 2.2) * 0.1 + 0.1;
+        leftArm.current.rotation.z = 0.4;
+        
+        rightArm.current.rotation.x = Math.sin(t * 2.2 + Math.PI) * 0.1 + 0.1;
+        rightArm.current.rotation.z = -0.4;
     }
-
-    /* Arms gentle float */
-    if (armL.current) armL.current.rotation.z = 0.3 + Math.sin(t * 1.2) * 0.08;
-    if (armR.current) armR.current.rotation.z = -0.3 + Math.sin(t * 1.2 + 1) * 0.08;
-
-    /* Aura ring rotation */
-    if (ringRef.current) ringRef.current.rotation.z = t * 0.4;
-
-    /* Hover bounce */
-    const scaleTarget = hovered ? 1.06 : 1.0;
-    group.current.scale.lerp(new THREE.Vector3(scaleTarget, scaleTarget, scaleTarget), delta * 6);
-
-    /* Tilt with direction */
-    const tilt = (targetPos.current.x - currentPos.current.x) * 0.4;
-    group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, -tilt, delta * 2);
+    
+    // Legs hovering
+    if (leftLeg.current && rightLeg.current) {
+        leftLeg.current.rotation.x = Math.sin(t * 3) * 0.05 - 0.2;
+        rightLeg.current.rotation.x = Math.sin(t * 3) * 0.05 - 0.2;
+    }
   });
 
-  /* Body color: cyan normally, purple when hovered */
-  const bodyEmissive   = hovered ? '#b53cff' : '#00d4e8';
-  const bodyEmissiveInt = hovered ? 0.35 : 0.12;
-
   return (
-    <group
+    <group 
       ref={group}
       onPointerOver={() => setHovered(true)}
-      onPointerOut={()  => setHovered(false)}
+      onPointerOut={() => setHovered(false)}
     >
-      <Float speed={1.8} rotationIntensity={0.12} floatIntensity={0.18}>
+      <Float speed={2} rotationIntensity={0.05} floatIntensity={0.2}>
 
-        {/* ── LEGS ─────────────────────────────────────────────────── */}
-        <group position={[0, -0.44, 0]}>
-          <RoundedBox args={[0.09, 0.16, 0.09]} radius={0.03} position={[-0.1, 0, 0]}>
-            <meshStandardMaterial color="#e8f4f8" metalness={0.4} roughness={0.35} emissive={bodyEmissive} emissiveIntensity={bodyEmissiveInt} />
-          </RoundedBox>
-          <RoundedBox args={[0.09, 0.16, 0.09]} radius={0.03} position={[0.1, 0, 0]}>
-            <meshStandardMaterial color="#e8f4f8" metalness={0.4} roughness={0.35} emissive={bodyEmissive} emissiveIntensity={bodyEmissiveInt} />
-          </RoundedBox>
-          {/* Foot glow shadows */}
-          <mesh position={[-0.1, -0.09, 0]}>
-            <circleGeometry args={[0.06, 20]} />
-            <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={0.6} transparent opacity={0.25} />
-          </mesh>
-          <mesh position={[0.1, -0.09, 0]}>
-            <circleGeometry args={[0.06, 20]} />
-            <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={0.6} transparent opacity={0.25} />
-          </mesh>
-        </group>
-
-        {/* ── BODY ─────────────────────────────────────────────────── */}
-        <RoundedBox ref={bodyRef} args={[0.42, 0.46, 0.28]} radius={0.11} smoothness={6} position={[0, -0.05, 0]}>
-          <meshStandardMaterial color="#eef6fb" metalness={0.55} roughness={0.18} emissive={bodyEmissive} emissiveIntensity={bodyEmissiveInt} />
-        </RoundedBox>
-
-        {/* Chest panel / core crystal */}
-        <mesh position={[0, -0.02, 0.145]}>
-          <boxGeometry args={[0.15, 0.1, 0.01]} />
-          <meshStandardMaterial color="#001a22" roughness={0} />
-        </mesh>
-        <mesh position={[0, -0.02, 0.146]}>
-          <planeGeometry args={[0.09, 0.06]} />
-          <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={speaking ? 3.5 : 1.5} transparent opacity={0.9} />
-        </mesh>
-        {/* Small indicator dots */}
-        {[-0.04, 0, 0.04].map((x, i) => (
-          <mesh key={i} position={[x, -0.07, 0.146]}>
-            <circleGeometry args={[0.008, 12]} />
-            <meshStandardMaterial color={i === 1 ? '#ff00cc' : '#00f2ff'} emissive={i === 1 ? '#ff00cc' : '#00f2ff'} emissiveIntensity={2} />
-          </mesh>
-        ))}
-
-        {/* ── ARMS ─────────────────────────────────────────────────── */}
-        {/* Left arm */}
-        <group ref={armL} position={[-0.3, -0.05, 0]}>
-          <RoundedBox args={[0.09, 0.22, 0.09]} radius={0.03} rotation={[0, 0, 0.3]}>
-            <meshStandardMaterial color="#dceef5" metalness={0.4} roughness={0.3} emissive={bodyEmissive} emissiveIntensity={bodyEmissiveInt * 0.7} />
-          </RoundedBox>
-          {/* Hand orb */}
-          <mesh position={[-0.04, -0.14, 0]}>
-            <sphereGeometry args={[0.055, 20, 20]} />
-            <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={hovered ? 3 : 1.5} roughness={0} />
-          </mesh>
-        </group>
-        {/* Right arm */}
-        <group ref={armR} position={[0.3, -0.05, 0]}>
-          <RoundedBox args={[0.09, 0.22, 0.09]} radius={0.03} rotation={[0, 0, -0.3]}>
-            <meshStandardMaterial color="#dceef5" metalness={0.4} roughness={0.3} emissive={bodyEmissive} emissiveIntensity={bodyEmissiveInt * 0.7} />
-          </RoundedBox>
-          <mesh position={[0.04, -0.14, 0]}>
-            <sphereGeometry args={[0.055, 20, 20]} />
-            <meshStandardMaterial color="#a855f7" emissive="#a855f7" emissiveIntensity={hovered ? 3 : 1.5} roughness={0} />
-          </mesh>
-        </group>
-
-        {/* ── HEAD ─────────────────────────────────────────────────── */}
-        <group ref={head} position={[0, 0.31, 0]}>
-          {/* Head shell */}
-          <RoundedBox args={[0.38, 0.3, 0.28]} radius={0.1} smoothness={8}>
-            <meshStandardMaterial color="#f2faff" metalness={0.45} roughness={0.15} emissive={bodyEmissive} emissiveIntensity={bodyEmissiveInt * 0.8} />
-          </RoundedBox>
-
-          {/* Dark visor / faceplate */}
-          <mesh position={[0, 0.01, 0.143]}>
-            <planeGeometry args={[0.3, 0.18]} />
-            <meshStandardMaterial color="#020c12" roughness={0.05} metalness={0.3} />
-          </mesh>
-
-          {/* Big oval eyes */}
-          <AnimatedEye position={[-0.075, 0.015, 0.145]} speaking={speaking} />
-          <AnimatedEye position={[ 0.075, 0.015, 0.145]} speaking={speaking} />
-
-          {/* Mouth — simple LED bar */}
-          <mesh position={[0, -0.055, 0.145]}>
-            <planeGeometry args={[0.1, 0.014]} />
-            <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={speaking ? 3 : 1} />
-          </mesh>
-
-          {/* Ear nubs */}
-          <mesh position={[-0.2, 0.01, 0]}>
-            <sphereGeometry args={[0.025, 14, 14]} />
-            <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={1.5} />
-          </mesh>
-          <mesh position={[0.2, 0.01, 0]}>
-            <sphereGeometry args={[0.025, 14, 14]} />
-            <meshStandardMaterial color="#a855f7" emissive="#a855f7" emissiveIntensity={1.5} />
-          </mesh>
-
-          {/* ── ANTENNA ──────────────────────────────────────────── */}
-          <group ref={antenna} position={[0, 0.19, 0]}>
-            {/* Stem */}
-            <mesh>
-              <cylinderGeometry args={[0.008, 0.01, 0.14, 12]} />
-              <meshStandardMaterial color="#c0d8e4" metalness={0.7} roughness={0.2} />
+        {/* ── HEAD SECTION ── */}
+        <group ref={headGroup}>
+            {/* White Glossy Rounded Head */}
+            <mesh scale={[1.4, 1.2, 1.3]}>
+                <sphereGeometry args={[0.20, 32, 32]} />
+                <meshPhysicalMaterial color="#ffffff" metalness={0.1} roughness={0.1} clearcoat={1.0} clearcoatRoughness={0.05} />
             </mesh>
-            {/* Glowing tip */}
-            <mesh ref={antennaTip} position={[0, 0.09, 0]}>
-              <sphereGeometry args={[0.025, 20, 20]} />
-              <meshStandardMaterial color="#ff00ff" emissive="#ff00ff" emissiveIntensity={3} roughness={0} />
+            
+            {/* Massive Wide Black Glass Faceplate */}
+            <mesh position={[0, 0.02, 0.16]} rotation={[0, 0, Math.PI / 2]}>
+                <capsuleGeometry args={[0.13, 0.3, 32, 32]} />
+                <meshPhysicalMaterial color="#020305" metalness={0.9} roughness={0.05} clearcoat={1.0} clearcoatRoughness={0.01} />
             </mesh>
-          </group>
+
+            {/* Side Ear Caps */}
+            <group position={[-0.28, 0, 0]} rotation={[0, 0, Math.PI/2]}>
+                <mesh><cylinderGeometry args={[0.08, 0.08, 0.04, 32]} /><meshStandardMaterial color="#ffffff" roughness={0.2}/></mesh>
+                <mesh position={[0, 0.02, 0]}><cylinderGeometry args={[0.05, 0.05, 0.02, 32]} /><meshStandardMaterial color="#0088ff" roughness={0.2} metalness={0.6}/></mesh>
+            </group>
+            <group position={[0.28, 0, 0]} rotation={[0, 0, Math.PI/2]}>
+                <mesh><cylinderGeometry args={[0.08, 0.08, 0.04, 32]} /><meshStandardMaterial color="#ffffff" roughness={0.2}/></mesh>
+                <mesh position={[0, -0.02, 0]}><cylinderGeometry args={[0.05, 0.05, 0.02, 32]} /><meshStandardMaterial color="#0088ff" roughness={0.2} metalness={0.6}/></mesh>
+            </group>
+
+            <Eyes speaking={speaking} />
         </group>
 
-        {/* ── ORBIT RING ────────────────────────────────────────────── */}
-        <mesh ref={ringRef} rotation={[Math.PI * 0.42, 0.2, 0]} position={[0, -0.05, 0]}>
-          <torusGeometry args={[0.44, 0.005, 16, 100]} />
-          <meshStandardMaterial color="#a855f7" emissive="#a855f7" emissiveIntensity={1.8} transparent opacity={0.7} />
-        </mesh>
+        {/* ── BODY SECTION ── */}
+        <group ref={bodyGroup}>
+            {/* Dark Neck */}
+            <mesh position={[0, 0.22, 0]}>
+               <cylinderGeometry args={[0.06, 0.08, 0.1, 16]} />
+               <meshStandardMaterial color="#111" metalness={0.7} roughness={0.5}/>
+            </mesh>
 
-        {/* Secondary thin ring */}
-        <mesh rotation={[Math.PI * 0.55, 0.8, 0]} position={[0, -0.05, 0]}>
-          <torusGeometry args={[0.5, 0.003, 12, 80]} />
-          <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={1.0} transparent opacity={0.4} />
-        </mesh>
+            {/* Glossy White Torso Chubby */}
+            <mesh position={[0, 0.05, 0]}>
+                <sphereGeometry args={[0.20, 32, 32]} />
+                <meshPhysicalMaterial color="#ffffff" metalness={0.1} roughness={0.1} clearcoat={1.0} clearcoatRoughness={0.05} />
+            </mesh>
+            
+            {/* Chest Core Indicator */}
+            <ChestCore speaking={speaking} />
 
+            {/* ── ARMS ── */}
+            {/* Left Arm */}
+            <group ref={leftArm} position={[-0.22, 0.10, 0]}>
+                {/* Shoulder Ball */}
+                <mesh position={[0,0,0]}><sphereGeometry args={[0.06, 16, 16]}/><meshStandardMaterial color="#112233" metalness={0.8} /></mesh>
+                {/* Arm Body */}
+                <mesh position={[-0.08, -0.12, 0]} rotation={[0, 0, -0.2]}>
+                    <capsuleGeometry args={[0.04, 0.15, 16, 16]} />
+                    <meshPhysicalMaterial color="#ffffff" roughness={0.1} clearcoat={1.0} />
+                </mesh>
+                {/* Hand Claws */}
+                <mesh position={[-0.12, -0.25, 0]} rotation={[0, 0, -0.2]}>
+                    <cylinderGeometry args={[0.02, 0.01, 0.08, 16]} />
+                    <meshStandardMaterial color="#112233" metalness={0.8} />
+                </mesh>
+            </group>
+
+            {/* Right Arm */}
+            <group ref={rightArm} position={[0.22, 0.10, 0]}>
+                {/* Shoulder Ball */}
+                <mesh position={[0,0,0]}><sphereGeometry args={[0.06, 16, 16]}/><meshStandardMaterial color="#112233" metalness={0.8} /></mesh>
+                {/* Arm Body */}
+                <mesh position={[0.08, -0.12, 0]} rotation={[0, 0, 0.2]}>
+                    <capsuleGeometry args={[0.04, 0.15, 16, 16]} />
+                    <meshPhysicalMaterial color="#ffffff" roughness={0.1} clearcoat={1.0} />
+                </mesh>
+                {/* Hand Claws */}
+                <mesh position={[0.12, -0.25, 0]} rotation={[0, 0, 0.2]}>
+                    <cylinderGeometry args={[0.02, 0.01, 0.08, 16]} />
+                    <meshStandardMaterial color="#112233" metalness={0.8} />
+                </mesh>
+            </group>
+
+            {/* ── LEGS / THRUSTERS ── */}
+            {/* Left Leg Thruster */}
+            <group ref={leftLeg} position={[-0.1, -0.15, 0]} rotation={[0, 0, -0.1]}>
+                <mesh position={[0, 0, 0]}>
+                    <capsuleGeometry args={[0.05, 0.12, 16, 16]} />
+                    <meshPhysicalMaterial color="#ffffff" roughness={0.1} clearcoat={1.0} />
+                </mesh>
+                <mesh position={[0, -0.08, 0]}>
+                    <cylinderGeometry args={[0.05, 0.04, 0.04, 16]} />
+                    <meshStandardMaterial color="#112233" metalness={0.8} />
+                </mesh>
+                <JetFlame speaking={speaking} />
+            </group>
+
+            {/* Right Leg Thruster */}
+            <group ref={rightLeg} position={[0.1, -0.15, 0]} rotation={[0, 0, 0.1]}>
+                <mesh position={[0, 0, 0]}>
+                    <capsuleGeometry args={[0.05, 0.12, 16, 16]} />
+                    <meshPhysicalMaterial color="#ffffff" roughness={0.1} clearcoat={1.0} />
+                </mesh>
+                <mesh position={[0, -0.08, 0]}>
+                    <cylinderGeometry args={[0.05, 0.04, 0.04, 16]} />
+                    <meshStandardMaterial color="#112233" metalness={0.8} />
+                </mesh>
+                <JetFlame speaking={speaking} />
+            </group>
+
+        </group>
       </Float>
 
-      {/* ── AURA LIGHTS ──────────────────────────────────────────────── */}
-      <pointLight position={[0, 0.3, 0.3]} intensity={hovered ? 1.2 : 0.6} color="#00f2ff" distance={2} />
-      <pointLight position={[0, -0.1, 0.2]} intensity={hovered ? 0.8 : 0.3} color="#b53cff" distance={1.5} />
+      {/* Bright Space Lighting to clearly show the model details */}
+      <spotLight position={[0, 3, 2]} intensity={4} color="#ffffff" distance={10} penumbra={0.5} />
+      <pointLight position={[0, -1, 1]} intensity={2.5} color="#00e5ff" distance={5} />
+      <ambientLight intensity={1.5} />
+      
+      {/* Intense flame environment light */}
+      <pointLight position={[0, -2, 0]} intensity={speaking ? 6 : 4} color="#0088ff" distance={6} />
     </group>
   );
 }

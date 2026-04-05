@@ -120,17 +120,18 @@
           </div>
           <div class="terminal-body font-fira p-4" id="terminal-history">
             <div class="terminal-banner text-neon mb-3">
-              Kranthu OS Native Shell v1.2.0<br/>
-              Connected to Mainframe.<br/>
+              KSKR OS Native Shell v2.1.0<br/>
+              Kernel: AI-Powered Portfolio System<br/>
               Type <span class="text-warning">help</span> to view all commands.
             </div>
             <!-- Initial command -->
             <div class="terminal-line"><span class="prompt text-success">root@kskr-os:~$</span> whois kranthu</div>
             <div class="terminal-output mt-2 mb-3 text-muted">
-              <span class="text-primary">Name:</span> Kata Sai Kranthu Reddy<br/>
-              <span class="text-primary">Role:</span> Full Stack Developer & AI Enthusiast<br/>
-              <span class="text-primary">Level:</span> 1st Year CS Student (AI/ML) @ SRM University<br/>
-              <span class="text-primary">Status:</span> Actively seeking internship opportunities.
+              <span class="text-primary">Name:</span>         Kata Sai Kranthu Reddy<br/>
+              <span class="text-primary">Role:</span>         Full Stack Developer &amp; AI Engineer<br/>
+              <span class="text-primary">University:</span>   SRM University, KTR — B.Tech CS (AI/ML) 2025–2029<br/>
+              <span class="text-primary">Skills:</span>       Python · Flask · React · Java · Flutter · ML · NLP<br/>
+              <span class="text-primary">Status:</span>       <span class="text-success">Open to Internship Opportunities</span>
             </div>
           </div>
           <div class="terminal-input-row font-fira p-4 pt-0 d-flex align-items-center">
@@ -521,7 +522,7 @@
               <div class="msg-avatar"><i class="fas fa-robot"></i></div>
               <div class="msg-content glass-bubble">
                 <span class="font-fira small d-block mb-1 text-neon">KSKR_AI_CORE.exe</span>
-                <p class="mb-0 font-inter text-light">Greeting established. I am the central intelligence for Kranthu's Portfolio. How can I assist you with project logs or system capabilities today?</p>
+                <p class="mb-0 font-inter text-light">Hello! 👋 I'm <strong>KSKR AI</strong> — Kranthu's personal intelligence system. Ask me about his <strong>skills</strong>, <strong>projects</strong>, <strong>education</strong>, <strong>internship availability</strong>, or how to <strong>contact</strong> him!</p>
               </div>
             </div>
           </div>
@@ -529,12 +530,16 @@
           <div class="chat-suggestions px-4 mb-3 d-flex gap-2 flex-wrap">
             <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Who is Kranthu?')">whois_kranthu</button>
             <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Show projects')">list_projects</button>
+            <button class="cyber-pill-btn font-fira small" onclick="sendQuick('What are his skills?')">tech_skills</button>
+            <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Is he available for internship?')">internship</button>
+            <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Education details')">education</button>
             <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Contact info')">establish_link</button>
+            <button class="cyber-pill-btn font-fira small" onclick="sendQuick('Download resume')">get_resume</button>
           </div>
           
           <form id="chatForm" class="chat-input-area p-4 pt-0">
             <div class="glass-panel p-2 d-flex align-items-center">
-              <input type="text" id="chatInput" class="cyber-input flex-grow-1" placeholder="Enter query..." autocomplete="off">
+              <input type="text" id="chatInput" class="cyber-input flex-grow-1" placeholder="Ask anything about Kranthu..." autocomplete="off">
               <button type="submit" class="cyber-send-btn ms-2 px-3 py-2">
                 <i class="fas fa-paper-plane"></i>
               </button>
