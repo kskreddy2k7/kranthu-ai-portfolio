@@ -200,12 +200,25 @@ export default function CuteRobot({ sectionId, speaking, onReady }) {
     const t = clock.elapsedTime;
     if (!group.current) return;
 
-    // Movement Tracking locked slightly left of far right edge
+    // ── Optimized Mobile Pathing ──
     const isMobile = window.innerWidth < 768;
-    const defaultRawX = 1.2;
-    const responsiveX = isMobile ? defaultRawX * 0.5 : defaultRawX;
-    targetPos.current.set(responsiveX, 1.2, 0);
-    currentPos.current.lerp(targetPos.current, delta * 3);
+    
+    // On mobile, if we are in Hero, stay centered and high.
+    // Otherwise, float in a fixed "Assistant" position (bottom-right area of screen space).
+    if (isMobile) {
+      if (sectionId === 'hero') {
+        // Adjusted: slightly to the right and higher up to clear "Hi, I'm" text
+        targetPos.current.set(0.4, 1.6, 0); 
+      } else {
+        // Floating bottom-right assistant position
+        targetPos.current.set(0.6, -1.2, 0);
+      }
+    } else {
+      // Desktop: Stay on the right side
+      targetPos.current.set(1.2, 1.2, 0);
+    }
+
+    currentPos.current.lerp(targetPos.current, delta * 2.5);
     group.current.position.copy(currentPos.current);
 
     // Look-At logic towards UI

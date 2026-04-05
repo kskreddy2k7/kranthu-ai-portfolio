@@ -13,7 +13,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&display=swap" rel="stylesheet">
   <!-- AOS (kept for fallback / simple animations if needed) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
   <!-- Custom CSS -->
@@ -63,7 +63,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav" id="mainNav" style="z-index: 1500 !important;">
       <div class="container">
         <a class="navbar-brand fw-bold font-orbitron" href="{{ url_for('index') }}">
-          <span class="brand-highlight">&lt;</span>Kranthu<span class="brand-highlight">_SYSTEM/&gt;</span>
+          <span class="brand-name">KATA SAI KRANTHU REDDY</span>
         </a>
         
         <!-- Sound Control moved to Brand Level for absolute visibility -->
@@ -79,13 +79,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav ms-auto gap-2">
-            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#about">__about</a></li>
-            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#skills">__skills</a></li>
-            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#projects">__projects</a></li>
-            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#experience">__logs</a></li>
-            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#chatbot">__ai_assistant</a></li>
-            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#contact">__link</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#about" data-i18n="nav.about">__about</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#skills" data-i18n="nav.skills">__skills</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#projects" data-i18n="nav.projects">__projects</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#experience" data-i18n="nav.logs">__logs</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#chatbot" data-i18n="nav.ai">__ai_assistant</a></li>
+            <li class="nav-item"><a class="nav-link font-fira" href="{{ url_for('index') }}#contact" data-i18n="nav.contact">__link</a></li>
           </ul>
+          
+          <!-- Modern Language Switcher Dropdown -->
+          <div class="lang-dropdown-wrapper">
+            <button class="lang-dropdown-btn" id="lang-current">
+              <i class="fas fa-globe"></i>
+              <span>Language</span>
+              <i class="fas fa-chevron-down small"></i>
+            </button>
+            <div class="lang-dropdown-menu">
+              <div class="lang-item" data-lang="en">English (EN)</div>
+              <div class="lang-item" data-lang="hi">हिन्दी (HI)</div>
+              <div class="lang-item" data-lang="te">తెలుగు (TE)</div>
+              <div class="lang-item" data-lang="ta">தமிழ் (TA)</div>
+              <div class="lang-item" data-lang="kn">ಕನ್ನಡ (KN)</div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -97,7 +113,7 @@
     <footer class="footer py-5 border-top-neon">
       <div class="container text-center">
         <p class="footer-name mb-2 font-orbitron neon-text">KATA SAI KRANTHU REDDY</p>
-        <p class="footer-tagline mb-3 font-fira text-muted">SYSTEM ONLINE · AI & BACKEND OPS</p>
+        <p class="footer-tagline mb-3 font-fira text-muted" data-i18n="footer.tagline">SYSTEM ONLINE · AI & BACKEND OPS</p>
         <div class="footer-links d-flex justify-content-center gap-4 mb-4">
           <a href="https://www.linkedin.com/in/kata-sai-kranthu-reddy-b02848377" target="_blank" rel="noopener" class="neon-link h4">
             <i class="fab fa-linkedin"></i>
@@ -106,7 +122,7 @@
             <i class="fab fa-github"></i>
           </a>
         </div>
-        <p class="footer-copy mb-0 font-fira small text-muted">&copy; 2026 // KSKR. ALL SYSTEMS NOMINAL.</p>
+        <p class="footer-copy mb-0 font-fira small text-muted" data-i18n="footer.copy">&copy; 2026 // KSKR. ALL SYSTEMS NOMINAL.</p>
       </div>
     </footer>
   </div>
@@ -126,10 +142,12 @@
   <!-- Vanilla Tilt for Projects -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
   
-  <!-- Custom JS -->
+  <!-- i18n Engine -->
   {% if static_mode %}
+    <script src="static/js/i18n.js"></script>
     <script src="static/js/script.js"></script>
   {% else %}
+    <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}?v=14.0"></script>
   {% endif %}
 

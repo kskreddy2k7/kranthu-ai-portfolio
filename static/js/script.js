@@ -50,33 +50,51 @@ document.addEventListener('DOMContentLoaded', () => {
   (function initTyping() {
     const el = document.getElementById('typed-text');
     if (!el) return;
-    const lines = [
+    
+    // Default lines, will be overridden by i18n
+    let lines = [
       'I build AI-powered applications',
       'Machine Learning · NLP · Full Stack',
       'Turning ideas into intelligent systems'
     ];
+    
     let li = 0, ci = 0, deleting = false;
+    let timer = null;
+
+    window.updateHeroTyping = (newLines) => {
+        lines = newLines;
+        li = 0; ci = 0; deleting = false;
+        clearTimeout(timer);
+        type();
+    };
 
     function type() {
-      const current = lines[li];
+      const current = lines[li] || '';
       if (!deleting) {
         el.textContent = current.slice(0, ++ci);
-        if (ci === current.length) {
+        if (ci >= current.length) {
           deleting = true;
-          setTimeout(type, 1800); return;
+          timer = setTimeout(type, 1800); return;
         }
-        setTimeout(type, 55);
+        timer = setTimeout(type, 55);
       } else {
         el.textContent = current.slice(0, --ci);
-        if (ci === 0) {
+        if (ci <= 0) {
           deleting = false;
           li = (li + 1) % lines.length;
-          setTimeout(type, 400); return;
+          timer = setTimeout(type, 400); return;
         }
-        setTimeout(type, 28);
+        timer = setTimeout(type, 28);
       }
     }
-    setTimeout(type, 1000);
+    
+    // Initial delay to wait for i18n to possibly load
+    setTimeout(() => {
+        if (window.i18n && window.i18n.translations[window.i18n.currentLang]?.hero?.typed) {
+            lines = window.i18n.translations[window.i18n.currentLang].hero.typed;
+        }
+        type();
+    }, 1200);
   })();
 
   // --- 0. SOUND SYSTEMS (PHASE 9) ---
@@ -267,18 +285,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Start Boot Logic with User Interaction (Fix for Mobile Audio)
+  // Start Boot Logic
   const initBtn = document.getElementById('init-system-btn');
   const initContainer = document.getElementById('boot-init-container');
-
+  
   if (initBtn && initContainer) {
-    console.log("🤖 [Portfolio OS] Boot button found, waiting for user click...");
     initBtn.addEventListener('click', () => {
-      console.log("🤖 [Portfolio OS] INITIALIZE_SYSTEM clicked.");
-      try {
-        playSound('click', 0.5);
-      } catch(e) { console.warn("Sound play failed", e); }
-      
+      playSound('click', 0.5);
       gsap.to(initContainer, { 
         autoAlpha: 0, 
         height: 0, 
@@ -286,13 +299,18 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.5,
         onComplete: () => {
           initContainer.style.display = 'none';
-          console.log("🤖 [Portfolio OS] Starting boot logs...");
           simulateBootLogs();
         }
       });
     });
+
+    // Auto-trigger initialization after 800ms
+    setTimeout(() => {
+      if (initBtn && initContainer.style.display !== 'none') {
+        initBtn.click();
+      }
+    }, 800);
   } else {
-    console.warn("🤖 [Portfolio OS] Boot elements missing, triggering auto-boot fallback.");
     setTimeout(simulateBootLogs, 300);
   }
 
@@ -304,6 +322,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   enterBtn.addEventListener('click', () => {
     playSound('boot', 0.5);
+    
+    // Auto-scroll to top to ensure we start at Home Page
+    window.scrollTo({ top: 0, behavior: 'instant' });
     
     // Immediate state change for reliability
     document.body.style.overflow = 'visible';
@@ -659,8 +680,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 8. AI ASSISTANT CHAT LOGIC ---
   const chatForm = document.getElementById('chatForm');
-  const chatInput = document.getElementById('chatInput');
+  const chatInput = document.getElementById('chat-input') || document.getElementById('chatInput');
   const chatMessages = document.getElementById('chatMessages');
+  const chatBody = document.querySelector('.chat-body');
 
   // --- Static Chatbot (GitHub Pages fallback + primary on static hosting) ---
   const LOCAL_RESPONSES = {
@@ -807,19 +829,31 @@ document.addEventListener('DOMContentLoaded', () => {
           removeTypingIndicator();
           playSound('notify', 0.3);
           appendChat(getLocalResponse(message), false);
-        }, 900);
+        }, 800);
       });
     }, 400);
   }
 
-
-  if (chatForm) {
+  // --- Chatbot Initialization ---
+  if (chatForm && chatInput && chatBody) {
     chatForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const msg = chatInput ? chatInput.value.trim() : '';
-      if (msg) sendChatMessage(msg);
+      const msg = chatInput.value.trim();
+      if (msg) {
+        sendChatMessage(msg);
+        chatInput.value = '';
+      }
     });
   }
+
+  // Update chatbot with i18n welcome if available
+  function updateChatbotUI() {
+    const welcomeP = document.querySelector('.chat-message.bot .msg-content p');
+    if (welcomeP && window.i18n && window.i18n.translations[window.i18n.currentLang]?.chatbot?.welcome) {
+        welcomeP.innerHTML = window.i18n.translations[window.i18n.currentLang].chatbot.welcome;
+    }
+  }
+  setTimeout(updateChatbotUI, 1500);
 
   window.sendQuick = (msg) => { sendChatMessage(msg); };
 

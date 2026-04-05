@@ -17,13 +17,10 @@
   --danger: #ff003c;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --text-dim: rgba(255, 255, 255, 0.6);
-  --border: rgba(255, 255, 255, 0.08);
-  --glow-cyan: 0 4px 20px rgba(0, 229, 255, 0.3);
-  --glow-purple: 0 4px 20px rgba(192, 75, 255, 0.3);
-  --glow-green: 0 4px 20px rgba(0, 240, 144, 0.3);
   --glow-danger: 0 4px 20px rgba(255, 0, 60, 0.3);
-  --transition: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --glass-bg: rgba(15, 15, 24, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ---------- Global Reset & Cursor ---------- */
@@ -32,7 +29,7 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 /* Hide default cursor on desktop, show it on touch if needed, but we use custom dot */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Telugu', 'Noto Sans Tamil', 'Noto Sans Kannada', sans-serif;
   background: linear-gradient(135deg, #02021a 0%, #000005 100%);
   background-attachment: fixed;
   color: var(--text-main);
@@ -40,6 +37,12 @@ body {
   line-height: 1.7;
   letter-spacing: 0.4px;
   cursor: none;
+  transition: opacity 0.4s ease;
+}
+
+body.switching-lang {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Disable custom cursor on touch/mobile devices for better UX */
@@ -79,6 +82,68 @@ body.booting #avatar-root {
 }
 
 a, button, input, textarea, .magnetic-btn, .cursor-pointer { cursor: none !important; }
+
+/* Language Switcher Consolidate into Dropdown */
+.lang-dropdown-wrapper {
+  margin-left: 1rem;
+  position: relative;
+}
+.lang-dropdown-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.lang-dropdown-btn:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 15px var(--neon-dim);
+}
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  min-width: 140px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2000;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+.lang-dropdown-wrapper:hover .lang-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.lang-item {
+  color: var(--text-dim);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.lang-item:hover, .lang-item.active {
+  background: var(--neon-dim);
+  color: var(--neon);
+}
+@media (max-width: 991px) {
+  .lang-dropdown-wrapper { margin-left: 0; margin-top: 1rem; }
+  .lang-dropdown-menu { position: static; transform: none; visibility: visible; opacity: 1; border: none; box-shadow: none; padding-left: 1rem; }
+}
 
 /* Typography */
 .font-orbitron { font-family: 'Orbitron', sans-serif; letter-spacing: 1.5px; font-weight: 700; }
@@ -244,8 +309,40 @@ a, button, input, textarea, .magnetic-btn, .cursor-pointer { cursor: none !impor
 .border-top-neon { border-top: 1px solid var(--neon-dim); }
 .border-bottom-neon { border-bottom: 1px solid var(--neon-dim); }
 
-/* ---------- Hero & Live Clock ---------- */
+/* ---------- Hero Section Enhancements ---------- */
 .hero { min-height: 100vh; position: relative; overflow: hidden; padding-top: 80px; }
+.hero-scanner {
+  position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  opacity: 0.3; z-index: 5;
+  animation: scan-line 8s infinite linear;
+}
+@keyframes scan-line {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+.hero-name-full {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(to bottom, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.hero-glow-blob {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 500px; height: 500px; background: radial-gradient(circle, var(--neon-dim) 0%, transparent 70%);
+  filter: blur(80px); z-index: -1; animation: pulse-glow 6s infinite ease-in-out;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
+}
 .hero-bg-grid { position: absolute; inset: -200px; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; transform: perspective(500px) rotateX(60deg) scale(1.5); transform-origin: top; opacity: 0.3; pointer-events: none; transition: transform 0.1s ease-out; }
 .hero-content-wrapper { padding-top: 4rem; pointer-events: none; }
 .hero-content-wrapper > *, .hero-content-wrapper .magnetic-btn { pointer-events: auto; }
@@ -496,9 +593,15 @@ a, button, input, textarea, .magnetic-btn, .cursor-pointer { cursor: none !impor
    ============================================================ */
 @media (max-width: 767px) {
 
-  /* --- Hide 3D robot on mobile (too heavy, causes layout overlap & lag) --- */
-  #avatar-root {
+  /* --- Performance: Hide heavy background grid on mobile to fix lag --- */
+  .hero-bg-grid {
     display: none !important;
+  }
+
+  /* --- Allow robot visibility on mobile --- */
+  #avatar-root {
+    display: block !important;
+    z-index: 9999; /* Higher to ensure it's visible on small screens */
   }
 
   /* --- Hero section: remove extra spacing caused by avatar --- */
@@ -512,10 +615,14 @@ a, button, input, textarea, .magnetic-btn, .cursor-pointer { cursor: none !impor
     padding: 0 16px;
   }
 
-  /* --- Fix hero name font size on small screens --- */
+  /* --- Fix hero name font size on small screens (fit full name) --- */
   .hero-name {
-    font-size: clamp(1.4rem, 6vw, 2rem) !important;
-    line-height: 1.3;
+    font-size: clamp(1.2rem, 8vw, 2.4rem) !important;
+    line-height: 1.2;
+    margin-top: 5px;
+  }
+  .hero-name-full {
+      letter-spacing: 2px;
   }
 
   /* --- Floating tech icons: smaller & tighter--- */

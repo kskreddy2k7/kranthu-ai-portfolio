@@ -1,0 +1,61 @@
+{
+  "lang_name": "తెలుగు",
+  "nav": {
+    "about":     "__గురించి",
+    "skills":    "__నైపుణ్యాలు",
+    "projects":  "__ప్రాజెక్టులు",
+    "logs":      "__లాగ్సు",
+    "ai":        "__AI_సహాయకుడు",
+    "contact":   "__సంప్రదింపు"
+  },
+  "hero": {
+    "hello":     "నమస్కారం, నేను",
+    "name":      "Kata Sai Kranthu Reddy",
+    "typed":     ["నేను AI ఆ్యప్స్ నిర్మిస్తాను", "మెషీన్ లెర్నింగ్ · NLP · ఫుల్ స్టాక్", "ఆలోచనలను తెలివైన వ్యవస్థలుగా మార్చడం"],
+    "subtitle":  "<span style='color:var(--neon)'>మెషీన్ లెర్నింగ్</span>, <span style='color:var(--purple)'>NLP</span> మరియు <span style='color:var(--green)'>ఫుల్ స్టాక్ డెవలప్‌మెంట్</span>లో నిపుణుడు",
+    "btn_projects": "ప్రాజెక్టులు చూడండి",
+    "btn_contact":  "సంప్రదించండి",
+    "btn_resume":   "రెజ్యూమే"
+  },
+  "about": {
+    "tag":   "__ఇంటరాక్టివ్_షెల్",
+    "title": "సిస్టమ్ టెర్మినల్",
+    "hint":  "అందుబాటులో ఉన్న ఆదేశాలకు 'help' టైప్ చేయండి."
+  },
+  "skills": {
+    "tag":    "__సామర్థ్యాలు",
+    "title":  "సిస్టమ్ స్కిల్స్",
+    "logic":  "లాజిక్ ప్రాసెసింగ్",
+    "neural": "న్యూరల్ కోర్స్"
+  },
+  "projects": {
+    "tag":   "__ఎక్జిక్యూటేబుల్స్",
+    "title": "నిజమైన అప్లికేషన్లు",
+    "filter_all":  "అన్నీ",
+    "filter_web":  "వెబ్",
+    "filter_ai":   "AI",
+    "filter_apps": "మొబైల్"
+  },
+  "experience": {
+    "tag":   "__సిస్టమ్_చరిత్ర",
+    "title": "అనుభవ లాగ్సు"
+  },
+  "chatbot": {
+    "tag":   "__న్యూరల్_ఇంటర్ఫేస్",
+    "title": "AI సహాయకుడు",
+    "placeholder": "Kranthu గురించి ఏదైనా అడగండి...",
+    "welcome": "నమస్కారం! 👋 నేను <strong>KSKR AI</strong> — Kranthu యొక్క AI సహాయకుడు. అతని <strong>స్కిల్స్</strong>, <strong>ప్రాజెక్టులు</strong> లేదా <strong>సంప్రదింపు</strong> గురించి అడగండి!"
+  },
+  "contact": {
+    "tag":   "__హ్యాండ్‌షేక్",
+    "title": "సంపర్కం ఏర్పాటు చేయండి",
+    "name_label":  "పేరు",
+    "email_label": "ఇమెయిల్",
+    "msg_label":   "సందేశం",
+    "send_btn":    "పంపండి"
+  },
+  "footer": {
+    "tagline": "సిస్టమ్ ఆన్‌లైన్ · AI డెవలప్‌మెంట్",
+    "copy":    "© 2026 // KSKR. అన్ని హక్కులు పరిరక్షించబడ్డాయి."
+  }
+}

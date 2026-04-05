@@ -93,38 +93,43 @@ function AvatarPlaceholder() {
 function SpeechBubble({ text, visible, sectionXPercent, speaking }) {
   if (!visible) return null;
   
-  const xPos = sectionXPercent ?? 50;
+  const isMobile = window.innerWidth < 768;
   
   return (
     <div style={{
       position: 'fixed',
-      top: window.innerWidth < 768 ? '10%' : '25%',
-      right: window.innerWidth < 768 ? '5%' : '1%',
-      transform: 'none',
-      width: window.innerWidth < 768 ? 'min(90vw, 320px)' : '300px',
-      background: 'rgba(10, 10, 18, 0.65)',
+      // Mobile: Bottom horizontal bar style. Desktop: Floating right card.
+      bottom: isMobile ? '20px' : 'auto',
+      top: isMobile ? 'auto' : '25%',
+      right: isMobile ? '20px' : '1%',
+      left: isMobile ? '20px' : 'auto',
+      width: isMobile ? 'calc(100% - 40px)' : '300px',
+      margin: '0 auto',
+      background: 'rgba(10, 10, 18, 0.85)',
       backdropFilter: 'blur(24px)',
       WebkitBackdropFilter: 'blur(24px)',
-      border: '1px solid rgba(255, 255, 255, 0.12)',
+      border: '1px solid rgba(255, 255, 255, 0.15)',
       borderRadius: '16px',
       padding: '16px 20px',
       fontFamily: '"Inter", sans-serif',
-      fontSize: '14px',
+      fontSize: isMobile ? '13px' : '14px',
       lineHeight: '1.6',
       color: '#f8fafc',
       fontWeight: 400,
       textAlign: 'center',
-      boxShadow: speaking ? '0 0 35px rgba(0, 242, 255, 0.25), 0 10px 40px rgba(0,0,0,0.5)' : '0 10px 40px rgba(0,0,0,0.4)',
+      boxShadow: speaking ? '0 0 35px rgba(0, 242, 255, 0.3), 0 10px 40px rgba(0,0,0,0.6)' : '0 10px 40px rgba(0,0,0,0.4)',
       zIndex: 999999,
       pointerEvents: 'none',
-      animation: 'kavBubbleSlide 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
+      animation: isMobile ? 'kavBubbleSlideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)' : 'kavBubbleSlide 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
       transition: 'box-shadow 0.3s ease',
     }}>
-      <div style={{ fontSize: '11px', letterSpacing: '1px', color: '#00f3ff', marginBottom: '8px', fontWeight: 600, textTransform: 'uppercase' }}>
+      <div style={{ fontSize: '10px', letterSpacing: '1px', color: '#00f3ff', marginBottom: '6px', fontWeight: 600, textTransform: 'uppercase' }}>
         {speaking ? <span style={{display: 'inline-block', width: '6px', height: '6px', borderRadius: '50%', background: '#00f3ff', marginRight: '6px', animation: 'kavPulse 1.5s infinite'}}></span> : null}
         AI Assistant
       </div>
-      {text}
+      <div style={{ maxHeight: isMobile ? '80px' : 'none', overflowY: 'auto' }}>
+        {text}
+      </div>
     </div>
   );
 }
@@ -143,6 +148,10 @@ function InjectStyles() {
       @keyframes kavBubbleSlide {
         from { opacity: 0; transform: translateX(-15px) scale(0.95); }
         to   { opacity: 1; transform: translateX(0) scale(1); }
+      }
+      @keyframes kavBubbleSlideUp {
+        from { opacity: 0; transform: translateY(20px) scale(0.98); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
       }
       @keyframes kavPulse {
         0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,243,255,0.7); }
@@ -170,7 +179,13 @@ export default function App() {
   const [booted, setBooted]         = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(1);
   const bubbleTimer = useRef(null);
-  const speakTimer  = useRef(null);
+  
+  // Helper for TTS selection
+  const getTTSLang = () => {
+    const i18nLang = window.i18n?.currentLang || 'en';
+    const map = { 'en': 'en-GB', 'hi': 'hi-IN', 'te': 'te-IN', 'ta': 'ta-IN', 'kn': 'kn-IN' };
+    return map[i18nLang] || i18nLang;
+  };
   
   // Listen for global sound toggle
   useEffect(() => {
@@ -230,32 +245,41 @@ export default function App() {
     };
   }, []);
 
-  // ── Welcome Speech fires AFTER home page loads ──
+  // ── Welcome Speech fires AFTER system entry and Home page appears ──
   useEffect(() => {
     if (!booted) return;
-    if (localStorage.getItem('kskr_sound_enabled') !== 'true') return;
+    if (muted) return;
 
-    const welcomeMsg = "Welcome. I am KSKR, an AI assistant built into this portfolio. I'll guide you as you explore Kranthu's work, projects, and capabilities. Let's get started.";
+    // Use translations for welcome if available
+    const welcomeMsg = window.i18n?.translations[window.i18n.currentLang]?.hero?.welcome 
+      || "Welcome to Kata Sai Kranthu Reddy's portfolio. I am KSKR, his AI assistant. I'll guide you as you explore his work and capabilities.";
 
     const t = setTimeout(() => {
-      setBubbleText(welcomeMsg);
-      setBubbleVis(true);
-      if (!muted) playSciFiBlip();
-      speak(welcomeMsg, () => {
-        setSpeaking(false);
-        setBubbleVis(false);
-      });
-      setSpeaking(true);
-    }, 800); // small delay after home page appears
+      // Ensure we only speak this once at the very start
+      if (section?.id === 'hero' && !window.hasSpokenWelcome) {
+        window.hasSpokenWelcome = true;
+        setBubbleText(welcomeMsg);
+        setBubbleVis(true);
+        if (!muted) playSciFiBlip();
+        speak(welcomeMsg, getTTSLang(), () => {
+          setSpeaking(false);
+          // Wait a bit before hiding bubble if we are still at hero
+          bubbleTimer.current = setTimeout(() => setBubbleVis(false), 2000);
+        });
+        setSpeaking(true);
+      }
+    }, 1200); // Cinematic delay after entry animation
 
     return () => clearTimeout(t);
-  }, [booted]);
+  }, [booted, muted]);
 
-  // Hint logic removed
-
-  // Section change → speak + bubble
+  // Section change → speak + bubble (skip hero if welcome was just spoken)
   useEffect(() => {
-    if (!section) return;
+    if (!booted || !section) return;
+    
+    // Don't repeat hero speech if we just spoke the welcome message
+    if (section.id === 'hero' && window.hasSpokenWelcome) return;
+
     const text = section.speech;
     setBubbleText(text);
     setBubbleVis(true);
@@ -265,7 +289,7 @@ export default function App() {
 
     if (!muted) {
       setSpeaking(true);
-      speak(text, () => {
+      speak(text, getTTSLang(), () => {
         setSpeaking(false);
         bubbleTimer.current = setTimeout(() => setBubbleVis(false), 2000);
       });
@@ -277,7 +301,7 @@ export default function App() {
       }, 4000);
     }
 
-  }, [section?.id]);
+  }, [section?.id, booted]);
 
   // Interaction functions removed to prevent screen blockage
 

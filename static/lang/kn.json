@@ -1,0 +1,61 @@
+{
+  "lang_name": "ಕನ್ನಡ",
+  "nav": {
+    "about":     "__ಬಗ್ಗೆ",
+    "skills":    "__ಕೌಶಲಗಳು",
+    "projects":  "__ಯೋಜನೆಗಳು",
+    "logs":      "__ದಾಖಲೆಗಳು",
+    "ai":        "__AI_ಸಹಾಯಕ",
+    "contact":   "__ಸಂಪರ್ಕ"
+  },
+  "hero": {
+    "hello":     "ನಮಸ್ಕಾರ, ನಾನು",
+    "name":      "Kata Sai Kranthu Reddy",
+    "typed":     ["ನಾನು AI-ಚಾಲಿತ ಅನ್ವಯಿಕೆಗಳನ್ನು ನಿರ್ಮಿಸುತ್ತೇನೆ", "ಮಷಿನ್ ಲರ್ನಿಂಗ್ · NLP · ಫುಲ್ ಸ್ಟ್ಯಾಕ್", "ಆಲೋಚನೆಗಳನ್ನು ಬುದ್ಧಿವಂತ ವ್ಯವಸ್ಥೆಗಳಾಗಿ ಬದಲಾಯಿಸುವುದು"],
+    "subtitle":  "<span style='color:var(--neon)'>ಮಷಿನ್ ಲರ್ನಿಂಗ್</span>, <span style='color:var(--purple)'>NLP</span> ಮತ್ತು <span style='color:var(--green)'>ಫುಲ್ ಸ್ಟ್ಯಾಕ್ ಡವಲಪ್‌ಮೆಂಟ್‌ನಲ್ಲಿ</span> ಪರಿಣಿತ",
+    "btn_projects": "ಯೋಜನೆಗಳನ್ನು ನೋಡಿ",
+    "btn_contact":  "ನನ್ನನ್ನು ಸಂಪರ್ಕಿಸಿ",
+    "btn_resume":   "ರೆಸ್ಯೂಮೆ"
+  },
+  "about": {
+    "tag":   "__ಇಂಟರಾಕ್ಟಿವ್_ಶೆಲ್",
+    "title": "ಸಿಸ್ಟಮ್ ಟರ್ಮಿನಲ್",
+    "hint":  "ಲಭ್ಯವಿರುವ ಆದೇಶಗಳಿಗೆ 'help' ಎಂದು ಟೈಪ್ ಮಾಡಿ."
+  },
+  "skills": {
+    "tag":    "__ಸಾಮರ್ಥ್ಯಗಳು",
+    "title":  "ಸಿಸ್ಟಮ್ ಸ್ಕಿಲ್ಸ್",
+    "logic":  "ಲಾಜಿಕ್ ಪ್ರೊಸೆಸಿಂಗ್",
+    "neural": "ನ್ಯೂರಲ್ ಕೋರ್ಸ್"
+  },
+  "projects": {
+    "tag":   "__ಎಕ್ಸಿಕ್ಯೂಟೇಬಲ್ಸ್",
+    "title": "ವಾಸ್ತವ ಅನ್ವಯಿಕೆಗಳು",
+    "filter_all":  "ಎಲ್ಲವೂ",
+    "filter_web":  "ವೆಬ್",
+    "filter_ai":   "AI",
+    "filter_apps": "ಮೊಬೈಲ್"
+  },
+  "experience": {
+    "tag":   "__ಸಿಸ್ಟಮ್_ಇತಿಹಾಸ",
+    "title": "ಅನುಭವ ದಾಖಲೆಗಳು"
+  },
+  "chatbot": {
+    "tag":   "__ನ್ಯೂರಲ್_ಇಂಟರ್ಫೇಸ್",
+    "title": "AI ಸಹಾಯಕ",
+    "placeholder": "Kranthu ಬಗ್ಗೆ ಏನನ್ನಾದರೂ ಕೇಳಿ...",
+    "welcome": "ನಮಸ್ಕಾರ! 👋 ನಾನು <strong>KSKR AI</strong> — Kranthu ಅವರ AI ಸಹಾಯಕ. ಅವರ <strong>ಕೌಶಲಗಳು</strong>, <strong>ಯೋಜನೆಗಳು</strong> ಅಥವಾ <strong>ಸಂಪರ್ಕ</strong> ಬಗ್ಗೆ ಕೇಳಿ!"
+  },
+  "contact": {
+    "tag":   "__ಹ್ಯಾಂಡ್‌ಶೇಕ್",
+    "title": "ಸಂಪರ್ಕವನ್ನು ಸ್ಥಾಪಿಸಿ",
+    "name_label":  "ಹೆಸರು",
+    "email_label": "ಇಮೇಲ್",
+    "msg_label":   "ಸಂದೇಶ",
+    "send_btn":    "ಕಳುಹಿಸಿ"
+  },
+  "footer": {
+    "tagline": "ಸಿಸ್ಟಮ್ ಆನ್‌ಲೈನ್ · AI ಡವಲಪ್‌ಮೆಂಟ್",
+    "copy":    "© 2026 // KSKR. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ."
+  }
+}

@@ -50,56 +50,54 @@ export function useSpeech() {
 
   useEffect(() => () => stopKeepAlive(), [stopKeepAlive]);
 
-  // Strip HTML tags and emoji for clean TTS input
+  // Strip HTML tags and emoji for clean TTS input (REMOVED ASCII-ONLY FILTER)
   const cleanText = (text) => {
     if (!text) return '';
     return text
       .replace(/<[^>]*>/g, '')
       .replace(/[\u{1F300}-\u{1FFFF}]/gu, '')
-      .replace(/[^\x00-\x7F]/g, '')   // strip any remaining non-ASCII
       .replace(/\s+/g, ' ')
       .trim();
   };
 
-  // Pick best available MALE English voice, mobile-aware
-  function pickVoice() {
+  // Pick best available voice for the target language
+  function pickVoice(langCode = 'en-GB') {
     const voices = window.speechSynthesis.getVoices();
     if (!voices.length) return null;
 
-    // Names known to be female — explicitly exclude these
+    // Names known to be female — explicitly exclude these for "Male Robo" feel
     const femaleNames = ['samantha','victoria','karen','moira','fiona','tessa',
       'veena','ava','allison','susan','zoe','nicky','sara','ellen','alice',
-      'amelie','anna','kyoko','female','woman','girl','siri'];
+      'amelie','anna','kyoko','female','woman','girl','siri','lekha','vani'];
 
     function isFemale(v) {
       const n = v.name.toLowerCase();
       return femaleNames.some(f => n.includes(f));
     }
 
-    const enVoices    = voices.filter(v => v.lang.startsWith('en'));
-    const maleVoices  = enVoices.filter(v => !isFemale(v));
+    const langVoices = voices.filter(v => v.lang.startsWith(langCode.split('-')[0]));
+    const maleVoices = langVoices.filter(v => !isFemale(v));
 
-    return (
-      voices.find(v => v.name === 'Google UK English Male')    ||
-      voices.find(v => v.name === 'Google US English Male')    ||
-      voices.find(v => v.name === 'Google हिन्दी' && false)    || // skip Hindi
-      voices.find(v => v.name.includes('Microsoft Mark'))      ||
-      voices.find(v => v.name.includes('Microsoft David'))     ||
-      voices.find(v => v.name.includes('Microsoft Guy'))       ||
-      voices.find(v => v.name === 'Daniel')                    || // iOS UK Male
-      voices.find(v => v.name === 'Alex')                      || // iOS US Male
-      voices.find(v => v.name === 'Fred')                      || // iOS Male
-      voices.find(v => v.name === 'Tom')                       ||
-      maleVoices.find(v => v.lang === 'en-US')                 ||
-      maleVoices.find(v => v.lang === 'en-GB')                 ||
-      maleVoices.find(v => v.lang === 'en-IN')                 ||
-      maleVoices[0]                                            ||
-      enVoices.find(v => v.lang === 'en-US')                   ||
-      enVoices[0]
-    );
+    // Priorities for English
+    if (langCode.startsWith('en')) {
+      return (
+        voices.find(v => v.name === 'Google UK English Male')    ||
+        voices.find(v => v.name === 'Google US English Male')    ||
+        voices.find(v => v.name.includes('Microsoft Mark'))      ||
+        voices.find(v => v.name.includes('Microsoft David'))     ||
+        voices.find(v => v.name.includes('Microsoft Guy'))       ||
+        voices.find(v => v.name === 'Daniel')                    ||
+        voices.find(v => v.name === 'Alex')                      ||
+        maleVoices[0]                                            ||
+        langVoices[0]
+      );
+    }
+
+    // Priorities for Indian Languages
+    return maleVoices[0] || langVoices[0] || voices[0];
   }
 
-  const speak = useCallback((text, onEnd) => {
+  const speak = useCallback((text, langCode = 'en-GB', onEnd) => {
     if (!window.speechSynthesis) return;
 
     // Cancel any current speech
@@ -110,10 +108,10 @@ export function useSpeech() {
     if (!cleaned) return;
 
     const utterance = new SpeechSynthesisUtterance(cleaned);
-    utterance.rate   = 1.08;   // Slightly faster, confident
-    utterance.pitch  = 0.9;    // Slightly deeper
+    utterance.rate   = langCode.startsWith('en') ? 1.08 : 0.95; // Non-English usually sounds better slower
+    utterance.pitch  = 0.9;
     utterance.volume = 1.0;
-    utterance.lang   = 'en-GB';
+    utterance.lang   = langCode;
 
     utterance.onstart = () => startKeepAlive();
 
@@ -123,7 +121,6 @@ export function useSpeech() {
     };
 
     utterance.onerror = (e) => {
-      // 'interrupted' is normal when cancel() is called; ignore it
       if (e.error !== 'interrupted' && e.error !== 'canceled') {
         console.warn('[Speech] Error:', e.error);
       }
@@ -132,9 +129,9 @@ export function useSpeech() {
     };
 
     function doSpeak() {
-      const v = pickVoice();
+      const v = pickVoice(langCode);
       if (v) utterance.voice = v;
-      window.speechSynthesis.resume(); // un-pause if iOS paused it
+      window.speechSynthesis.resume();
       window.speechSynthesis.speak(utterance);
     }
 
@@ -142,12 +139,10 @@ export function useSpeech() {
     if (voices.length > 0) {
       doSpeak();
     } else {
-      // Voices not yet loaded (common on Android Chrome & mobile Safari)
       window.speechSynthesis.onvoiceschanged = () => {
         window.speechSynthesis.onvoiceschanged = null;
         doSpeak();
       };
-      // Failsafe: if onvoiceschanged never fires, try after 1s
       setTimeout(() => {
         if (!utteranceRef.current || window.speechSynthesis.speaking) return;
         doSpeak();

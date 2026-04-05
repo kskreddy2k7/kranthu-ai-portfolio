@@ -35,6 +35,8 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero d-flex align-items-center" id="hero">
+  <div class="hero-scanner"></div>
+  <div class="hero-glow-blob"></div>
   <div class="hero-bg-grid" id="parallax-grid"></div>
   
   <div class="container text-center position-relative z-1 hero-content-wrapper">
@@ -62,14 +64,14 @@
       </div>
     </div>
     
-    <p class="hero-hello font-fira mb-2" style="color:var(--neon);font-size:1rem;letter-spacing:2px;">Hi, I'm</p>
-    <h1 class="hero-name mb-2 font-orbitron text-white">
-      <span class="neon-text glow-text-anim">Kranthu Reddy</span>
+    <p class="hero-hello font-fira mb-2 gs-reveal" style="color:var(--neon);font-size:1.1rem;letter-spacing:3px;" data-i18n="hero.hello">Hi, I'm</p>
+    <h1 class="hero-name mb-4 gs-reveal">
+      <span class="hero-name-full" data-i18n="hero.name">Kata Sai Kranthu Reddy</span>
     </h1>
     <div class="hero-typing-wrap mb-3 font-orbitron" style="font-size:clamp(1rem,3vw,1.5rem);color:#fff;min-height:2.2rem;">
       <span id="typed-text" class="neon-text"></span><span class="typed-cursor">|</span>
     </div>
-    <p class="hero-sub font-fira text-muted mb-4" style="font-size:clamp(0.85rem,2vw,1rem);max-width:560px;margin:0 auto;">
+    <p class="hero-sub font-fira text-muted mb-4" style="font-size:clamp(0.85rem,2vw,1rem);max-width:560px;margin:0 auto;" data-i18n="hero.subtitle">
       Specialized in <span style="color:var(--neon)">Machine Learning</span>, <span style="color:var(--purple)">NLP</span>, and <span style="color:var(--green)">Full Stack Development</span>
     </p>
     <!-- Floating Tech Icons -->
@@ -80,13 +82,13 @@
       <div class="tech-icon floating-4 magnetic-btn"><i class="fas fa-database text-success"></i></div>
     </div>
     <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
-      <a href="#projects" class="btn btn-neon btn-lg font-orbitron magnetic-btn">
+      <a href="#projects" class="btn btn-neon btn-lg font-orbitron magnetic-btn" data-i18n="hero.btn_projects">
         <i class="fas fa-rocket me-2"></i> View Projects
       </a>
-      <a href="#contact" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn">
+      <a href="#contact" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn" data-i18n="hero.btn_contact">
         <i class="fas fa-satellite-dish me-2"></i> Contact Me
       </a>
-      <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn" target="_blank" style="border-color:var(--purple);color:var(--purple);">
+      <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn" target="_blank" style="border-color:var(--purple);color:var(--purple);" data-i18n="hero.btn_resume">
         <i class="fas fa-file-download me-2"></i> Resume
       </a>
     </div>
@@ -104,9 +106,9 @@
 <section class="section-pad" id="about">
   <div class="container">
     <div class="section-header text-center mb-5 gs-reveal-up">
-      <span class="section-tag font-fira">__INTERACTIVE_SHELL</span>
-      <h2 class="section-title font-orbitron">SYSTEM <span class="neon-text">TERMINAL</span></h2>
-      <p class="font-fira text-muted mt-2 small">Type 'help' for available commands.</p>
+      <span class="section-tag font-fira" data-i18n="about.tag">__INTERACTIVE_SHELL</span>
+      <h2 class="section-title font-orbitron text-white" data-i18n="about.title">SYSTEM TERMINAL</h2>
+      <p class="font-fira text-muted mt-2 small" data-i18n="about.hint">Type 'help' for available commands.</p>
     </div>
     
     <div class="row justify-content-center">
@@ -150,8 +152,8 @@
 <section class="section-pad section-dark" id="skills">
   <div class="container">
     <div class="section-header text-center mb-5 gs-reveal-up">
-      <span class="section-tag font-fira">__CAPABILITIES</span>
-      <h2 class="section-title font-orbitron">SYSTEM <span class="neon-text">SKILLS</span></h2>
+      <span class="section-tag font-fira" data-i18n="skills.tag">__CAPABILITIES</span>
+      <h2 class="section-title font-orbitron text-white" data-i18n="skills.title">SYSTEM SKILLS</h2>
     </div>
     
     <div class="row g-4 justify-content-center">
@@ -218,8 +220,8 @@
 <section class="section-pad" id="experience">
   <div class="container">
     <div class="section-header text-center mb-5 gs-reveal-up">
-      <span class="section-tag font-fira">__SYSTEM_HISTORY</span>
-      <h2 class="section-title font-orbitron">EXPERIENCE <span class="neon-text">LOGS</span></h2>
+      <span class="section-tag font-fira" data-i18n="experience.tag">__SYSTEM_HISTORY</span>
+      <h2 class="section-title font-orbitron text-white" data-i18n="experience.title">EXPERIENCE LOGS</h2>
     </div>
     
     <div class="timeline-container ps-md-5">
@@ -275,18 +277,15 @@
 <section class="section-pad" id="projects">
   <div class="container">
     <div class="section-header text-center mb-5 gs-reveal-up">
-      <span class="section-tag font-fira">__EXECUTABLES</span>
-      <h2 class="section-title font-orbitron">REAL-WORLD <span class="neon-text">APPLICATIONS</span></h2>
-      <p class="font-fira text-muted mt-2 small">Click cards to initialize live previews.</p>
+      <span class="section-tag font-fira" data-i18n="projects.tag">__EXECUTABLES</span>
+      <h2 class="section-title font-orbitron text-white" data-i18n="projects.title">REAL-WORLD APPLICATIONS</h2>
     </div>
     
-    <div class="row justify-content-center g-4">
-      
-    <div class="project-filters d-flex justify-content-center gap-2 mb-5 gs-reveal-up">
-      <button class="filter-btn active" data-filter="all">ALL_MODULES</button>
-      <button class="filter-btn" data-filter="web">WEB_SYSTEMS</button>
-      <button class="filter-btn" data-filter="ai">AI_CORES</button>
-      <button class="filter-btn" data-filter="apps">MOBILE_APPS</button>
+    <div class="project-filters d-flex justify-content-center gap-3 mb-5 gs-reveal-up">
+      <button class="cyber-pill-btn active" data-filter="all" data-i18n="projects.filter_all">ALL_MODULES</button>
+      <button class="cyber-pill-btn" data-filter="web" data-i18n="projects.filter_web">WEB_SYSTEMS</button>
+      <button class="cyber-pill-btn" data-filter="ai" data-i18n="projects.filter_ai">AI_CORES</button>
+      <button class="cyber-pill-btn" data-filter="app" data-i18n="projects.filter_apps">MOBILE_APPS</button>
     </div>
     
     <div class="row g-4 justify-content-center" id="project-container">
@@ -501,8 +500,8 @@
 <section class="section-pad section-dark" id="chatbot">
   <div class="container">
     <div class="section-header text-center mb-5 gs-reveal-up">
-      <span class="section-tag font-fira">__NEURAL_INTERFACE</span>
-      <h2 class="section-title font-orbitron">AI <span class="neon-text">ASSISTANT</span></h2>
+      <span class="section-tag font-fira" data-i18n="chatbot.tag">__NEURAL_INTERFACE</span>
+      <h2 class="section-title font-orbitron text-white" data-i18n="chatbot.title">AI ASSISTANT</h2>
       <p class="font-fira text-muted mt-2 small">Engage with the KSKR_CORE intelligence.</p>
     </div>
     
@@ -541,7 +540,7 @@
           
           <form id="chatForm" class="chat-input-area p-4 pt-0">
             <div class="glass-panel p-2 d-flex align-items-center">
-              <input type="text" id="chatInput" class="cyber-input flex-grow-1" placeholder="Ask anything about Kranthu..." autocomplete="off">
+              <input type="text" id="chat-input" class="cyber-input flex-grow-1" placeholder="Ask anything about Kranthu..." data-i18n="chatbot.placeholder" autocomplete="off">
               <button type="submit" class="cyber-send-btn ms-2 px-3 py-2">
                 <i class="fas fa-paper-plane"></i>
               </button>
@@ -557,8 +556,8 @@
 <section class="section-pad" id="contact">
   <div class="container">
     <div class="section-header text-center mb-5 gs-reveal-up">
-      <span class="section-tag font-fira">__HANDSHAKE</span>
-      <h2 class="section-title font-orbitron">ESTABLISH <span class="neon-text">CONNECTION</span></h2>
+      <span class="section-tag font-fira" data-i18n="contact.tag">__HANDSHAKE</span>
+      <h2 class="section-title font-orbitron text-white" data-i18n="contact.title">ESTABLISH CONNECTION</h2>
     </div>
     
     <div class="row g-5 justify-content-center">
@@ -602,26 +601,26 @@
           <form id="contactForm" novalidate>
             <div class="cyber-input-group mb-4">
               <input type="text" class="cyber-form-input font-fira" id="contactName" name="name" placeholder=" " required />
-              <label for="contactName" class="cyber-label font-fira">IDENTIFIER (Name)</label>
+              <label class="cyber-label" data-i18n="contact.name_label">IDENTIFIER (Name)</label>
               <div class="cyber-border"></div>
               <div class="invalid-feedback font-fira small mt-1" id="nameError"></div>
             </div>
             
             <div class="cyber-input-group mb-4">
               <input type="email" class="cyber-form-input font-fira" id="contactEmail" name="email" placeholder=" " required />
-              <label for="contactEmail" class="cyber-label font-fira">ROUTING_ADDRESS (Email)</label>
+              <label class="cyber-label" data-i18n="contact.email_label">ROUTING_ADDRESS (Email)</label>
               <div class="cyber-border"></div>
               <div class="invalid-feedback font-fira small mt-1" id="emailError"></div>
             </div>
             
             <div class="cyber-input-group mb-5">
               <textarea class="cyber-form-input font-fira" id="contactMessage" name="message" rows="4" placeholder=" " required></textarea>
-              <label for="contactMessage" class="cyber-label font-fira">PAYLOAD_DATA (Message)</label>
+              <label class="cyber-label" data-i18n="contact.msg_label">PAYLOAD_DATA (Message)</label>
               <div class="cyber-border"></div>
               <div class="invalid-feedback font-fira small mt-1" id="messageError"></div>
             </div>
             
-            <button type="submit" class="btn btn-neon w-100 btn-lg font-orbitron magnetic-btn" id="submitBtn">
+            <button type="submit" class="btn btn-neon w-100 btn-lg font-orbitron magnetic-btn" data-i18n="contact.send_btn">
               <i class="fas fa-satellite-dish me-2"></i> TRANSMIT_DATA
             </button>
           </form>

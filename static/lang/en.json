@@ -1,0 +1,61 @@
+{
+  "lang_name": "English",
+  "nav": {
+    "about":     "__about",
+    "skills":    "__skills",
+    "projects":  "__projects",
+    "logs":      "__logs",
+    "ai":        "__ai_assistant",
+    "contact":   "__link"
+  },
+  "hero": {
+    "hello":     "Hi, I'm",
+    "name":      "Kata Sai Kranthu Reddy",
+    "typed":     ["I build AI-powered applications", "Machine Learning · NLP · Full Stack", "Turning ideas into intelligent systems"],
+    "subtitle":  "Specialized in <span style='color:var(--neon)'>Machine Learning</span>, <span style='color:var(--purple)'>NLP</span>, and <span style='color:var(--green)'>Full Stack Development</span>",
+    "btn_projects": "View Projects",
+    "btn_contact":  "Contact Me",
+    "btn_resume":   "Resume"
+  },
+  "about": {
+    "tag":   "__INTERACTIVE_SHELL",
+    "title": "SYSTEM TERMINAL",
+    "hint":  "Type 'help' for available commands."
+  },
+  "skills": {
+    "tag":    "__CAPABILITIES",
+    "title":  "SYSTEM SKILLS",
+    "logic":  "Logic Processing",
+    "neural": "Neural Cores"
+  },
+  "projects": {
+    "tag":   "__EXECUTABLES",
+    "title": "REAL-WORLD APPLICATIONS",
+    "filter_all":  "ALL_MODULES",
+    "filter_web":  "WEB_SYSTEMS",
+    "filter_ai":   "AI_CORES",
+    "filter_apps": "MOBILE_APPS"
+  },
+  "experience": {
+    "tag":   "__SYSTEM_HISTORY",
+    "title": "EXPERIENCE LOGS"
+  },
+  "chatbot": {
+    "tag":   "__NEURAL_INTERFACE",
+    "title": "AI ASSISTANT",
+    "placeholder": "Ask anything about Kranthu...",
+    "welcome": "Hello! 👋 I'm <strong>KSKR AI</strong> — Kranthu's personal intelligence system. Ask me about his <strong>skills</strong>, <strong>projects</strong>, <strong>education</strong>, or how to <strong>contact</strong> him!"
+  },
+  "contact": {
+    "tag":   "__HANDSHAKE",
+    "title": "ESTABLISH CONNECTION",
+    "name_label":  "IDENTIFIER (Name)",
+    "email_label": "ROUTING_ADDRESS (Email)",
+    "msg_label":   "PAYLOAD_DATA (Message)",
+    "send_btn":    "TRANSMIT_DATA"
+  },
+  "footer": {
+    "tagline": "SYSTEM ONLINE · AI & BACKEND OPS",
+    "copy":    "© 2026 // KSKR. ALL SYSTEMS NOMINAL."
+  }
+}

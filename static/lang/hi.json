@@ -1,0 +1,61 @@
+{
+  "lang_name": "हिन्दी",
+  "nav": {
+    "about":     "__परिचय",
+    "skills":    "__कौशल",
+    "projects":  "__परियोजनाएं",
+    "logs":      "__लॉग्स",
+    "ai":        "__AI_सहायक",
+    "contact":   "__संपर्क"
+  },
+  "hero": {
+    "hello":     "नमस्ते, मैं हूँ",
+    "name":      "Kata Sai Kranthu Reddy",
+    "typed":     ["मैं AI-पावर्ड ऐप बनाता हूँ", "मशीन लर्निंग · NLP · फुल स्टैक", "विचारों को बुद्धिमान प्रणालियों में बदलना"],
+    "subtitle":  "<span style='color:var(--neon)'>मशीन लर्निंग</span>, <span style='color:var(--purple)'>NLP</span> और <span style='color:var(--green)'>फुल स्टैक डेवलपमेंट</span> में विशेषज्ञ",
+    "btn_projects": "परियोजनाएं देखें",
+    "btn_contact":  "संपर्क करें",
+    "btn_resume":   "रेज़्यूमे"
+  },
+  "about": {
+    "tag":   "__इंटरेक्टिव_शेल",
+    "title": "सिस्टम टर्मिनल",
+    "hint":  "कमांड देखने के लिए 'help' टाइप करें।"
+  },
+  "skills": {
+    "tag":    "__क्षमताएं",
+    "title":  "सिस्टम स्किल्स",
+    "logic":  "लॉजिक प्रोसेसिंग",
+    "neural": "न्यूरल कोर्स"
+  },
+  "projects": {
+    "tag":   "__एक्जीक्यूटेबल्स",
+    "title": "वास्तविक एप्लीकेशन",
+    "filter_all":  "सभी",
+    "filter_web":  "वेब",
+    "filter_ai":   "AI",
+    "filter_apps": "मोबाइल"
+  },
+  "experience": {
+    "tag":   "__सिस्टम_इतिहास",
+    "title": "अनुभव लॉग्स"
+  },
+  "chatbot": {
+    "tag":   "__न्यूरल_इंटरफेस",
+    "title": "AI सहायक",
+    "placeholder": "Kranthu के बारे में कुछ भी पूछें...",
+    "welcome": "नमस्ते! 👋 मैं <strong>KSKR AI</strong> हूँ — Kranthu का AI असिस्टेंट। उनकी <strong>स्किल्स</strong>, <strong>प्रोजेक्ट्स</strong>, या <strong>संपर्क</strong> जानकारी पूछें!"
+  },
+  "contact": {
+    "tag":   "__हैंडशेक",
+    "title": "संपर्क स्थापित करें",
+    "name_label":  "नाम",
+    "email_label": "ईमेल",
+    "msg_label":   "संदेश",
+    "send_btn":    "भेजें"
+  },
+  "footer": {
+    "tagline": "सिस्टम ऑनलाइन · AI डेवलपमेंट",
+    "copy":    "© 2026 // KSKR. सर्वाधिकार सुरक्षित।"
+  }
+}
