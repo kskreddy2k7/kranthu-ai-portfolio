@@ -62,33 +62,35 @@
       </div>
     </div>
     
-    <div>
-
-      <h1 class="hero-name mb-3 font-orbitron text-white">
-        I don't just build websites.<br/>
-        <span class="neon-text glow-text-anim">I build intelligent digital experiences.</span>
-      </h1>
-      <div class="hero-subtitle mb-4 font-fira">
-        <span class="text-primary">[</span> Full Stack Developer <span class="text-primary">|</span> AI Enthusiast <span class="text-primary">]</span>
-      </div>
-      
-      <!-- Floating Tech Icons -->
-      <div class="hero-floating-icons mb-5">
-        <div class="tech-icon floating-1 magnetic-btn"><i class="fab fa-python text-warning"></i></div>
-        <div class="tech-icon floating-2 magnetic-btn"><i class="fas fa-brain text-purple"></i></div>
-        <div class="tech-icon floating-3 magnetic-btn"><i class="fab fa-react text-info"></i></div>
-        <div class="tech-icon floating-4 magnetic-btn"><i class="fas fa-database text-success"></i></div>
-      </div>
-
-      <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
-        <a href="#projects" class="btn btn-neon btn-lg font-orbitron magnetic-btn">
-          <i class="fas fa-terminal me-2"></i> EXECUTE ./projects
-        </a>
-        <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn" target="_blank">
-          <i class="fas fa-file-download me-2"></i> DOWNLOAD_LOGS
-        </a>
-      </div>
+    <p class="hero-hello font-fira mb-2" style="color:var(--neon);font-size:1rem;letter-spacing:2px;">Hi, I'm</p>
+    <h1 class="hero-name mb-2 font-orbitron text-white">
+      <span class="neon-text glow-text-anim">Kranthu Reddy</span>
+    </h1>
+    <div class="hero-typing-wrap mb-3 font-orbitron" style="font-size:clamp(1rem,3vw,1.5rem);color:#fff;min-height:2.2rem;">
+      <span id="typed-text" class="neon-text"></span><span class="typed-cursor">|</span>
     </div>
+    <p class="hero-sub font-fira text-muted mb-4" style="font-size:clamp(0.85rem,2vw,1rem);max-width:560px;margin:0 auto;">
+      Specialized in <span style="color:var(--neon)">Machine Learning</span>, <span style="color:var(--purple)">NLP</span>, and <span style="color:var(--green)">Full Stack Development</span>
+    </p>
+    <!-- Floating Tech Icons -->
+    <div class="hero-floating-icons mb-4">
+      <div class="tech-icon floating-1 magnetic-btn"><i class="fab fa-python text-warning"></i></div>
+      <div class="tech-icon floating-2 magnetic-btn"><i class="fas fa-brain text-purple"></i></div>
+      <div class="tech-icon floating-3 magnetic-btn"><i class="fab fa-react text-info"></i></div>
+      <div class="tech-icon floating-4 magnetic-btn"><i class="fas fa-database text-success"></i></div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
+      <a href="#projects" class="btn btn-neon btn-lg font-orbitron magnetic-btn">
+        <i class="fas fa-rocket me-2"></i> View Projects
+      </a>
+      <a href="#contact" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn">
+        <i class="fas fa-satellite-dish me-2"></i> Contact Me
+      </a>
+      <a href="{{ url_for('static', filename='resume/Kata_Sai_Kranthu_Reddy_Resume.docx') }}" class="btn btn-outline-neon btn-lg font-orbitron magnetic-btn" target="_blank" style="border-color:var(--purple);color:var(--purple);">
+        <i class="fas fa-file-download me-2"></i> Resume
+      </a>
+    </div>
+  </div>
     
     <div class="hero-scroll-hint mt-5">
       <a href="#about" class="scroll-hint-link magnetic-btn">

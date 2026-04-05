@@ -3,6 +3,82 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ── 🌟 STAR CANVAS BACKGROUND ─────────────────────────────────────────────
+  (function initStars() {
+    const canvas = document.getElementById('star-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const N = window.innerWidth < 768 ? 80 : 180;
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (let i = 0; i < N; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.3,
+        speed: Math.random() * 0.3 + 0.05,
+        opacity: Math.random()
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        s.y += s.speed;
+        if (s.y > canvas.height) { s.y = 0; s.x = Math.random() * canvas.width; }
+        s.opacity += (Math.random() - 0.5) * 0.02;
+        s.opacity = Math.max(0.1, Math.min(1, s.opacity));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,229,255,${s.opacity})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+  })();
+
+  // ── ⌨️ TYPING ANIMATION ───────────────────────────────────────────────────
+  (function initTyping() {
+    const el = document.getElementById('typed-text');
+    if (!el) return;
+    const lines = [
+      'I build AI-powered applications',
+      'Machine Learning · NLP · Full Stack',
+      'Turning ideas into intelligent systems'
+    ];
+    let li = 0, ci = 0, deleting = false;
+
+    function type() {
+      const current = lines[li];
+      if (!deleting) {
+        el.textContent = current.slice(0, ++ci);
+        if (ci === current.length) {
+          deleting = true;
+          setTimeout(type, 1800); return;
+        }
+        setTimeout(type, 55);
+      } else {
+        el.textContent = current.slice(0, --ci);
+        if (ci === 0) {
+          deleting = false;
+          li = (li + 1) % lines.length;
+          setTimeout(type, 400); return;
+        }
+        setTimeout(type, 28);
+      }
+    }
+    setTimeout(type, 1000);
+  })();
+
   // --- 0. SOUND SYSTEMS (PHASE 9) ---
   console.log("Initializing Sound Engine...");
   // Initial state for boot protection
