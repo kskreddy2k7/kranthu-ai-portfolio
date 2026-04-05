@@ -61,23 +61,42 @@ export function useSpeech() {
       .trim();
   };
 
-  // Pick best available English voice, mobile-aware
+  // Pick best available MALE English voice, mobile-aware
   function pickVoice() {
     const voices = window.speechSynthesis.getVoices();
     if (!voices.length) return null;
 
+    // Filter out obvious female voices first
+    const femaleNames = ['samantha', 'victoria', 'karen', 'moira', 'fiona',
+      'tessa', 'veena', 'ava', 'allison', 'susan', 'zoe', 'nicky', 'sara',
+      'ellen', 'alice', 'amelie', 'anna', 'kyoko', 'sin-ji', 'mei-jia',
+      'female', 'woman', 'girl'];
+
+    function isFemale(v) {
+      const n = v.name.toLowerCase();
+      return femaleNames.some(f => n.includes(f));
+    }
+
+    const enVoices = voices.filter(v => v.lang.startsWith('en'));
+    const maleEnVoices = enVoices.filter(v => !isFemale(v));
+
     return (
-      voices.find(v => v.name === 'Google UK English Male') ||
-      voices.find(v => v.name === 'Google US English Male') ||
-      voices.find(v => v.name.includes('Microsoft Mark'))   ||
-      voices.find(v => v.name.includes('Microsoft David'))  ||
-      voices.find(v => v.name === 'Daniel')                 || // iOS UK English
-      voices.find(v => v.name === 'Alex')                   || // iOS US English
-      voices.find(v => v.name.includes('Samantha'))         || // iOS fallback
-      voices.find(v => v.lang === 'en-GB' && !v.localService === false) ||
-      voices.find(v => v.lang === 'en-GB') ||
-      voices.find(v => v.lang.startsWith('en-US')) ||
-      voices.find(v => v.lang.startsWith('en'))
+      // Top priority: named male voices
+      voices.find(v => v.name === 'Google UK English Male')  ||
+      voices.find(v => v.name === 'Google US English Male')  ||
+      voices.find(v => v.name.includes('Microsoft Mark'))    ||
+      voices.find(v => v.name.includes('Microsoft David'))   ||
+      voices.find(v => v.name.includes('Microsoft Guy'))     ||
+      voices.find(v => v.name === 'Daniel')                  || // iOS UK Male
+      voices.find(v => v.name === 'Alex')                    || // iOS US Male
+      voices.find(v => v.name === 'Fred')                    || // iOS Male
+      voices.find(v => v.name === 'Tom')                     || // some iOS
+      // Any English voice that isn't female
+      maleEnVoices.find(v => v.lang === 'en-GB')             ||
+      maleEnVoices.find(v => v.lang === 'en-US')             ||
+      maleEnVoices[0]                                        ||
+      // Absolute last resort: any English
+      enVoices[0]
     );
   }
 
